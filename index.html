@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Medical San - Loja Oficial</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Inter', 'sans-serif'],
+            },
+            colors: {
+              medical: {
+                50: '#f0f9ff',
+                100: '#e0f2fe',
+                500: '#00C8FF', // Cyan bright button
+                600: '#0284c7',
+                800: '#0B1E48', // Deep Blue Header/Footer
+                900: '#051330',
+              },
+              action: {
+                cyan: '#00D1FF', // Bright Cyan for "CONFIRA" buttons
+                red: '#F25D27', // Discount tag color
+              }
+            },
+            boxShadow: {
+              'card': '0 2px 10px rgba(0,0,0,0.05)',
+            }
+          }
+        }
+      }
+    </script>
+    <style>
+      body {
+        font-family: 'Inter', sans-serif;
+        background-color: #F8F9FA;
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
+    "lucide-react": "https://esm.sh/lucide-react@^0.562.0",
+    "react/": "https://esm.sh/react@^19.2.3/",
+    "react": "https://esm.sh/react@^19.2.3"
+  }
+}
+</script>
+</head>
+  <body>
+    <div id="root"></div>
+  </body>
+</html>
