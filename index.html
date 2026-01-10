@@ -67,6 +67,7 @@
         font-family: 'Inter', sans-serif;
         background-color: #F8F9FA;
       }
+      /* Custom Scrollbar */
       .custom-scrollbar::-webkit-scrollbar {
         width: 6px;
       }
@@ -144,7 +145,9 @@
       const Award = (props) => <IconBase {...props}><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></IconBase>;
       const Clock = (props) => <IconBase {...props}><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></IconBase>;
       const MessageCircle = (props) => <IconBase {...props}><path d="m3 21 1.9-5.7a8.5 8.5 0 1 1 3.8 3.8z"/></IconBase>;
-
+      const Zap = (props) => <IconBase {...props}><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></IconBase>;
+      const GraduationCap = (props) => <IconBase {...props}><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></IconBase>;
+      const Calculator = (props) => <IconBase {...props}><rect width="16" height="20" x="4" y="2" rx="2"/><line x1="8" x2="16" y1="6" y2="6"/><line x1="16" x2="16" y1="14" y2="18"/><path d="M16 10h.01"/><path d="M12 10h.01"/><path d="M8 10h.01"/><path d="M12 14h.01"/><path d="M8 14h.01"/><path d="M12 18h.01"/><path d="M8 18h.01"/></IconBase>;
 
       // --- DADOS ---
       const defaultBenefits = `
@@ -293,6 +296,15 @@
       };
 
       const BannerModal = ({ isOpen, onClose, data }) => {
+        useEffect(() => {
+          if (isOpen) {
+            document.body.style.overflow = 'hidden';
+          } else {
+            document.body.style.overflow = 'unset';
+          }
+          return () => { document.body.style.overflow = 'unset'; };
+        }, [isOpen]);
+
         if (!isOpen || !data) return null;
         const handleWhatsAppRedirect = () => {
           const message = `Olá! Vi o banner promocional *${data.title}* no site e gostaria de saber mais sobre as condições especiais.`;
@@ -508,6 +520,15 @@
         const [formData, setFormData] = useState({ name: '', email: '', phone: '', message: '' });
         const [isSubmitted, setIsSubmitted] = useState(false);
 
+        useEffect(() => {
+          if (isOpen) {
+            document.body.style.overflow = 'hidden';
+          } else {
+            document.body.style.overflow = 'unset';
+          }
+          return () => { document.body.style.overflow = 'unset'; };
+        }, [isOpen]);
+
         if (!isOpen) return null;
 
         const handleChange = (e) => setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -558,6 +579,19 @@
 
       // Componente: ProductDetailsModal
       const ProductDetailsModal = ({ isOpen, onClose, product, onRequestQuote }) => {
+        useEffect(() => {
+          // Bloqueia o scroll da página de fundo quando o modal abre
+          if (isOpen) {
+            document.body.style.overflow = 'hidden';
+          } else {
+            document.body.style.overflow = 'unset';
+          }
+          // Limpeza ao desmontar
+          return () => {
+            document.body.style.overflow = 'unset';
+          };
+        }, [isOpen]);
+
         if (!isOpen || !product) return null;
         const handleWhatsAppRedirect = () => {
           const message = `Olá! Gostaria de receber um orçamento especial e mais informações sobre o equipamento *${product.name}* que vi no site.`;
@@ -711,39 +745,169 @@
             <Header />
             <main className="flex-grow">
               <Hero />
-              <section className="bg-gradient-to-b from-medical-50 to-white py-12 border-b border-gray-100">
-                <div className="container mx-auto px-4 max-w-7xl">
-                  <div className="text-center max-w-3xl mx-auto mb-12">
-                    <h2 className="text-2xl md:text-3xl font-bold text-medical-900 mb-4">Por que escolher a Medical San?</h2>
-                    <p className="text-gray-600">Tecnologia de ponta e suporte especializado para alavancar os resultados da sua clínica.</p>
-                  </div>
-                  <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-                    <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100 flex flex-col items-center text-center hover:shadow-md transition-shadow">
-                      <div className="w-12 h-12 bg-blue-100 text-medical-600 rounded-full flex items-center justify-center mb-4"><Award size={24} /></div>
-                      <h3 className="font-bold text-gray-900 mb-2">Qualidade Comprovada</h3>
-                      <p className="text-xs text-gray-500">Equipamentos certificados pela ANVISA com alta durabilidade.</p>
-                    </div>
-                    <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100 flex flex-col items-center text-center hover:shadow-md transition-shadow">
-                      <div className="w-12 h-12 bg-green-100 text-green-600 rounded-full flex items-center justify-center mb-4"><TrendingUp size={24} /></div>
-                      <h3 className="font-bold text-gray-900 mb-2">Retorno Rápido</h3>
-                      <p className="text-xs text-gray-500">Alta rentabilidade por sessão com tratamentos eficazes.</p>
-                    </div>
-                     <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100 flex flex-col items-center text-center hover:shadow-md transition-shadow">
-                      <div className="w-12 h-12 bg-purple-100 text-purple-600 rounded-full flex items-center justify-center mb-4"><ShieldCheck size={24} /></div>
-                      <h3 className="font-bold text-gray-900 mb-2">Garantia Estendida</h3>
-                      <p className="text-xs text-gray-500">Suporte técnico especializado e garantia total de fábrica.</p>
-                    </div>
-                     <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100 flex flex-col items-center text-center hover:shadow-md transition-shadow">
-                      <div className="w-12 h-12 bg-orange-100 text-orange-600 rounded-full flex items-center justify-center mb-4"><Clock size={24} /></div>
-                      <h3 className="font-bold text-gray-900 mb-2">Atendimento Ágil</h3>
-                      <p className="text-xs text-gray-500">Consultores prontos para tirar suas dúvidas via WhatsApp.</p>
-                    </div>
+              
+              {/* --- NEW PERSUASIVE SECTIONS --- */}
+              
+              {/* Section 1: ROI & Lucratividade (Dark Theme) */}
+              <section className="bg-medical-900 text-white py-20 relative overflow-hidden">
+                <div className="absolute top-0 right-0 w-64 h-64 bg-medical-500 rounded-full blur-[100px] opacity-20 translate-x-1/2 -translate-y-1/2"></div>
+                <div className="container mx-auto px-4 relative z-10 max-w-7xl">
+                  <div className="flex flex-col md:flex-row items-center gap-12">
+                     <div className="md:w-1/2">
+                        <span className="inline-block bg-medical-600/30 border border-medical-500/30 text-action-cyan text-xs font-bold px-3 py-1 rounded-full mb-4 uppercase tracking-widest">Lucratividade Máxima</span>
+                        <h2 className="text-3xl md:text-5xl font-extrabold mb-6 leading-tight">Transforme sua clínica em uma <span className="text-action-cyan">máquina de resultados</span>.</h2>
+                        <p className="text-blue-100 text-lg mb-8 leading-relaxed">
+                          Equipamentos projetados para oferecer o menor custo por disparo e a maior eficácia clínica do mercado. Com a Medical San, você recupera seu investimento em tempo recorde.
+                        </p>
+                        <div className="flex flex-col gap-4">
+                          <div className="flex items-center gap-4 bg-white/5 p-4 rounded-xl border border-white/10 hover:border-action-cyan/50 transition-colors">
+                             <div className="bg-action-cyan/20 p-3 rounded-lg text-action-cyan"><Zap size={24}/></div>
+                             <div>
+                               <h4 className="font-bold text-white">Alta Performance</h4>
+                               <p className="text-sm text-gray-400">Tecnologia que garante resultados visíveis na primeira sessão.</p>
+                             </div>
+                          </div>
+                          <div className="flex items-center gap-4 bg-white/5 p-4 rounded-xl border border-white/10 hover:border-action-cyan/50 transition-colors">
+                             <div className="bg-green-500/20 p-3 rounded-lg text-green-400"><Calculator size={24}/></div>
+                             <div>
+                               <h4 className="font-bold text-white">ROI Acelerado</h4>
+                               <p className="text-sm text-gray-400">Pague seu equipamento com poucos atendimentos mensais.</p>
+                             </div>
+                          </div>
+                        </div>
+                     </div>
+                     <div className="md:w-1/2 relative">
+                        <div className="relative z-10 bg-gradient-to-br from-gray-800 to-black p-8 rounded-2xl border border-gray-700 shadow-2xl">
+                           <h3 className="text-2xl font-bold mb-6 text-center">Simulação de Retorno</h3>
+                           <div className="space-y-6">
+                              <div className="flex justify-between items-end border-b border-gray-700 pb-2">
+                                <span className="text-gray-400 text-sm">Custo médio sessão</span>
+                                <span className="text-2xl font-bold text-white">R$ 250,00</span>
+                              </div>
+                              <div className="flex justify-between items-end border-b border-gray-700 pb-2">
+                                <span className="text-gray-400 text-sm">Pacientes / Dia</span>
+                                <span className="text-2xl font-bold text-white">x 4</span>
+                              </div>
+                              <div className="flex justify-between items-end border-b border-gray-700 pb-2">
+                                <span className="text-gray-400 text-sm">Faturamento Mensal</span>
+                                <span className="text-3xl font-extrabold text-green-400">R$ 22.000+</span>
+                              </div>
+                           </div>
+                           <p className="text-xs text-center text-gray-500 mt-6">*Valores estimados baseados em média de mercado.</p>
+                           <button onClick={() => window.open('https://wa.me/555180985851', '_blank')} className="w-full mt-6 bg-action-cyan hover:bg-white hover:text-medical-900 text-medical-900 font-bold py-4 rounded-xl transition-all uppercase tracking-wide">
+                             Quero Lucrar Mais
+                           </button>
+                        </div>
+                        {/* Decorative elements behind card */}
+                        <div className="absolute -z-10 top-10 -right-10 w-full h-full border-2 border-dashed border-medical-700 rounded-2xl"></div>
+                     </div>
                   </div>
                 </div>
               </section>
 
               <Section id="estetica" title="Estética" items={esteticaProducts} />
-              <Section id="hof" title="HOF" items={hofProducts} bgColor="bg-[#F8F9FA]" />
+
+              {/* Section 2: Autoridade & Suporte (Light Theme) */}
+              <section className="py-20 bg-medical-50">
+                <div className="container mx-auto px-4 max-w-7xl">
+                   <div className="text-center max-w-3xl mx-auto mb-16">
+                      <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Mais que equipamentos, <span className="text-medical-600">entregamos sucesso</span>.</h2>
+                      <p className="text-gray-600 text-lg">Junte-se a milhares de profissionais que confiam na Medical San para alavancar suas carreiras.</p>
+                   </div>
+                   <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                      <div className="bg-white p-8 rounded-2xl shadow-sm hover:shadow-xl transition-shadow border border-gray-100 flex flex-col items-center text-center group">
+                         <div className="w-20 h-20 bg-blue-50 rounded-full flex items-center justify-center mb-6 group-hover:scale-110 transition-transform text-medical-600">
+                            <ShieldCheck size={40} />
+                         </div>
+                         <h3 className="text-xl font-bold text-gray-900 mb-3">Segurança Total</h3>
+                         <p className="text-gray-500 leading-relaxed">Equipamentos rigorosamente testados e certificados pela ANVISA. Garantia de fábrica e assistência técnica ágil em todo Brasil.</p>
+                      </div>
+                      <div className="bg-white p-8 rounded-2xl shadow-sm hover:shadow-xl transition-shadow border border-gray-100 flex flex-col items-center text-center group">
+                         <div className="w-20 h-20 bg-purple-50 rounded-full flex items-center justify-center mb-6 group-hover:scale-110 transition-transform text-purple-600">
+                            <GraduationCap size={40} />
+                         </div>
+                         <h3 className="text-xl font-bold text-gray-900 mb-3">Medical San Academy</h3>
+                         <p className="text-gray-500 leading-relaxed">Cliente Medical San tem acesso a treinamentos exclusivos com experts. Domine a tecnologia e entregue os melhores resultados.</p>
+                      </div>
+                      <div className="bg-white p-8 rounded-2xl shadow-sm hover:shadow-xl transition-shadow border border-gray-100 flex flex-col items-center text-center group">
+                         <div className="w-20 h-20 bg-orange-50 rounded-full flex items-center justify-center mb-6 group-hover:scale-110 transition-transform text-orange-500">
+                            <Award size={40} />
+                         </div>
+                         <h3 className="text-xl font-bold text-gray-900 mb-3">Inovação Premiada</h3>
+                         <p className="text-gray-500 leading-relaxed">Tecnologia brasileira exportada para o mundo. Prêmios de inovação e design que valorizam a sua clínica perante o paciente.</p>
+                      </div>
+                   </div>
+                </div>
+              </section>
+
+              <Section id="hof" title="HOF" items={hofProducts} bgColor="bg-white" />
+              
+              {/* Section 3: Financeiro & Urgência (Clean Theme) */}
+              <section className="py-20 bg-gray-900 text-white text-center relative overflow-hidden">
+                 {/* Background Pattern */}
+                 <div className="absolute inset-0 opacity-10" style={{backgroundImage: 'radial-gradient(#4b5563 1px, transparent 1px)', backgroundSize: '30px 30px'}}></div>
+                 
+                 <div className="container mx-auto px-4 relative z-10 max-w-4xl">
+                    <h2 className="text-3xl md:text-5xl font-extrabold mb-6">Não deixe o investimento ser uma barreira.</h2>
+                    <p className="text-xl text-gray-300 mb-10">Temos as melhores condições do mercado para você começar agora.</p>
+                    
+                    <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-10">
+                       <div className="p-4 rounded-lg bg-white/5 border border-white/10">
+                          <p className="text-3xl font-bold text-action-cyan mb-1">120</p>
+                          <p className="text-xs text-gray-400 uppercase tracking-wider">Dias de Carência</p>
+                       </div>
+                       <div className="p-4 rounded-lg bg-white/5 border border-white/10">
+                          <p className="text-3xl font-bold text-action-cyan mb-1">60x</p>
+                          <p className="text-xs text-gray-400 uppercase tracking-wider">Parcelamento</p>
+                       </div>
+                        <div className="p-4 rounded-lg bg-white/5 border border-white/10">
+                          <p className="text-3xl font-bold text-action-cyan mb-1">0%</p>
+                          <p className="text-xs text-gray-400 uppercase tracking-wider">Entrada</p>
+                       </div>
+                        <div className="p-4 rounded-lg bg-white/5 border border-white/10">
+                          <p className="text-3xl font-bold text-action-cyan mb-1">24h</p>
+                          <p className="text-xs text-gray-400 uppercase tracking-wider">Aprovação</p>
+                       </div>
+                    </div>
+
+                    <a href="https://wa.me/555180985851" target="_blank" rel="noopener noreferrer" className="inline-block w-full md:w-auto bg-[#25D366] hover:bg-[#1ebc57] text-white font-bold py-5 px-10 rounded-full text-lg shadow-xl hover:shadow-2xl hover:-translate-y-1 transition-all uppercase tracking-widest">
+                       Simular Financiamento no WhatsApp
+                    </a>
+                    <p className="text-xs text-gray-500 mt-6">*Sujeito a análise de crédito.</p>
+                 </div>
+              </section>
+
+              {/* Persuasion Section (Original - Mantida mas reduzida visualmente para não brigar com as novas) */}
+              <section className="bg-gradient-to-b from-gray-50 to-white py-12 border-b border-gray-100">
+                <div className="container mx-auto px-4 max-w-7xl">
+                  <div className="text-center max-w-3xl mx-auto mb-12">
+                    <h2 className="text-2xl md:text-3xl font-bold text-medical-900 mb-4">A escolha inteligente para sua clínica</h2>
+                  </div>
+                  <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+                    <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100 flex flex-col items-center text-center hover:shadow-md transition-shadow">
+                      <div className="w-12 h-12 bg-blue-100 text-medical-600 rounded-full flex items-center justify-center mb-4"><Award size={24} /></div>
+                      <h3 className="font-bold text-gray-900 mb-2">Qualidade</h3>
+                      <p className="text-xs text-gray-500">Certificação ANVISA</p>
+                    </div>
+                    <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100 flex flex-col items-center text-center hover:shadow-md transition-shadow">
+                      <div className="w-12 h-12 bg-green-100 text-green-600 rounded-full flex items-center justify-center mb-4"><TrendingUp size={24} /></div>
+                      <h3 className="font-bold text-gray-900 mb-2">Rentabilidade</h3>
+                      <p className="text-xs text-gray-500">Retorno rápido</p>
+                    </div>
+                     <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100 flex flex-col items-center text-center hover:shadow-md transition-shadow">
+                      <div className="w-12 h-12 bg-purple-100 text-purple-600 rounded-full flex items-center justify-center mb-4"><ShieldCheck size={24} /></div>
+                      <h3 className="font-bold text-gray-900 mb-2">Garantia</h3>
+                      <p className="text-xs text-gray-500">Suporte total</p>
+                    </div>
+                     <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100 flex flex-col items-center text-center hover:shadow-md transition-shadow">
+                      <div className="w-12 h-12 bg-orange-100 text-orange-600 rounded-full flex items-center justify-center mb-4"><Clock size={24} /></div>
+                      <h3 className="font-bold text-gray-900 mb-2">Agilidade</h3>
+                      <p className="text-xs text-gray-500">Atendimento rápido</p>
+                    </div>
+                  </div>
+                </div>
+              </section>
+
               
               <section className="bg-medical-900 py-16 text-center text-white">
                 <div className="container mx-auto px-4">
