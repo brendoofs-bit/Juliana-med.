@@ -2,8 +2,8 @@ export interface Product {
   id: string;
   name: string;
   description: string;
-  subcategory: string; // New field requested
-  category: 'most_wanted' | 'best_sellers' | 'highlight' | 'recent';
+  subcategory: string;
+  category: 'estetica' | 'hof';
   imageUrl: string;
   price: number;
   originalPrice?: number;

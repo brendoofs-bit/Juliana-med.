@@ -1,5 +1,4 @@
 import React from 'react';
-import { Menu } from 'lucide-react';
 
 const Header: React.FC = () => {
   return (
@@ -26,30 +25,23 @@ const Header: React.FC = () => {
             {/* Desktop Navigation (Anchors) */}
             <nav className="hidden md:flex items-center gap-8 mt-2">
               <a 
-                href="#fisioterapia" 
-                className="text-gray-600 hover:text-medical-600 font-semibold text-sm uppercase tracking-wider transition-colors border-b-2 border-transparent hover:border-medical-600 pb-1"
-              >
-                Fisioterapia
-              </a>
-              <a 
-                href="#eletroterapia" 
-                className="text-gray-600 hover:text-medical-600 font-semibold text-sm uppercase tracking-wider transition-colors border-b-2 border-transparent hover:border-medical-600 pb-1"
-              >
-                Eletroterapia
-              </a>
-              <a 
                 href="#estetica" 
                 className="text-gray-600 hover:text-medical-600 font-semibold text-sm uppercase tracking-wider transition-colors border-b-2 border-transparent hover:border-medical-600 pb-1"
               >
                 Estética
               </a>
+              <a 
+                href="#hof" 
+                className="text-gray-600 hover:text-medical-600 font-semibold text-sm uppercase tracking-wider transition-colors border-b-2 border-transparent hover:border-medical-600 pb-1"
+              >
+                HOF
+              </a>
             </nav>
             
-             {/* Mobile Navigation (Updated with full names) */}
+             {/* Mobile Navigation */}
              <div className="md:hidden w-full flex justify-center mt-2 border-t border-gray-100 pt-2 gap-3 overflow-x-auto">
-                <a href="#fisioterapia" className="text-xs font-bold text-gray-600 hover:text-medical-600 uppercase whitespace-nowrap">Fisioterapia</a>
-                <a href="#eletroterapia" className="text-xs font-bold text-gray-600 hover:text-medical-600 uppercase whitespace-nowrap">Eletroterapia</a>
                 <a href="#estetica" className="text-xs font-bold text-gray-600 hover:text-medical-600 uppercase whitespace-nowrap">Estética</a>
+                <a href="#hof" className="text-xs font-bold text-gray-600 hover:text-medical-600 uppercase whitespace-nowrap">HOF</a>
              </div>
 
           </div>

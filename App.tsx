@@ -21,7 +21,6 @@ const App: React.FC = () => {
   };
 
   const handleRequestQuoteFromDetails = (product: Product) => {
-    // This is now handled inside the modal via WhatsApp redirect, keeping this for interface compatibility
     setIsDetailsModalOpen(false);
   };
 
@@ -31,13 +30,9 @@ const App: React.FC = () => {
     setSelectedProduct(null);
   };
 
-  // Mapping old categories to new section logic based on request
-  // Mais procurados -> Fisioterapia
-  const fisioterapiaProducts = products.filter(p => p.category === 'most_wanted');
-  // Mais vendidos -> Eletroterapia
-  const eletroterapiaProducts = products.filter(p => p.category === 'best_sellers');
-  // Últimos vistos -> Estética
-  const esteticaProducts = products.filter(p => p.category === 'recent');
+  // Filtragem de produtos para as novas categorias
+  const esteticaProducts = products.filter(p => p.category === 'estetica');
+  const hofProducts = products.filter(p => p.category === 'hof');
 
   const Section = ({ id, title, items, bgColor = "bg-white" }: { id: string, title: string, items: Product[], bgColor?: string }) => (
     <section id={id} className={`py-12 md:py-16 scroll-mt-24 ${bgColor}`}>
@@ -58,7 +53,7 @@ const App: React.FC = () => {
       <main className="flex-grow">
         <Hero />
 
-        {/* Persuasion Section (High Conversion Copy) */}
+        {/* Persuasion Section */}
         <section className="bg-gradient-to-b from-medical-50 to-white py-12 border-b border-gray-100">
           <div className="container mx-auto px-4 max-w-7xl">
             <div className="text-center max-w-3xl mx-auto mb-12">
@@ -99,9 +94,8 @@ const App: React.FC = () => {
           </div>
         </section>
 
-        <Section id="fisioterapia" title="Fisioterapia" items={fisioterapiaProducts} />
-        <Section id="eletroterapia" title="Eletroterapia" items={eletroterapiaProducts} bgColor="bg-[#F8F9FA]" />
         <Section id="estetica" title="Estética" items={esteticaProducts} />
+        <Section id="hof" title="HOF" items={hofProducts} bgColor="bg-[#F8F9FA]" />
         
         {/* Call to Action Final */}
         <section className="bg-medical-900 py-16 text-center text-white">
@@ -131,7 +125,6 @@ const App: React.FC = () => {
         onRequestQuote={handleRequestQuoteFromDetails}
       />
       
-      {/* QuoteModal kept in codebase but not actively triggered via details anymore, strictly Whatsapp focus */}
       <QuoteModal 
         isOpen={isQuoteModalOpen} 
         onClose={handleCloseModals} 
