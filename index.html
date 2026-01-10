@@ -166,97 +166,94 @@
       `;
 
       const products = [
+        // ESTÉTICA
         {
-          id: 'mp-1',
+          id: 'est-1',
           name: 'Laser Hakon 4D Medical San Epilaça Rubi, Alexandrite, Diodo e ND-YAG',
           description: 'Cód: ME20175A',
           subcategory: 'EPILAÇÃO A LASER',
-          category: 'most_wanted',
+          category: 'estetica',
           imageUrl: 'https://res.cloudinary.com/doqw5aqcf/image/upload/v1768068339/hakon-epilacao-a-laser_ttakuc.webp', 
           price: 284905.00,
           installments: 48,
           benefits: defaultBenefits
         },
         {
-          id: 'mv-1',
+          id: 'est-2',
           name: 'Omer Smart Medical San - Laser para Remoçao de Tatuagem',
           description: 'Cód: ME21358A',
           subcategory: 'LASER DE ALTA POTÊNCIA',
-          category: 'best_sellers',
+          category: 'estetica',
           imageUrl: 'https://res.cloudinary.com/doqw5aqcf/image/upload/v1768068644/omer-smart-medical-san-remove-tatuagem_ksisjr.webp',
           price: 5690.50,
           installments: 60,
           benefits: defaultBenefits
         },
         {
-          id: 'mv-2',
+          id: 'est-3',
           name: 'Pisom Medical San – BB Laser de 1550nm e 1927nm',
           description: 'Cód: ME20191A',
           subcategory: 'TERAPIAS',
-          category: 'best_sellers',
+          category: 'estetica',
           imageUrl: 'https://res.cloudinary.com/doqw5aqcf/image/upload/v1768067783/Design_sem_nome_t7guwz.png',
           price: 142405.00,
           installments: 36,
           benefits: defaultBenefits
         },
         {
-          id: 'mv-3',
+          id: 'est-4',
           name: 'Hegon Medical San – Laser de CO2 Fracionado',
           description: 'Cód: ME21360A',
           subcategory: 'TERAPIAS',
-          category: 'best_sellers',
+          category: 'estetica',
           imageUrl: 'https://res.cloudinary.com/doqw5aqcf/image/upload/v1768068829/hegon-laser-co2-medical-san_niddnl.webp',
-          originalPrice: 150000.00,
           price: 79191.00,
-          discount: 53,
           installments: 48,
           benefits: defaultBenefits
         },
+
+        // HOF (Harmonização Orofacial / Corporal Avançada)
         {
-          id: 'mv-4',
+          id: 'hof-1',
           name: 'Velaryan Medical San – Laser Estacionário para Harmonização Corporal',
           description: 'Cód: ME20930A',
-          subcategory: 'TERAPIAS',
-          category: 'best_sellers',
+          subcategory: 'HARMONIZAÇÃO',
+          category: 'hof',
           imageUrl: 'https://res.cloudinary.com/doqw5aqcf/image/upload/v1768069102/velaryan-medical-san-laser-estacionario-para-harmonizacao-corporal_bsdfvm.jpg',
           price: 5690.50,
           installments: 36,
           benefits: defaultBenefits
         },
         {
-          id: 'mv-5',
+          id: 'hof-2',
           name: 'Ômer Premium Medical San – Laser para Remoção de Tatuagem e Micropigmentação',
           description: 'Cód: ME19613A',
-          subcategory: 'TERAPIAS',
-          category: 'best_sellers',
+          subcategory: 'HARMONIZAÇÃO',
+          category: 'hof',
           imageUrl: 'https://res.cloudinary.com/doqw5aqcf/image/upload/v1768069415/omer-premium-medical-san_tndwaa.jpg',
           price: 137655.00,
           installments: 48,
           benefits: defaultBenefits
         },
         {
-          id: 'mv-6',
+          id: 'hof-3',
           name: 'Hyper Slim Medical San - Eletroestimulador Magnético',
           description: 'Cód: ME20013A',
-          subcategory: 'TERAPIAS',
-          category: 'best_sellers',
+          subcategory: 'HARMONIZAÇÃO',
+          category: 'hof',
           imageUrl: 'https://res.cloudinary.com/doqw5aqcf/image/upload/v1768069547/hyper-slim-estimulador-muscular_vldhx2.webp',
-          originalPrice: 160000.00,
           price: 87990.00,
-          discount: 48,
           installments: 36,
           benefits: defaultBenefits
         },
         {
-          id: 'rc-1',
+          id: 'hof-4',
           name: 'Novo Ultramed HIFU Medical San - Ultrassom Micro e Macrofocado',
           description: 'Cód: ME20657A',
-          subcategory: 'TERAPIAS',
-          category: 'recent',
+          subcategory: 'HARMONIZAÇÃO',
+          category: 'hof',
           imageUrl: 'https://res.cloudinary.com/doqw5aqcf/image/upload/v1768069963/ultramed-hifu-medical-san_okfaqq.webp',
-          originalPrice: 310000.00,
           price: 158310.01,
-          discount: 54,
           installments: 48,
           benefits: defaultBenefits
         }
@@ -276,19 +273,17 @@
                   <div className="flex items-center gap-2 shrink-0">
                      <div className="flex flex-col items-center leading-none">
                         <span className="text-3xl md:text-4xl font-extrabold tracking-tighter text-medical-800">
-                          MEDICAL<span className="font-light">SAN</span>
+                          MEDICAL<span className="font-light">SAN</span><span className="text-sm font-normal ml-1 text-gray-400">SHOP</span>
                         </span>
                      </div>
                   </div>
                   <nav className="hidden md:flex items-center gap-8 mt-2">
-                    <a href="#fisioterapia" className="text-gray-600 hover:text-medical-600 font-semibold text-sm uppercase tracking-wider transition-colors border-b-2 border-transparent hover:border-medical-600 pb-1">Fisioterapia</a>
-                    <a href="#eletroterapia" className="text-gray-600 hover:text-medical-600 font-semibold text-sm uppercase tracking-wider transition-colors border-b-2 border-transparent hover:border-medical-600 pb-1">Eletroterapia</a>
                     <a href="#estetica" className="text-gray-600 hover:text-medical-600 font-semibold text-sm uppercase tracking-wider transition-colors border-b-2 border-transparent hover:border-medical-600 pb-1">Estética</a>
+                    <a href="#hof" className="text-gray-600 hover:text-medical-600 font-semibold text-sm uppercase tracking-wider transition-colors border-b-2 border-transparent hover:border-medical-600 pb-1">HOF</a>
                   </nav>
                    <div className="md:hidden w-full flex justify-center mt-2 border-t border-gray-100 pt-2 gap-3 overflow-x-auto">
-                      <a href="#fisioterapia" className="text-xs font-bold text-gray-600 hover:text-medical-600 uppercase whitespace-nowrap">Fisioterapia</a>
-                      <a href="#eletroterapia" className="text-xs font-bold text-gray-600 hover:text-medical-600 uppercase whitespace-nowrap">Eletroterapia</a>
                       <a href="#estetica" className="text-xs font-bold text-gray-600 hover:text-medical-600 uppercase whitespace-nowrap">Estética</a>
+                      <a href="#hof" className="text-xs font-bold text-gray-600 hover:text-medical-600 uppercase whitespace-nowrap">HOF</a>
                    </div>
                 </div>
               </div>
@@ -452,18 +447,33 @@
       };
 
       const ProductCard = ({ product, onOpenModal }) => {
+        const installmentValue = product.installments 
+            ? (product.price / product.installments).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })
+            : null;
+
         return (
           <div className="group bg-white rounded-xl border border-gray-100 p-4 hover:shadow-xl hover:border-medical-200 transition-all duration-300 cursor-pointer flex flex-col h-full relative" onClick={() => onOpenModal(product)}>
-            {product.discount && (
-              <div className="absolute top-4 left-4 bg-action-red text-white text-[10px] font-bold px-2 py-0.5 rounded flex items-center gap-1 z-10 shadow-sm"><Tag size={10} className="fill-current" />-{product.discount}% OFF</div>
-            )}
-            <div className="relative h-56 mb-4 flex items-center justify-center p-2 bg-gray-50 rounded-lg group-hover:bg-white transition-colors">
-              <img src={product.imageUrl} alt={product.name} className="max-h-full max-w-full object-contain transition-transform duration-500 group-hover:scale-110" />
+            <div className="relative h-56 mb-4 flex items-center justify-center p-2 bg-white rounded-lg transition-colors">
+              <img src={product.imageUrl} alt={product.name} className="max-h-full max-w-full object-contain transition-transform duration-500 group-hover:scale-105" />
             </div>
             <div className="flex flex-col flex-grow">
-              <div className="mb-2"><span className="inline-block bg-medical-50 text-medical-800 text-[10px] font-bold px-2 py-1 rounded uppercase tracking-wide border border-medical-100">{product.subcategory}</span></div>
-              <h3 className="text-sm font-bold text-gray-800 mb-2 leading-snug group-hover:text-medical-600 transition-colors">{product.name}</h3>
-              <div className="mt-auto pt-4"><button className="w-full py-2 rounded-lg border border-medical-500 text-medical-600 font-bold text-xs uppercase hover:bg-medical-500 hover:text-white transition-all">Saiba Mais</button></div>
+              <div className="mb-2"><span className="inline-block bg-gray-50 text-gray-600 text-[10px] font-bold px-2 py-1 rounded uppercase tracking-wide border border-gray-100">{product.subcategory}</span></div>
+              <h3 className="text-sm font-bold text-medical-900 mb-1 leading-snug group-hover:text-medical-600 transition-colors">{product.name}</h3>
+              <p className="text-[10px] text-gray-400 mb-3">{product.description}</p>
+              
+              {product.installments && installmentValue && (
+                  <div className="mt-auto bg-medical-50 border border-medical-100 rounded-lg p-2 flex items-center gap-2 group-hover:border-medical-200 transition-colors">
+                     <div className="bg-white p-1 rounded-full text-medical-600">
+                       <CreditCard size={14} />
+                     </div>
+                     <div className="flex flex-col leading-none">
+                        <span className="text-[10px] text-medical-800 font-bold uppercase">Em até {product.installments}x de</span>
+                        <span className="text-sm font-extrabold text-medical-600">{installmentValue}</span>
+                     </div>
+                  </div>
+              )}
+
+              <div className="mt-3"><button className="w-full py-2 rounded-lg border border-medical-500 text-medical-600 font-bold text-xs uppercase hover:bg-medical-500 hover:text-white transition-all">Saiba Mais</button></div>
             </div>
           </div>
         );
@@ -562,10 +572,10 @@
             {/* Modal Container: Layout Flex ajustado para Mobile/Desktop */}
             <div className="relative bg-white rounded-xl shadow-2xl w-full max-w-2xl overflow-hidden animate-fade-in-up flex flex-col md:flex-row max-h-[90vh] md:max-h-[85vh]">
               
-              {/* Seção da Imagem: Altura fixa no mobile, altura total no desktop */}
-              <div className="w-full md:w-2/5 bg-gray-50 p-6 flex items-center justify-center border-b md:border-b-0 md:border-r border-gray-100 relative shrink-0 h-48 md:h-auto">
-                 <span className="absolute top-4 left-4 bg-white/90 backdrop-blur text-medical-800 text-[10px] font-bold px-2 py-1 rounded shadow-sm border border-gray-100">{product.subcategory}</span>
-                 <img src={product.imageUrl} alt={product.name} className="max-h-full max-w-full object-contain" />
+              {/* Seção da Imagem: Fundo Branco, Maximizada */}
+              <div className="w-full md:w-2/5 bg-white p-2 md:p-4 flex items-center justify-center border-b md:border-b-0 md:border-r border-gray-100 relative shrink-0 h-48 md:h-auto overflow-hidden">
+                 <span className="absolute top-4 left-4 bg-gray-50/90 backdrop-blur text-gray-800 text-[10px] font-bold px-2 py-1 rounded shadow-sm border border-gray-200 z-10">{product.subcategory}</span>
+                 <img src={product.imageUrl} alt={product.name} className="w-full h-full object-contain hover:scale-105 transition-transform duration-500" />
               </div>
 
               {/* Seção de Conteúdo: Flex Vertical para gerenciar Header (Topo) - Scroll (Meio) - Footer (Fundo) */}
@@ -583,14 +593,18 @@
                   </div>
 
                   {/* Área de Scroll: Expande para ocupar o espaço disponível (flex-1) */}
-                  <div className="p-4 md:p-6 overflow-y-auto flex-1 custom-scrollbar text-sm text-gray-600 leading-relaxed bg-gray-50/30">
+                  <div className="p-4 md:p-6 overflow-y-auto flex-1 custom-scrollbar text-sm text-gray-600 leading-relaxed bg-white">
                     <div dangerouslySetInnerHTML={{ __html: product.benefits || '<p>Descrição detalhada não disponível.</p>' }} className="space-y-4" />
-                    {/* Espaço extra no final para não colar no botão */}
-                    <div className="h-4"></div>
+                    
+                    {/* CTA ao final do scroll */}
+                    <div className="mt-8 mb-2 p-4 bg-medical-50 rounded-lg border border-medical-100 text-center">
+                         <p className="text-medical-800 font-bold mb-2">Gostou deste equipamento?</p>
+                         <button onClick={handleWhatsAppRedirect} className="inline-flex items-center justify-center gap-2 bg-action-cyan hover:bg-cyan-400 text-medical-900 font-bold py-2 px-6 rounded-full text-xs uppercase tracking-wide transition-colors">Solicitar Ficha Técnica</button>
+                    </div>
                   </div>
 
                   {/* Footer CTA: Fixo no fundo */}
-                  <div className="p-4 md:p-5 border-t border-gray-100 bg-white shrink-0 z-10 relative shadow-[0_-5px_15px_rgba(0,0,0,0.02)]">
+                  <div className="p-4 md:p-5 border-t border-gray-100 bg-white shrink-0 z-10 relative shadow-[0_-4px_10px_rgba(0,0,0,0.03)]">
                      <button onClick={handleWhatsAppRedirect} className="w-full bg-[#25D366] hover:bg-[#1ebc57] text-white font-extrabold py-3 md:py-3.5 px-4 rounded-xl uppercase tracking-wide transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 flex items-center justify-center gap-2 text-xs md:text-sm">
                        <MessageCircle size={18} className="md:w-5 md:h-5" />
                        Solicitar Orçamento no WhatsApp
@@ -677,9 +691,8 @@
         const handleRequestQuoteFromDetails = (product) => { setIsDetailsModalOpen(false); };
         const handleCloseModals = () => { setIsQuoteModalOpen(false); setIsDetailsModalOpen(false); setSelectedProduct(null); };
 
-        const fisioterapiaProducts = products.filter(p => p.category === 'most_wanted');
-        const eletroterapiaProducts = products.filter(p => p.category === 'best_sellers');
-        const esteticaProducts = products.filter(p => p.category === 'recent');
+        const esteticaProducts = products.filter(p => p.category === 'estetica');
+        const hofProducts = products.filter(p => p.category === 'hof');
 
         const Section = ({ id, title, items, bgColor = "bg-white" }) => (
           <section id={id} className={`py-12 md:py-16 scroll-mt-24 ${bgColor}`}>
@@ -729,9 +742,8 @@
                 </div>
               </section>
 
-              <Section id="fisioterapia" title="Fisioterapia" items={fisioterapiaProducts} />
-              <Section id="eletroterapia" title="Eletroterapia" items={eletroterapiaProducts} bgColor="bg-[#F8F9FA]" />
               <Section id="estetica" title="Estética" items={esteticaProducts} />
+              <Section id="hof" title="HOF" items={hofProducts} bgColor="bg-[#F8F9FA]" />
               
               <section className="bg-medical-900 py-16 text-center text-white">
                 <div className="container mx-auto px-4">
