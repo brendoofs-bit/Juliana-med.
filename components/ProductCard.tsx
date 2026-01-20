@@ -51,11 +51,11 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, onOpenModal }) => {
         <div className="mt-auto space-y-2">
             <div className="flex items-center gap-2 text-gray-500 text-[10px]">
                <BadgeCheck size={12} className="text-green-500"/>
-               <span>Entrega Técnica Incluída</span>
+               <span>Sob Encomenda</span>
             </div>
             <div className="flex items-center gap-2 text-gray-500 text-[10px]">
                <CalendarClock size={12} className="text-medical-500"/>
-               <span>Condições Especiais</span>
+               <span>Elegível para Financiamento</span>
             </div>
         </div>
 
