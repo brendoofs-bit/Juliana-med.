@@ -10,11 +10,18 @@
 
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://unpkg.com/@tailwindcss/typography"></script>
     
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     
+    <!-- React & ReactDOM -->
+    <script src="https://unpkg.com/react@18.2.0/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18.2.0/umd/react-dom.development.js" crossorigin></script>
+    
+    <!-- Babel -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="https://unpkg.com/@tailwindcss/typography"></script>
+
     <script>
       tailwind.config = {
         theme: {
@@ -26,15 +33,15 @@
               medical: {
                 50: '#f0f9ff',
                 100: '#e0f2fe',
-                500: '#00C8FF', 
+                500: '#00C8FF', // Cyan bright button
                 600: '#0284c7',
                 700: '#0369a1',
-                800: '#0B1E48', 
+                800: '#0B1E48', // Deep Blue Header/Footer
                 900: '#051330',
               },
               action: {
-                cyan: '#00D1FF', 
-                red: '#F25D27', 
+                cyan: '#00D1FF', // Bright Cyan for "CONFIRA" buttons
+                red: '#F25D27', // Discount tag color
               }
             },
             boxShadow: {
@@ -57,7 +64,17 @@
               }
             }
           }
-        }
+        },
+        plugins: [
+          // Basic typography plugin simulation if not loaded
+          function({ addBase, theme }) {
+            addBase({
+              'h1': { fontSize: theme('fontSize.2xl') },
+              'h2': { fontSize: theme('fontSize.xl') },
+              'h3': { fontSize: theme('fontSize.lg') },
+            })
+          }
+        ]
       }
     </script>
     <style>
@@ -65,6 +82,7 @@
         font-family: 'Inter', sans-serif;
         background-color: #F8F9FA;
       }
+      /* Custom Scrollbar */
       .custom-scrollbar::-webkit-scrollbar {
         width: 6px;
       }
@@ -78,20 +96,897 @@
       .custom-scrollbar::-webkit-scrollbar-thumb:hover {
         background: #94a3b8;
       }
+      #error-container {
+        display: none;
+        padding: 20px;
+        background: #fee2e2;
+        color: #991b1b;
+        border: 1px solid #f87171;
+        margin: 20px;
+        border-radius: 8px;
+        font-family: monospace;
+      }
     </style>
   <script type="importmap">
 {
   "imports": {
+    "react": "https://esm.sh/react@^19.2.3",
     "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
     "react/": "https://esm.sh/react@^19.2.3/",
-    "react": "https://esm.sh/react@^19.2.3",
     "lucide-react": "https://esm.sh/lucide-react@^0.562.0"
   }
 }
 </script>
 </head>
   <body>
+    <div id="error-container"></div>
     <div id="root"></div>
-    <script type="module" src="/index.tsx"></script>
-  </body>
-</html>
+
+    <script>
+      window.onerror = function(message, source, lineno, colno, error) {
+        const errorContainer = document.getElementById('error-container');
+        if (errorContainer) {
+            errorContainer.style.display = 'block';
+            errorContainer.innerHTML = '<strong>Erro Crítico:</strong> ' + message;
+        }
+      };
+    </script>
+
+    <script type="text/babel">
+      const { useState, useEffect, useRef } = React;
+
+      // --- ÍCONES SVG NATIVOS ---
+      const IconBase = ({ size = 24, className = "", children }) => (
+        <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
+          {children}
+        </svg>
+      );
+
+      const Menu = (props) => <IconBase {...props}><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></IconBase>;
+      const ChevronLeft = (props) => <IconBase {...props}><path d="m15 18-6-6 6-6"/></IconBase>;
+      const ChevronRight = (props) => <IconBase {...props}><path d="m9 18 6-6-6-6"/></IconBase>;
+      const X = (props) => <IconBase {...props}><path d="M18 6 6 18"/><path d="m6 6 12 12"/></IconBase>;
+      const CheckCircle = (props) => <IconBase {...props}><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="m9 11 3 3L22 4"/></IconBase>;
+      const Tag = (props) => <IconBase {...props}><path d="M12.586 2.586A2 2 0 0 0 11.172 2H4a2 2 0 0 0-2 2v7.172a2 2 0 0 0 .586 1.414l5 5a2 2 0 0 0 2.828 0l7.172-7.172a2 2 0 0 0 0-2.828l-5-5z"/><circle cx="7.5" cy="7.5" r=".5" fill="currentColor"/></IconBase>;
+      const Facebook = (props) => <IconBase {...props}><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></IconBase>;
+      const Instagram = (props) => <IconBase {...props}><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></IconBase>;
+      const Phone = (props) => <IconBase {...props}><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></IconBase>;
+      const CreditCard = (props) => <IconBase {...props}><rect width="20" height="14" x="2" y="5" rx="2"/><line x1="2" x2="22" y1="10" y2="10"/></IconBase>;
+      const Landmark = (props) => <IconBase {...props}><line x1="3" x2="21" y1="22" y2="22"/><line x1="6" x2="6" y1="18" y2="11"/><line x1="10" x2="10" y1="18" y2="11"/><line x1="14" x2="14" y1="18" y2="11"/><line x1="18" x2="18" y1="18" y2="11"/><polygon points="12 2 20 7 4 7"/></IconBase>;
+      const Banknote = (props) => <IconBase {...props}><rect width="20" height="12" x="2" y="6" rx="2"/><circle cx="12" cy="12" r="2"/><path d="M6 12h.01M18 12h.01"/></IconBase>;
+      const QrCode = (props) => <IconBase {...props}><rect width="5" height="5" x="3" y="3" rx="1"/><rect width="5" height="5" x="16" y="3" rx="1"/><rect width="5" height="5" x="3" y="16" rx="1"/><path d="M21 16h-3a2 2 0 0 0-2 2v3"/><path d="M21 21v.01"/><path d="M12 7v3a2 2 0 0 1-2 2H7"/><path d="M3 12h.01"/><path d="M12 3h.01"/><path d="M12 16v.01"/><path d="M16 12h1"/><path d="M21 12v.01"/><path d="M12 21v-1"/></IconBase>;
+      const ShieldCheck = (props) => <IconBase {...props}><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"/><path d="m9 12 2 2 4-4"/></IconBase>;
+      const TrendingUp = (props) => <IconBase {...props}><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></IconBase>;
+      const Award = (props) => <IconBase {...props}><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></IconBase>;
+      const Clock = (props) => <IconBase {...props}><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></IconBase>;
+      const MessageCircle = (props) => <IconBase {...props}><path d="m3 21 1.9-5.7a8.5 8.5 0 1 1 3.8 3.8z"/></IconBase>;
+      const Zap = (props) => <IconBase {...props}><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></IconBase>;
+      const GraduationCap = (props) => <IconBase {...props}><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></IconBase>;
+      const Calculator = (props) => <IconBase {...props}><rect width="16" height="20" x="4" y="2" rx="2"/><line x1="8" x2="16" y1="6" y2="6"/><line x1="16" x2="16" y1="14" y2="18"/><path d="M16 10h.01"/><path d="M12 10h.01"/><path d="M8 10h.01"/><path d="M12 14h.01"/><path d="M8 14h.01"/><path d="M12 18h.01"/><path d="M8 18h.01"/></IconBase>;
+      const BadgeCheck = (props) => <IconBase {...props}><path d="M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.74 4 4 0 0 1-4.78 4.78 4 4 0 0 1-6.74 0 4 4 0 0 1-4.78-4.78z"/><path d="m9 12 2 2 4-4"/></IconBase>;
+      const CalendarClock = (props) => <IconBase {...props}><path d="M21 7.5V6a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h3.5"/><path d="M16 2v4"/><path d="M8 2v4"/><path d="M3 10h5"/><path d="M17.5 17.5 16 16.25V14"/><path d="M22 16a6 6 0 1 1-12 0 6 6 0 0 1 12 0z"/></IconBase>;
+
+      // --- DADOS ---
+      const createCTA = () => `
+        <div class="mt-8 mb-2 p-4 bg-medical-50 rounded-lg border border-medical-100 text-center">
+           <p class="text-medical-800 font-bold mb-2">Deseja valores e condições de pagamento?</p>
+           <p class="text-sm text-gray-600 mb-4">Receba a apresentação comercial completa no seu WhatsApp agora mesmo.</p>
+        </div>
+      `;
+
+      const products = [
+        // ESTÉTICA
+        {
+          id: 'est-1',
+          name: 'Laser Hakon 4D Medical San',
+          description: 'Epilação a Laser 4D (Rubi, Alexandrite, Diodo e ND-YAG)',
+          subcategory: 'EPILAÇÃO A LASER',
+          category: 'estetica',
+          imageUrl: 'https://res.cloudinary.com/doqw5aqcf/image/upload/v1768068339/hakon-epilacao-a-laser_ttakuc.webp', 
+          tags: ['Elegível para Financiamento', 'Alta Potência'],
+          benefits: `
+            <h4 class="font-bold mb-2 text-medical-800">A Revolução da Epilação 4D</h4>
+            <p class="mb-4 text-gray-600">O Hakon é o único laser do mercado que combina quatro comprimentos de onda (Rubi 694nm, Alexandrite 755nm, Diodo 808nm e ND-YAG 1064nm) em um único disparo. Isso garante eficácia em todos os fototipos de pele, inclusive as bronzeadas.</p>
+            <h4 class="font-bold mb-2 text-medical-800">Diferenciais Competitivos:</h4>
+            <ul class="list-disc pl-5 space-y-1 mb-4 text-gray-600">
+              <li><strong>Tecnologia 4D:</strong> Atinge diferentes profundidades do folículo piloso simultaneamente.</li>
+              <li><strong>Sistema de Resfriamento:</strong> Ponteira resfriada a -12°C, proporcionando um tratamento praticamente indolor.</li>
+              <li><strong>Modo Varrredura:</strong> Maior rapidez nas sessões, permitindo atender mais pacientes por dia.</li>
+              <li><strong>Design Ergonômico:</strong> Handpiece leve para evitar fadiga do operador.</li>
+            </ul>
+            <h4 class="font-bold mb-2 text-medical-800">Especificações:</h4>
+            <p class="text-gray-600 mb-4">Potência de saída de 2000W, Spot size de 12x12mm e tela touch screen intuitiva de 10 polegadas.</p>
+            ${createCTA()}
+          `
+        },
+        {
+          id: 'est-2',
+          name: 'Omer Smart Medical San',
+          description: 'Laser Q-Switched para Remoção de Tatuagem',
+          subcategory: 'LASER DE ALTA POTÊNCIA',
+          category: 'estetica',
+          imageUrl: 'https://res.cloudinary.com/doqw5aqcf/image/upload/v1768068644/omer-smart-medical-san-remove-tatuagem_ksisjr.webp',
+          tags: ['Sob Encomenda', 'Compacto'],
+          benefits: `
+            <h4 class="font-bold mb-2 text-medical-800">Precisão na Remoção de Pigmentos</h4>
+            <p class="mb-4 text-gray-600">O Omer Smart democratiza o acesso à tecnologia Q-Switched Nd:YAG. Desenvolvido especificamente para remoção de tatuagens e micropigmentação, ele fragmenta o pigmento em micropartículas sem danificar o tecido adjacente.</p>
+            <h4 class="font-bold mb-2 text-medical-800">Versatilidade de Tratamentos:</h4>
+            <ul class="list-disc pl-5 space-y-1 mb-4 text-gray-600">
+              <li><strong>Ponteira 1064nm:</strong> Para pigmentos escuros (preto, azul escuro, cinza).</li>
+              <li><strong>Ponteira 532nm:</strong> Para pigmentos coloridos (vermelho, laranja, amarelo).</li>
+              <li><strong>Black Peel:</strong> Realiza o famoso peeling de Hollywood para rejuvenescimento e controle de oleosidade.</li>
+            </ul>
+            <h4 class="font-bold mb-2 text-medical-800">Retorno sobre Investimento:</h4>
+            <p class="text-gray-600 mb-4">Equipamento de baixo custo operacional e alta margem de lucro por sessão. Ideal para quem deseja iniciar no mercado de remoção.</p>
+            ${createCTA()}
+          `
+        },
+        {
+          id: 'est-3',
+          name: 'Pisom Medical San',
+          description: 'BB Laser de 1550nm e 1927nm (Thulium)',
+          subcategory: 'TERAPIAS',
+          category: 'estetica',
+          imageUrl: 'https://res.cloudinary.com/doqw5aqcf/image/upload/v1768067783/Design_sem_nome_t7guwz.png',
+          tags: ['Lançamento', 'Financiamento Disponível'],
+          benefits: `
+            <h4 class="font-bold mb-2 text-medical-800">O Verdadeiro BB Laser</h4>
+            <p class="mb-4 text-gray-600">O Pisom traz a tecnologia de laser de Thulium (1927nm) combinada com Erbium Glass (1550nm). É a solução definitiva para o "efeito porcelana" na pele, tratando textura, poros dilatados e melasma com eficácia superior.</p>
+            <h4 class="font-bold mb-2 text-medical-800">Indicações Principais:</h4>
+            <ul class="list-disc pl-5 space-y-1 mb-4 text-gray-600">
+              <li>Rejuvenescimento facial não ablativo (pouco downtime).</li>
+              <li>Tratamento de melasma resistente e hiperpigmentações.</li>
+              <li>Cicatrizes de acne e estrias brancas e vermelhas.</li>
+              <li>Drug delivery de alta performance.</li>
+            </ul>
+            <p class="text-gray-600 mb-4">Um equipamento sofisticado para clínicas que atendem um público exigente que busca resultados naturais.</p>
+            ${createCTA()}
+          `
+        },
+        {
+          id: 'est-4',
+          name: 'Hegon Medical San',
+          description: 'Laser de CO2 Fracionado',
+          subcategory: 'TERAPIAS',
+          category: 'estetica',
+          imageUrl: 'https://res.cloudinary.com/doqw5aqcf/image/upload/v1768068829/hegon-laser-co2-medical-san_niddnl.webp',
+          tags: ['Padrão Ouro', 'Cirúrgico'],
+          benefits: `
+            <h4 class="font-bold mb-2 text-medical-800">O Padrão Ouro em Rejuvenescimento</h4>
+            <p class="mb-4 text-gray-600">O Hegon é um Laser de CO2 Fracionado que atua na renovação intensa da pele. Ele estimula a produção de colágeno através da vaporização seletiva dos tecidos, sendo insuperável para rugas profundas e flacidez.</p>
+            <h4 class="font-bold mb-2 text-medical-800">Funcionalidades:</h4>
+            <ul class="list-disc pl-5 space-y-1 mb-4 text-gray-600">
+              <li><strong>Rejuvenescimento Global:</strong> Face, pescoço e colo.</li>
+              <li><strong>Modo Cirúrgico:</strong> Acompanha caneta cirúrgica para blefaroplastia sem cortes e remoção de lesões benignas.</li>
+              <li><strong>Ginecologia:</strong> Possui ponteiras opcionais para rejuvenescimento íntimo.</li>
+            </ul>
+            <p class="text-gray-600 mb-4">Alta potência e controle preciso de pulso para resultados dramáticos e seguros.</p>
+            ${createCTA()}
+          `
+        },
+
+        // HOF
+        {
+          id: 'hof-1',
+          name: 'Velaryan Medical San',
+          description: 'Laser Estacionário para Harmonização Corporal',
+          subcategory: 'HARMONIZAÇÃO',
+          category: 'hof',
+          imageUrl: 'https://res.cloudinary.com/doqw5aqcf/image/upload/v1768069102/velaryan-medical-san-laser-estacionario-para-harmonizacao-corporal_bsdfvm.jpg',
+          tags: ['Hands-Free', 'Alta Lucratividade'],
+          benefits: `
+            <h4 class="font-bold mb-2 text-medical-800">Lipólise Hands-Free</h4>
+            <p class="mb-4 text-gray-600">O Velaryan é um laser diodo estacionário de 1060nm. Sua afinidade pelo tecido adiposo provoca a apoptose (morte celular) da gordura. O grande diferencial é ser um tratamento "mãos livres": você posiciona os aplicadores e o equipamento trabalha sozinho.</p>
+            <h4 class="font-bold mb-2 text-medical-800">Por que investir?</h4>
+            <ul class="list-disc pl-5 space-y-1 mb-4 text-gray-600">
+              <li><strong>Otimização de Tempo:</strong> Permite que o profissional atenda outro paciente enquanto o Velaryan atua.</li>
+              <li><strong>Conforto:</strong> Sistema de resfriamento de contato protege a epiderme.</li>
+              <li><strong>Áreas Difíceis:</strong> 4 aplicadores independentes para tratar flancos, abdômen e coxas simultaneamente.</li>
+            </ul>
+            <p class="text-gray-600 mb-4">A tecnologia perfeita para escalar os atendimentos da sua clínica.</p>
+            ${createCTA()}
+          `
+        },
+        {
+          id: 'hof-2',
+          name: 'Ômer Premium',
+          description: 'Laser Q-Switched Nd:YAG em Torre',
+          subcategory: 'HARMONIZAÇÃO',
+          category: 'hof',
+          imageUrl: 'https://res.cloudinary.com/doqw5aqcf/image/upload/v1768069415/omer-premium-medical-san_tndwaa.jpg',
+          tags: ['Premium', 'Alta Potência'],
+          benefits: `
+            <h4 class="font-bold mb-2 text-medical-800">Potência Elevada em Design Torre</h4>
+            <p class="mb-4 text-gray-600">A versão Premium do Ômer oferece maior estabilidade e potência em um design robusto de torre. Ideal para clínicas com alto fluxo de remoção de tatuagens e tratamentos de pigmentação.</p>
+            <h4 class="font-bold mb-2 text-medical-800">Vantagens do Modelo Premium:</h4>
+            <ul class="list-disc pl-5 space-y-1 mb-4 text-gray-600">
+              <li>Braço articulado com espelhos de alta precisão (entrega de energia 100% estável).</li>
+              <li>Spot size ajustável na própria ponteira (zoom handpiece).</li>
+              <li>Maior frequência de disparos (Hz), permitindo sessões mais rápidas em áreas grandes.</li>
+            </ul>
+            <p class="text-gray-600 mb-4">Para profissionais que não abrem mão de excelência técnica e design imponente.</p>
+            ${createCTA()}
+          `
+        },
+        {
+          id: 'hof-3',
+          name: 'Hyper Slim',
+          description: 'Eletroestimulador Magnético (PEMF)',
+          subcategory: 'HARMONIZAÇÃO',
+          category: 'hof',
+          imageUrl: 'https://res.cloudinary.com/doqw5aqcf/image/upload/v1768069547/hyper-slim-estimulador-muscular_vldhx2.webp',
+          tags: ['Tendência', 'Definição Muscular'],
+          benefits: `
+            <h4 class="font-bold mb-2 text-medical-800">A Academia do Futuro</h4>
+            <p class="mb-4 text-gray-600">O Hyper Slim utiliza campo eletromagnético de alta intensidade para gerar contrações supramáximas (até 20.000 contrações em 30 minutos). Ele constrói músculos e queima gordura simultaneamente.</p>
+            <h4 class="font-bold mb-2 text-medical-800">Resultados Esperados:</h4>
+            <ul class="list-disc pl-5 space-y-1 mb-4 text-gray-600">
+              <li>Hipertrofia muscular (aumento de volume).</li>
+              <li>Tonificação intensa (abdômen, glúteos, braços e coxas).</li>
+              <li>Redução de gordura visceral e subcutânea na área tratada.</li>
+              <li>Protocolos exclusivos para diástase abdominal pós-parto.</li>
+            </ul>
+            <p class="text-gray-600 mb-4">O equipamento mais desejado para harmonização corporal (Body Contouring).</p>
+            ${createCTA()}
+          `
+        },
+        {
+          id: 'hof-4',
+          name: 'Novo Ultramed HIFU',
+          description: 'Ultrassom Micro e Macrofocado',
+          subcategory: 'HARMONIZAÇÃO',
+          category: 'hof',
+          imageUrl: 'https://res.cloudinary.com/doqw5aqcf/image/upload/v1768069963/ultramed-hifu-medical-san_okfaqq.webp',
+          tags: ['Lifting Sem Cortes', 'Best-Seller'],
+          benefits: `
+            <h4 class="font-bold mb-2 text-medical-800">Lifting Facial e Corporal Não Invasivo</h4>
+            <p class="mb-4 text-gray-600">O Ultramed HIFU entrega pontos de coagulação térmica profunda, atingindo desde a derme até o SMAS (sistema muscular aponeurótico). O resultado é uma retração imediata e estímulo de colágeno a longo prazo.</p>
+            <h4 class="font-bold mb-2 text-medical-800">Versatilidade Total:</h4>
+            <ul class="list-disc pl-5 space-y-1 mb-4 text-gray-600">
+              <li><strong>Microfocado:</strong> Para face, efeito bichectomia, papada e rugas finas.</li>
+              <li><strong>Macrofocado:</strong> Para gordura localizada corporal e flacidez intensa (joelhos, umbigo triste, bananinha).</li>
+              <li>Cartuchos com diferentes profundidades (1.5mm até 13mm).</li>
+            </ul>
+            <p class="text-gray-600 mb-4">A tecnologia consagrada para tratar flacidez sem cirurgia e sem downtime.</p>
+            ${createCTA()}
+          `
+        }
+      ];
+
+      // --- COMPONENTES ---
+
+      const Header = () => {
+        return (
+          <div className="w-full font-sans bg-white relative z-50 sticky top-0 shadow-md">
+            <div className="bg-medical-900 text-white text-[10px] md:text-xs py-2 px-4 text-center">
+              <p>Utilizamos cookies e tecnologias semelhantes para melhorar a sua experiência. Ao continuar navegando, você concorda com a nossa Política de Privacidade.</p>
+            </div>
+            <header className="border-b border-gray-100 bg-white">
+              <div className="container mx-auto px-4 max-w-7xl py-4">
+                <div className="flex flex-col items-center justify-center gap-4">
+                  <div className="flex items-center gap-2 shrink-0">
+                     <div className="flex flex-col items-center leading-none">
+                        <span className="text-3xl md:text-4xl font-extrabold tracking-tighter text-medical-800">
+                          MEDICAL<span className="font-light">SAN</span><span className="text-sm font-normal ml-1 text-gray-400">SHOP</span>
+                        </span>
+                     </div>
+                  </div>
+                  <nav className="hidden md:flex items-center gap-8 mt-2">
+                    <a href="#estetica" className="text-gray-600 hover:text-medical-600 font-semibold text-sm uppercase tracking-wider transition-colors border-b-2 border-transparent hover:border-medical-600 pb-1">Estética</a>
+                    <a href="#hof" className="text-gray-600 hover:text-medical-600 font-semibold text-sm uppercase tracking-wider transition-colors border-b-2 border-transparent hover:border-medical-600 pb-1">HOF</a>
+                  </nav>
+                   <div className="md:hidden w-full flex justify-center mt-2 border-t border-gray-100 pt-2 gap-3 overflow-x-auto">
+                      <a href="#estetica" className="text-xs font-bold text-gray-600 hover:text-medical-600 uppercase whitespace-nowrap">Estética</a>
+                      <a href="#hof" className="text-xs font-bold text-gray-600 hover:text-medical-600 uppercase whitespace-nowrap">HOF</a>
+                   </div>
+                </div>
+              </div>
+            </header>
+          </div>
+        );
+      };
+
+      const BannerModal = ({ isOpen, onClose, data }) => {
+        useEffect(() => {
+          if (isOpen) {
+            document.body.style.overflow = 'hidden';
+          } else {
+            document.body.style.overflow = 'unset';
+          }
+          return () => { document.body.style.overflow = 'unset'; };
+        }, [isOpen]);
+
+        if (!isOpen || !data) return null;
+        const handleWhatsAppRedirect = () => {
+          const message = `Olá! Vi o banner promocional *${data.title}* no site e gostaria de saber mais sobre as condições especiais.`;
+          const url = `https://wa.me/555180985851?text=${encodeURIComponent(message)}`;
+          window.open(url, '_blank');
+        };
+
+        return (
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+            <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" onClick={onClose}></div>
+            <div className="relative bg-white rounded-xl shadow-2xl w-full max-w-lg overflow-hidden animate-fade-in-up flex flex-col max-h-[90vh]">
+              <div className="relative h-48 bg-gradient-to-r from-medical-900 to-medical-800 shrink-0">
+                 <img src={data.imageUrl} alt={data.title} className="w-full h-full object-contain p-4 opacity-90" />
+                 <button onClick={onClose} className="absolute top-4 right-4 bg-black/20 hover:bg-black/40 text-white p-1 rounded-full transition-colors"><X size={20} /></button>
+                 <div className="absolute bottom-4 left-4 bg-action-cyan text-medical-900 text-xs font-bold px-3 py-1 rounded-full flex items-center gap-1 shadow-sm"><Tag size={12} />OFERTA ESPECIAL</div>
+              </div>
+              <div className="flex flex-col flex-1 overflow-hidden">
+                  <div className="p-6 overflow-y-auto flex-1 custom-scrollbar">
+                     <h3 className="text-2xl font-extrabold text-medical-900 mb-2 leading-tight">{data.title}</h3>
+                     <p className="text-medical-600 font-bold text-sm uppercase tracking-wider mb-4 border-b border-gray-100 pb-2">{data.promoText}</p>
+                     <div className="text-gray-600 text-sm space-y-3 leading-relaxed">
+                       <p>{data.description}</p>
+                       <ul className="list-disc pl-5 space-y-1 bg-gray-50 p-3 rounded-lg border border-gray-100 text-gray-700">
+                          <li>Condições de pagamento facilitadas.</li>
+                          <li>Entrega técnica especializada.</li>
+                          <li>Garantia e suporte direto de fábrica.</li>
+                       </ul>
+                       <p className="font-medium text-medical-800">Não perca essa oportunidade de equipar sua clínica com tecnologia de ponta.</p>
+                     </div>
+                  </div>
+                  <div className="p-5 border-t border-gray-100 bg-gray-50 shrink-0">
+                     <button onClick={handleWhatsAppRedirect} className="w-full bg-[#25D366] hover:bg-[#1ebc57] text-white font-extrabold py-3.5 px-4 rounded-xl uppercase tracking-wide transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 flex items-center justify-center gap-2">
+                       <MessageCircle size={20} />Falar com Consultor Agora
+                     </button>
+                     <p className="text-[10px] text-center text-gray-400 mt-2">Promoção por tempo limitado. Consulte disponibilidade.</p>
+                  </div>
+              </div>
+            </div>
+          </div>
+        );
+      };
+
+      const Hero = () => {
+        const [isBannerModalOpen, setIsBannerModalOpen] = useState(false);
+        const [selectedBanner, setSelectedBanner] = useState(null);
+        const [currentSlide, setCurrentSlide] = useState(0);
+
+        const handleBannerClick = (data) => {
+          setSelectedBanner(data);
+          setIsBannerModalOpen(true);
+        };
+
+        const closeBannerModal = () => {
+          setIsBannerModalOpen(false);
+          setSelectedBanner(null);
+        };
+
+        const omerData = {
+          title: 'OMER SMART',
+          promoText: 'Remoção de Tatuagem e Micropigmentação',
+          description: 'O Omer Smart é a revolução em tratamentos a laser. Tecnologia Q-Switched Nd:YAG para remoção segura e eficaz de pigmentos. Garanta resultados visíveis desde as primeiras sessões e atraia mais clientes para sua clínica.',
+          imageUrl: 'https://medicalsan.com.br/wp-content/uploads/2022/07/Omer-Smart.png',
+          gradient: 'from-[#1a0b40] via-[#2d1b69] to-[#000000]'
+        };
+
+        const hakonData = {
+          title: 'HAKON 4D',
+          promoText: 'Epilação a Laser 4D',
+          description: 'A tecnologia 4D do Hakon permite a aplicação em todos os fototipos de pele. O laser mais rápido e indolor do mercado, proporcionando alta lucratividade e satisfação do paciente.',
+          imageUrl: 'https://medicalsan.com.br/wp-content/uploads/2022/07/Hakon-1.png',
+          gradient: 'from-[#40280b] via-[#694b1b] to-[#000000]'
+        };
+
+        const mainSlides = [omerData, hakonData];
+        const ultramedData = { title: 'ULTRAMED MPT', promoText: 'Ultrassom Micro e Macrofocado', description: 'O Ultramed MPT oferece lifting facial e corporal não invasivo.', imageUrl: 'https://medicalsan.com.br/wp-content/uploads/2022/07/Ultramed-1.png', gradient: '' };
+        const velaryanData = { title: 'VELARYAN', promoText: 'Harmonização Corporal Avançada', description: 'Laser estacionário inovador para redução de medidas e contorno corporal.', imageUrl: 'https://medicalsan.com.br/wp-content/uploads/2022/07/Velaryan-1.png', gradient: '' };
+        const magniData = { title: 'MAGNI', promoText: 'Endermologia + Cromoterapia', description: 'Combinação perfeita de vacuoterapia e terapia de luz.', imageUrl: 'https://medicalsan.com.br/wp-content/uploads/2022/07/Magni-1.png', gradient: '' };
+        const liftendoData = { title: 'LIFTENDO', promoText: 'Endolaser Subdérmico', description: 'A tecnologia minimamente invasiva para retração de pele e lipólise.', imageUrl: 'https://medicalsan.com.br/wp-content/uploads/2022/07/LiftEndo.png', gradient: '' };
+
+        const nextSlide = (e) => { e?.stopPropagation(); setCurrentSlide((prev) => (prev === mainSlides.length - 1 ? 0 : prev + 1)); };
+        const prevSlide = (e) => { e.stopPropagation(); setCurrentSlide((prev) => (prev === 0 ? mainSlides.length - 1 : prev - 1)); };
+        const goToSlide = (e, index) => { e.stopPropagation(); setCurrentSlide(index); };
+
+        useEffect(() => {
+          const interval = setInterval(() => { setCurrentSlide((prev) => (prev === mainSlides.length - 1 ? 0 : prev + 1)); }, 5000);
+          return () => clearInterval(interval);
+        }, [mainSlides.length]);
+
+        return (
+          <>
+            <div className="w-full bg-gray-50 pb-8">
+              <div className="container mx-auto px-4 pt-6">
+                <div className="relative w-full rounded-2xl overflow-hidden shadow-lg h-[300px] md:h-[450px] mb-6 group cursor-pointer transition-all duration-500" onClick={() => handleBannerClick(mainSlides[currentSlide])}>
+                  <div className={`absolute inset-0 bg-gradient-to-r ${mainSlides[currentSlide].gradient} z-0 transition-colors duration-700`}></div>
+                  <img key={currentSlide} src={mainSlides[currentSlide].imageUrl} className="absolute right-0 bottom-0 h-[100%] md:h-[110%] object-contain opacity-80 mix-blend-lighten md:mr-20 z-10 animate-fade-in" alt={mainSlides[currentSlide].title} />
+                  <div className="absolute inset-0 z-20 flex flex-col justify-center px-6 md:px-24 text-white">
+                    <h2 className="text-3xl md:text-7xl font-bold mb-2 uppercase tracking-tight animate-slide-up leading-tight">{mainSlides[currentSlide].title.split(' ').map((word, i) => (<span key={i} className="block">{word}</span>))}</h2>
+                    <p className="text-sm md:text-2xl font-light mb-8 max-w-[70%] md:max-w-md text-gray-200 animate-slide-up-delay">{mainSlides[currentSlide].promoText}</p>
+                    <button className="w-fit bg-action-cyan text-medical-900 font-bold py-3 px-8 md:px-10 rounded-full hover:bg-white transition-all text-xs md:text-sm tracking-wider uppercase z-30 shadow-lg">CONFIRA</button>
+                  </div>
+                  <button onClick={prevSlide} className="hidden md:block absolute left-4 top-1/2 -translate-y-1/2 bg-white/10 hover:bg-white text-white hover:text-medical-900 rounded-full p-2 z-30 shadow-md backdrop-blur-sm transition-all"><ChevronLeft size={32} /></button>
+                  <button onClick={nextSlide} className="hidden md:block absolute right-4 top-1/2 -translate-y-1/2 bg-white/10 hover:bg-white text-white hover:text-medical-900 rounded-full p-2 z-30 shadow-md backdrop-blur-sm transition-all"><ChevronRight size={32} /></button>
+                  <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 z-30">
+                    {mainSlides.map((_, index) => (
+                      <button key={index} onClick={(e) => goToSlide(e, index)} className={`w-2 h-2 md:w-3 md:h-3 rounded-full transition-all duration-300 ${currentSlide === index ? 'bg-action-cyan w-6 md:w-8' : 'bg-white/50 hover:bg-white'}`} />
+                    ))}
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                   <div className="relative rounded-xl overflow-hidden h-[200px] bg-gradient-to-r from-medical-800 to-medical-600 flex items-center justify-between p-8 shadow-md cursor-pointer group hover:shadow-lg transition-all" onClick={() => handleBannerClick(ultramedData)}>
+                      <div className="z-10 text-white max-w-[50%]">
+                        <h3 className="text-3xl font-extrabold uppercase leading-none mb-2">Ultramed<br/>MPT</h3>
+                        <p className="text-xs mb-4 text-blue-100">Ultrassom micro e macrofocado com alta performance</p>
+                        <button className="bg-action-cyan text-medical-900 text-xs font-bold px-6 py-2 rounded-full uppercase group-hover:bg-white transition-colors">Confira</button>
+                      </div>
+                      <img src="https://medicalsan.com.br/wp-content/uploads/2022/07/Ultramed-1.png" className="absolute right-4 h-[120%] object-contain opacity-90 group-hover:scale-110 transition-transform" alt="Ultramed"/>
+                   </div>
+                   <div className="relative rounded-xl overflow-hidden h-[200px] bg-gradient-to-r from-medical-900 to-black flex items-center justify-between p-8 shadow-md cursor-pointer group hover:shadow-lg transition-all" onClick={() => handleBannerClick(velaryanData)}>
+                      <div className="z-10 text-white max-w-[50%]">
+                        <h3 className="text-3xl font-extrabold uppercase leading-none mb-2">Velaryan</h3>
+                        <p className="text-xs mb-4 text-gray-300">Harmonização corporal com laser estacionário</p>
+                        <button className="bg-action-cyan text-medical-900 text-xs font-bold px-6 py-2 rounded-full uppercase group-hover:bg-white transition-colors">Compre Agora</button>
+                      </div>
+                      <img src="https://medicalsan.com.br/wp-content/uploads/2022/07/Velaryan-1.png" className="absolute right-4 h-[120%] object-contain opacity-90 group-hover:scale-110 transition-transform" alt="Velaryan"/>
+                   </div>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
+                   <div className="relative rounded-xl overflow-hidden h-[200px] bg-[#0A1A3F] flex items-center justify-between p-8 shadow-md cursor-pointer group hover:shadow-lg transition-all" onClick={() => handleBannerClick(magniData)}>
+                      <div className="z-10 text-white max-w-[50%]">
+                        <h3 className="text-3xl font-extrabold uppercase leading-none mb-2">Magni</h3>
+                        <p className="text-xs mb-4 text-blue-100">Endermologia + cromoterapia</p>
+                        <button className="bg-action-cyan text-medical-900 text-xs font-bold px-6 py-2 rounded-full uppercase group-hover:bg-white transition-colors">Garanta Já</button>
+                      </div>
+                      <img src="https://medicalsan.com.br/wp-content/uploads/2022/07/Magni-1.png" className="absolute right-4 h-[130%] object-contain opacity-90 group-hover:scale-110 transition-transform" alt="Magni"/>
+                   </div>
+                   <div className="relative rounded-xl overflow-hidden h-[200px] bg-[#1E3A5F] flex items-center justify-between p-8 shadow-md cursor-pointer group hover:shadow-lg transition-all" onClick={() => handleBannerClick(liftendoData)}>
+                      <div className="z-10 text-white max-w-[50%]">
+                        <h3 className="text-3xl font-extrabold uppercase leading-none mb-2">LiftEndo</h3>
+                        <p className="text-xs mb-4 text-gray-300">Endolaser subdérmico</p>
+                        <button className="bg-action-cyan text-medical-900 text-xs font-bold px-6 py-2 rounded-full uppercase group-hover:bg-white transition-colors">Eu Quero</button>
+                      </div>
+                      <img src="https://medicalsan.com.br/wp-content/uploads/2022/07/LiftEndo.png" className="absolute right-4 h-[110%] object-contain opacity-90 group-hover:scale-110 transition-transform" alt="LiftEndo"/>
+                   </div>
+                </div>
+              </div>
+            </div>
+            <BannerModal isOpen={isBannerModalOpen} onClose={closeBannerModal} data={selectedBanner} />
+          </>
+        );
+      };
+
+      const ProductCard = ({ product, onOpenModal }) => {
+        return (
+          <div className="group bg-white rounded-xl border border-gray-100 p-4 hover:shadow-xl hover:border-medical-200 transition-all duration-300 cursor-pointer flex flex-col h-full relative" onClick={() => onOpenModal(product)}>
+            <div className="relative h-56 mb-4 flex items-center justify-center p-2 bg-white rounded-lg transition-colors">
+              <img src={product.imageUrl} alt={product.name} className="max-h-full max-w-full object-contain transition-transform duration-500 group-hover:scale-105" />
+              {product.tags && product.tags.length > 0 && (
+                 <div className="absolute top-2 left-2 flex flex-col gap-1">
+                   <span className="bg-medical-500/10 text-medical-700 text-[9px] font-bold px-2 py-1 rounded border border-medical-100 backdrop-blur-sm">{product.tags[0]}</span>
+                 </div>
+              )}
+            </div>
+            <div className="flex flex-col flex-grow">
+              <div className="mb-2"><span className="inline-block bg-gray-50 text-gray-600 text-[10px] font-bold px-2 py-1 rounded uppercase tracking-wide border border-gray-100">{product.subcategory}</span></div>
+              <h3 className="text-sm font-bold text-medical-900 mb-1 leading-snug group-hover:text-medical-600 transition-colors">{product.name}</h3>
+              <p className="text-[11px] text-gray-500 mb-4 line-clamp-2">{product.description}</p>
+              
+              <div className="mt-auto space-y-2">
+                  <div className="flex items-center gap-2 text-gray-500 text-[10px]">
+                     <BadgeCheck size={12} className="text-green-500"/>
+                     <span>Entrega Técnica Incluída</span>
+                  </div>
+                  <div className="flex items-center gap-2 text-gray-500 text-[10px]">
+                     <CalendarClock size={12} className="text-medical-500"/>
+                     <span>Condições Especiais</span>
+                  </div>
+              </div>
+
+              <div className="mt-4"><button className="w-full py-2.5 rounded-lg border border-medical-500 text-medical-600 font-bold text-xs uppercase hover:bg-medical-500 hover:text-white transition-all">Ver Detalhes</button></div>
+            </div>
+          </div>
+        );
+      };
+
+      const ProductCarousel = ({ items, onOpenModal }) => {
+        const scrollRef = useRef(null);
+        const scroll = (direction) => {
+          if (scrollRef.current) {
+            const { current } = scrollRef;
+            const scrollAmount = 300;
+            current.scrollBy({ left: direction === 'left' ? -scrollAmount : scrollAmount, behavior: 'smooth' });
+          }
+        };
+
+        return (
+          <div className="relative group">
+            <button onClick={() => scroll('left')} className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-white shadow-lg border border-gray-100 rounded-full p-2 text-gray-700 hover:bg-gray-50 hover:text-medical-600 -ml-2 md:-ml-6"><ChevronLeft size={24} /></button>
+            <div ref={scrollRef} className="flex overflow-x-auto gap-6 snap-x snap-mandatory py-4 px-2 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:'none'] [scrollbar-width:none]">
+              {items.map(product => (
+                <div key={product.id} className="min-w-[180px] w-[180px] md:min-w-[220px] md:w-[220px] snap-start flex-shrink-0">
+                  <ProductCard product={product} onOpenModal={onOpenModal} />
+                </div>
+              ))}
+            </div>
+            <button onClick={() => scroll('right')} className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-white shadow-lg border border-gray-100 rounded-full p-2 text-gray-700 hover:bg-gray-50 hover:text-medical-600 -mr-2 md:-mr-6"><ChevronRight size={24} /></button>
+          </div>
+        );
+      };
+
+      const QuoteModal = ({ isOpen, onClose, product }) => {
+        const [formData, setFormData] = useState({ name: '', email: '', phone: '', message: '' });
+        const [isSubmitted, setIsSubmitted] = useState(false);
+
+        useEffect(() => {
+          if (isOpen) {
+            document.body.style.overflow = 'hidden';
+          } else {
+            document.body.style.overflow = 'unset';
+          }
+          return () => { document.body.style.overflow = 'unset'; };
+        }, [isOpen]);
+
+        if (!isOpen) return null;
+
+        const handleChange = (e) => setFormData({ ...formData, [e.target.name]: e.target.value });
+        const handleSubmit = (e) => {
+          e.preventDefault();
+          console.log(`Enviando orçamento para ${product?.name} para brendoofs@gmail.com`, formData);
+          setIsSubmitted(true);
+          setTimeout(() => { setIsSubmitted(false); setFormData({ name: '', email: '', phone: '', message: '' }); onClose(); }, 3000);
+        };
+
+        return (
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+            <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" onClick={onClose}></div>
+            <div className="relative bg-white rounded-xl shadow-2xl w-full max-w-lg overflow-hidden animate-fade-in-up">
+              <div className="bg-medical-900 px-6 py-4 flex justify-between items-center text-white">
+                <h3 className="text-xl font-bold">Solicitar Orçamento</h3>
+                <button onClick={onClose} className="hover:bg-white/20 p-1 rounded-full transition-colors"><X size={24} /></button>
+              </div>
+              <div className="p-6">
+                {isSubmitted ? (
+                  <div className="flex flex-col items-center justify-center py-10 text-center">
+                    <CheckCircle size={64} className="text-green-500 mb-4" />
+                    <h4 className="text-2xl font-bold text-gray-800 mb-2">Solicitação Enviada!</h4>
+                    <p className="text-gray-600">Recebemos seu pedido. Um consultor entrará em contato em breve.</p>
+                  </div>
+                ) : (
+                  <form onSubmit={handleSubmit} className="space-y-4">
+                    {product && (
+                      <div className="bg-medical-50 border border-medical-100 p-3 rounded-lg mb-4 flex items-center gap-3">
+                        <img src={product.imageUrl} alt={product.name} className="w-12 h-12 object-cover rounded bg-white" />
+                        <div><span className="text-xs text-gray-500 uppercase font-semibold">Interesse em:</span><p className="font-bold text-medical-900">{product.name}</p></div>
+                      </div>
+                    )}
+                    <div><label className="block text-sm font-medium text-gray-700 mb-1">Nome Completo</label><input required type="text" name="name" value={formData.name} onChange={handleChange} className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-medical-500 outline-none" placeholder="Seu nome" /></div>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      <div><label className="block text-sm font-medium text-gray-700 mb-1">E-mail</label><input required type="email" name="email" value={formData.email} onChange={handleChange} className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-medical-500 outline-none" placeholder="seu@email.com" /></div>
+                      <div><label className="block text-sm font-medium text-gray-700 mb-1">WhatsApp</label><input required type="tel" name="phone" value={formData.phone} onChange={handleChange} className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-medical-500 outline-none" placeholder="(00) 00000-0000" /></div>
+                    </div>
+                    <div><label className="block text-sm font-medium text-gray-700 mb-1">Mensagem (Opcional)</label><textarea name="message" value={formData.message} onChange={handleChange} rows={3} className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-medical-500 outline-none resize-none" placeholder="Dúvidas sobre pagamento..."></textarea></div>
+                    <button type="submit" className="w-full bg-action-500 hover:bg-action-600 text-white font-bold py-3 rounded-lg shadow-md hover:shadow-lg transition-all transform hover:-translate-y-0.5">Enviar Solicitação</button>
+                  </form>
+                )}
+              </div>
+            </div>
+          </div>
+        );
+      };
+
+      // Componente: ProductDetailsModal
+      const ProductDetailsModal = ({ isOpen, onClose, product, onRequestQuote }) => {
+        useEffect(() => {
+          // Bloqueia o scroll da página de fundo quando o modal abre
+          if (isOpen) {
+            document.body.style.overflow = 'hidden';
+          } else {
+            document.body.style.overflow = 'unset';
+          }
+          // Limpeza ao desmontar
+          return () => {
+            document.body.style.overflow = 'unset';
+          };
+        }, [isOpen]);
+
+        if (!isOpen || !product) return null;
+        const handleWhatsAppRedirect = () => {
+          const message = `Olá! Estou no site e gostaria de saber o valor e condições de pagamento do *${product.name}*.`;
+          const url = `https://wa.me/555180985851?text=${encodeURIComponent(message)}`;
+          window.open(url, '_blank');
+        };
+
+        return (
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+            {/* Overlay Backdrop */}
+            <div className="absolute inset-0 bg-medical-900/80 backdrop-blur-sm transition-opacity" onClick={onClose}></div>
+            
+            {/* Container Principal */}
+            <div className="relative bg-white rounded-xl shadow-2xl w-full max-w-4xl overflow-hidden animate-fade-in-up flex flex-col md:flex-row max-h-[90vh] md:max-h-[85vh]">
+              
+              {/* Seção da Imagem: Fundo Branco, Maximizada */}
+              <div className="w-full md:w-5/12 bg-white p-4 md:p-8 flex items-center justify-center border-b md:border-b-0 md:border-r border-gray-100 relative shrink-0 h-56 md:h-auto overflow-hidden group">
+                 <span className="absolute top-4 left-4 bg-gray-50/90 backdrop-blur text-gray-800 text-[10px] font-bold px-2 py-1 rounded shadow-sm border border-gray-200 z-10">{product.subcategory}</span>
+                 <img src={product.imageUrl} alt={product.name} className="w-full h-full object-contain hover:scale-110 transition-transform duration-700" />
+              </div>
+
+              {/* Seção de Conteúdo */}
+              <div className="w-full md:w-7/12 flex flex-col h-full overflow-hidden bg-white">
+                  {/* Header (Fixo) */}
+                  <div className="p-4 md:p-6 border-b border-gray-100 flex justify-between items-start bg-white shrink-0 z-10 relative">
+                    <div className="pr-8">
+                        <h3 className="text-xl md:text-2xl font-extrabold text-medical-900 leading-tight">{product.name}</h3>
+                        <p className="text-sm text-gray-500 mt-1 font-medium">{product.description}</p>
+                        {product.tags && (
+                           <div className="flex gap-2 mt-2">
+                              {product.tags.map((tag, idx) => (
+                                <span key={idx} className="text-[10px] bg-blue-50 text-blue-700 px-2 py-0.5 rounded border border-blue-100 font-semibold">{tag}</span>
+                              ))}
+                           </div>
+                        )}
+                    </div>
+                    <button onClick={onClose} className="text-gray-400 hover:text-red-500 transition-colors p-2 bg-gray-50 hover:bg-red-50 rounded-full shrink-0">
+                        <X size={24} />
+                    </button>
+                  </div>
+
+                  {/* Descrição (Scrollável com scrollbar customizada) */}
+                  <div className="p-4 md:p-8 overflow-y-auto flex-1 custom-scrollbar text-sm text-gray-600 leading-relaxed bg-white">
+                    <div dangerouslySetInnerHTML={{ __html: product.benefits || '<p>Descrição detalhada não disponível.</p>' }} className="space-y-4 prose prose-sm max-w-none prose-headings:text-medical-800 prose-a:text-medical-600" />
+                    
+                    <div className="mt-6 flex justify-center md:hidden">
+                       <button onClick={handleWhatsAppRedirect} className="text-xs font-bold text-medical-600 underline">Falar com consultor agora</button>
+                    </div>
+                  </div>
+
+                  {/* Footer CTA: Fixo no fundo */}
+                  <div className="p-4 md:p-6 border-t border-gray-100 bg-gray-50 shrink-0 z-10 relative shadow-[0_-4px_10px_rgba(0,0,0,0.03)] flex flex-col gap-2">
+                     <button onClick={handleWhatsAppRedirect} className="w-full bg-[#25D366] hover:bg-[#1ebc57] text-white font-extrabold py-3.5 px-6 rounded-xl uppercase tracking-wide transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 flex items-center justify-center gap-2 text-sm">
+                       <MessageCircle size={20} />Solicitar Orçamento no WhatsApp
+                     </button>
+                     <div className="flex justify-center items-center gap-4 text-[10px] text-gray-400">
+                        <span>🔒 Compra Segura</span>
+                        <span>⚡ Resposta em minutos</span>
+                     </div>
+                  </div>
+              </div>
+            </div>
+          </div>
+        );
+      };
+
+      const WhatsAppButton = () => {
+        return (
+          <a href="https://wa.me/555180985851" target="_blank" rel="noopener noreferrer" className="fixed bottom-6 right-6 z-40 bg-[#25D366] hover:bg-[#20bd5a] text-white p-3 md:p-4 rounded-full shadow-lg hover:shadow-2xl transition-all hover:scale-110 flex items-center justify-center animate-bounce-slow group" aria-label="Fale conosco no WhatsApp">
+            <svg viewBox="0 0 24 24" width="32" height="32" fill="currentColor" className="text-white" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+          </a>
+        );
+      };
+
+      const Footer = () => {
+        return (
+          <footer className="bg-white pt-16 font-sans border-t border-gray-100">
+            <div className="container mx-auto max-w-7xl px-4 text-center">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mb-16 justify-items-center">
+                <div className="flex flex-col items-center">
+                  <h4 className="text-gray-900 font-semibold mb-6 text-sm">Ajuda</h4>
+                  <ul className="space-y-3 text-sm text-gray-500">
+                    <li><a href="#" className="hover:text-medical-600">Dúvidas Frequentes</a></li>
+                    <li><a href="#" className="hover:text-medical-600">Política de Frete</a></li>
+                    <li><a href="#" className="hover:text-medical-600">Política de Privacidade</a></li>
+                    <li><a href="#" className="hover:text-medical-600">Sobre nós</a></li>
+                    <li><a href="#" className="hover:text-medical-600">Trocas e Devoluções</a></li>
+                  </ul>
+                </div>
+                 <div className="flex flex-col items-center">
+                  <h4 className="text-gray-900 font-semibold mb-6 text-sm">Atendimento</h4>
+                  <div className="inline-flex items-center gap-2 bg-gray-100 px-4 py-2 rounded text-medical-800 text-sm font-medium"><Phone size={16} /> 0800 200 8022</div>
+                  <p className="mt-4 text-xs text-gray-500">Segunda à Sexta<br/>08:00 às 18:00</p>
+                </div>
+                <div className="flex flex-col items-center">
+                    <h4 className="text-gray-900 font-semibold mb-6 text-sm">Siga nas Redes</h4>
+                    <div className="flex gap-4 text-gray-600 justify-center">
+                      <a href="#" className="hover:text-medical-600 transition-colors bg-gray-50 p-3 rounded-full"><Facebook size={24} /></a>
+                      <a href="#" className="hover:text-medical-600 transition-colors bg-gray-50 p-3 rounded-full"><Instagram size={24} /></a>
+                    </div>
+                </div>
+              </div>
+              <div className="border-t border-gray-100 py-10">
+                <div className="flex flex-col md:flex-row justify-center items-start md:items-center gap-12 md:gap-24">
+                  <div className="flex flex-col items-center w-full md:w-auto">
+                    <h5 className="text-xs font-bold text-gray-900 mb-4 uppercase tracking-wider">Formas de pagamento</h5>
+                    <div className="flex flex-wrap justify-center gap-6 text-gray-500">
+                       <div className="flex flex-col items-center gap-2" title="PIX"><QrCode size={28} /><span className="text-[10px] font-medium">Pix</span></div>
+                       <div className="flex flex-col items-center gap-2" title="Cartão de Crédito"><CreditCard size={28} /><span className="text-[10px] font-medium">Cartão</span></div>
+                       <div className="flex flex-col items-center gap-2" title="Transferência Bancária"><Landmark size={28} /><span className="text-[10px] font-medium">Transf.</span></div>
+                       <div className="flex flex-col items-center gap-2" title="Boleto"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M8 8v8"/><path d="M12 8v8"/><path d="M16 8v8"/></svg><span className="text-[10px] font-medium">Boleto</span></div>
+                       <div className="flex flex-col items-center gap-2" title="Depósito em Conta"><Banknote size={28} /><span className="text-[10px] font-medium">Depósito</span></div>
+                    </div>
+                  </div>
+                  <div className="flex flex-col items-center w-full md:w-auto">
+                     <h5 className="text-xs font-bold text-gray-900 mb-4 uppercase tracking-wider">Segurança</h5>
+                     <a href="https://transparencyreport.google.com/safe-browsing/search" target="_blank" rel="noopener noreferrer" className="flex flex-col items-center gap-2 group">
+                        <div className="w-32 h-12 bg-gray-100 border border-gray-200 rounded flex items-center justify-center text-xs text-gray-400 group-hover:border-medical-200 transition-colors">[Google Selo Img]</div>
+                     </a>
+                  </div>
+                </div>
+              </div>
+              <div className="border-t border-gray-100 py-8 text-[11px] text-gray-400 text-center leading-relaxed bg-gray-50 -mx-4 px-4">
+                <p className="font-medium tracking-wide">© 2026 - VMAC REPRESENTACOES E SERVICOS LTDA | CNPJ: 3.847.273/0001-25 | Todos os direitos reservados.</p>
+              </div>
+            </div>
+          </footer>
+        );
+      };
+
+      const App = () => {
+        const [isQuoteModalOpen, setIsQuoteModalOpen] = useState(false);
+        const [isDetailsModalOpen, setIsDetailsModalOpen] = useState(false);
+        const [selectedProduct, setSelectedProduct] = useState(null);
+
+        const handleCardClick = (product) => { setSelectedProduct(product); setIsDetailsModalOpen(true); };
+        const handleRequestQuoteFromDetails = (product) => { setIsDetailsModalOpen(false); };
+        const handleCloseModals = () => { setIsQuoteModalOpen(false); setIsDetailsModalOpen(false); setSelectedProduct(null); };
+
+        const esteticaProducts = products.filter(p => p.category === 'estetica');
+        const hofProducts = products.filter(p => p.category === 'hof');
+
+        const Section = ({ id, title, items, bgColor = "bg-white" }) => (
+          <section id={id} className={`py-12 md:py-16 scroll-mt-24 ${bgColor}`}>
+            <div className="container mx-auto px-4 max-w-7xl">
+              <div className="flex items-center gap-4 mb-8 border-b border-gray-200 pb-4">
+                 <div className="w-1 h-8 bg-medical-500 rounded-full"></div>
+                 <h2 className="text-2xl md:text-3xl font-bold text-gray-900 tracking-tight">{title}</h2>
+              </div>
+              <ProductCarousel items={items} onOpenModal={handleCardClick} />
+            </div>
+          </section>
+        );
+
+        return (
+          <div className="min-h-screen flex flex-col bg-white">
+            <Header />
+            <main className="flex-grow">
+              <Hero />
+              
+              {/* --- NEW PERSUASIVE SECTIONS --- */}
+              
+              {/* Section 1: ROI & Lucratividade (Dark Theme) */}
+              <section className="bg-medical-900 text-white py-20 relative overflow-hidden">
+                <div className="absolute top-0 right-0 w-64 h-64 bg-medical-500 rounded-full blur-[100px] opacity-20 translate-x-1/2 -translate-y-1/2"></div>
+                <div className="container mx-auto px-4 relative z-10 max-w-7xl">
+                  <div className="flex flex-col md:flex-row items-center gap-12">
+                     <div className="md:w-1/2">
+                        <span className="inline-block bg-medical-600/30 border border-medical-500/30 text-action-cyan text-xs font-bold px-3 py-1 rounded-full mb-4 uppercase tracking-widest">Lucratividade Máxima</span>
+                        <h2 className="text-3xl md:text-5xl font-extrabold mb-6 leading-tight">Transforme sua clínica em uma <span className="text-action-cyan">máquina de resultados</span>.</h2>
+                        <p className="text-blue-100 text-lg mb-8 leading-relaxed">
+                          Equipamentos projetados para oferecer o menor custo por disparo e a maior eficácia clínica do mercado. Com a Medical San, você recupera seu investimento em tempo recorde.
+                        </p>
+                        <div className="flex flex-col gap-4">
+                          <div className="flex items-center gap-4 bg-white/5 p-4 rounded-xl border border-white/10 hover:border-action-cyan/50 transition-colors">
+                             <div className="bg-action-cyan/20 p-3 rounded-lg text-action-cyan"><Zap size={24}/></div>
+                             <div>
+                               <h4 className="font-bold text-white">Alta Performance</h4>
+                               <p className="text-sm text-gray-400">Tecnologia que garante resultados visíveis na primeira sessão.</p>
+                             </div>
+                          </div>
+                          <div className="flex items-center gap-4 bg-white/5 p-4 rounded-xl border border-white/10 hover:border-action-cyan/50 transition-colors">
+                             <div className="bg-green-500/20 p-3 rounded-lg text-green-400"><Calculator size={24}/></div>
+                             <div>
+                               <h4 className="font-bold text-white">ROI Acelerado</h4>
+                               <p className="text-sm text-gray-400">Pague seu equipamento com poucos atendimentos mensais.</p>
+                             </div>
+                          </div>
+                        </div>
+                     </div>
+                     <div className="md:w-1/2 relative">
+                        <div className="relative z-10 bg-gradient-to-br from-gray-800 to-black p-8 rounded-2xl border border-gray-700 shadow-2xl">
+                           <h3 className="text-2xl font-bold mb-6 text-center">Simulação de Retorno</h3>
+                           <div className="space-y-6">
+                              <div className="flex justify-between items-end border-b border-gray-700 pb-2">
+                                <span className="text-gray-400 text-sm">Custo médio sessão</span>
+                                <span className="text-2xl font-bold text-white">R$ 250,00</span>
+                              </div>
+                              <div className="flex justify-between items-end border-b border-gray-700 pb-2">
+                                <span className="text-gray-400 text-sm">Pacientes / Dia</span>
+                                <span className="text-2xl font-bold text-white">x 4</span>
+                              </div>
+                              <div className="flex justify-between items-end border-b border-gray-700 pb-2">
+                                <span className="text-gray-400 text-sm">Faturamento Mensal</span>
+                                <span className="text-3xl font-extrabold text-green-400">R$ 22.000+</span>
+                              </div>
+                           </div>
+                           <p className="text-xs text-center text-gray-500 mt-6">*Valores estimados baseados em média de mercado.</p>
+                           <button onClick={() => window.open('https://wa.me/555180985851', '_blank')} className="w-full mt-6 bg-action-cyan hover:bg-white hover:text-medical-900 text-medical-900 font-bold py-4 rounded-xl transition-all uppercase tracking-wide">
+                             Quero Lucrar Mais
+                           </button>
+                        </div>
+                        {/* Decorative elements behind card */}
+                        <div className="absolute -z-10 top-10 -right-10 w-full h-full border-2 border-dashed border-medical-700 rounded-2xl"></div>
+                     </div>
+                  </div>
+                </div>
+              </section>
+
+              <Section id="estetica" title="Estética" items={esteticaProducts} />
+
+              {/* Section 2: Autoridade & Suporte (Light Theme) */}
+              <section className="py-20 bg-medical-50">
+                <div className="container mx-auto px-4 max-w-7xl">
+                   <div className="text-center max-w-3xl mx-auto mb-16">
+                      <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Mais que equipamentos, <span className="text-medical-600">entregamos sucesso</span>.</h2>
+                      <p className="text-gray-600 text-lg">Junte-se a milhares de profissionais que confiam na Medical San para alavancar suas carreiras.</p>
+                   </div>
+                   <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                      <div className="bg-white p-8 rounded-2xl shadow-sm hover:shadow-xl transition-shadow border border-gray-100 flex flex-col items-center text-center group">
+                         <div className="w-20 h-20 bg-blue-50 rounded-full flex items-center justify-center mb-6 group-hover:scale-110 transition-transform text-medical-600">
+                            <ShieldCheck size={40} />
+                         </div>
+                         <h3 className="text-xl font-bold text-gray-900 mb-3">Segurança Total</h3>
+                         <p className="text-gray-500 leading-relaxed">Equipamentos rigorosamente testados e certificados pela ANVISA. Garantia de fábrica e assistência técnica ágil em todo Brasil.</p>
+                      </div>
+                      <div className="bg-white p-8 rounded-2xl shadow-sm hover:shadow-xl transition-shadow border border-gray-100 flex flex-col items-center text-center group">
+                         <div className="w-20 h-20 bg-purple-50 rounded-full flex items-center justify-center mb-6 group-hover:scale-110 transition-transform text-purple-600">
+                            <GraduationCap size={40} />
+                         </div>
+                         <h3 className="text-xl font-bold text-gray-900 mb-3">Medical San Academy</h3>
+                         <p className="text-gray-500 leading-relaxed">Cliente Medical San tem acesso a treinamentos exclusivos com experts. Domine a tecnologia e entregue os melhores resultados.</p>
+                      </div>
+                      <div className="bg-white p-8 rounded-2xl shadow-sm hover:shadow-xl transition-shadow border border-gray-100 flex flex-col items-center text-center group">
+                         <div className="w-20 h-20 bg-orange-50 rounded-full flex items-center justify-center mb-6 group-hover:scale-110 transition-transform text-orange-500">
+                            <Award size={40} />
+                         </div>
+                         <h3 className="text-xl font-bold text-gray-900 mb-3">Inovação Premiada</h3>
+                         <p className="text-gray-500 leading-relaxed">Tecnologia brasileira exportada para o mundo. Prêmios de inovação e design que valorizam a sua clínica perante o paciente.</p>
+                      </div>
+                   </div>
+                </div>
+              </section>
+
+              <Section id="hof" title="HOF" items={hofProducts} bgColor="bg-white" />
+              
+              {/* Section 3: Financeiro & Urgência (Clean Theme) */}
+              <section className="py-20 bg-gray-900 text-white text-center relative overflow-hidden">
+                 {/* Background Pattern */}
+                 <div className="absolute inset-0 opacity-10" style={{backgroundImage: 'radial-gradient(#4b5563 1px, transparent 1px)', backgroundSize: '30px 30px'}}></div>
+                 
+                 <div className="container mx-auto px-4 relative z-10 max-w-4xl">
+                    <h2 className="text-3xl md:text-5xl font-extrabold mb-6">Não deixe o investimento ser uma barreira.</h2>
+                    <p className="text-xl text-gray-300 mb-10">Temos as melhores condições do mercado para você começar agora.</p>
+                    
+                    <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-10">
+                       <div className="p-4 rounded-lg bg-white/5 border border-white/10">
+                          <p className="text-3xl font-bold text-action-cyan mb-1">120</p>
+                          <p className="text-xs text-gray-400 uppercase tracking-wider">Dias de Carência</p>
+                       </div>
+                       <div className="p-4 rounded-lg bg-white/5 border border-white/10">
+                          <p className="text-3xl font-bold text-action-cyan mb-1">60x</p>
+                          <p className="text-xs text-gray-400 uppercase tracking-wider">Parcelamento*</p>
+                       </div>
+                        <div className="p-4 rounded-lg bg-white/5 border border-white/10">
+                          <p className="text-3xl font-bold text-action-cyan mb-1">0%</p>
+                          <p className="text-xs text-gray-400 uppercase tracking-wider">Entrada</p>
+                       </div>
+                        <div className="p-4 rounded-lg bg-white/5 border border-white/10">
+                          <p className="text-3xl font-bold text-action-cyan mb-1">24h</p>
+                          <p className="text-xs text-gray-400 uppercase tracking-wider">Aprovação</p>
+                       </div>
+                    </div>
+
+                    <a href="https://wa.me/555180985851" target="_blank" rel="noopener noreferrer" className="inline-block w-full md:w-auto bg-[#25D366] hover:bg-[#1ebc57] text-white font-bold py-5 px-10 rounded-full text-lg shadow-xl hover:shadow-2xl hover:-translate-y-1 transition-all uppercase tracking-widest">
+                       Simular Financiamento no WhatsApp
+                    </a>
+                    <p className="text-xs text-gray-500 mt-6">*Sujeito a análise de crédito.</p>
+                 </div>
+              </section>
+
+              {/* Persuasion Section (Original - Mantida mas reduzida visualmente para não brigar com as novas) */}
+              <section className="bg-gradient-to-b from-gray-50 to-white py-12 border-b border-gray-100">
+                <div className="container mx-auto px-4 max-w-7xl">
+                  <div className="text-center max-w-3xl mx-auto mb-12">
+                    <h2 className="text-2xl md:text-3xl font-bold text-medical-900 mb-4">A escolha inteligente para sua clínica</h2>
+                  </div>
+                  <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+                    <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100 flex flex-col items-center text-center hover:shadow-md transition-shadow">
+                      <div className="w-12 h-12 bg-blue-100 text-medical-600 rounded-full flex items-center justify-center mb-4"><Award size={24} /></div>
+                      <h3 className="font-bold text-gray-900 mb-2">Qualidade</h3>
+                      <p className="text-xs text-gray-500">Certificação ANVISA</p>
+                    </div>
+                    <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100 flex flex-col items-center text-center hover:shadow-md transition-shadow">
+                      <div className="w-12 h-12 bg-green-100 text-green-600 rounded-full flex items-center justify-center mb-4"><TrendingUp size={24} /></div>
+                      <h3 className="font-bold text-gray-900 mb-2">Rentabilidade</h3>
+                      
