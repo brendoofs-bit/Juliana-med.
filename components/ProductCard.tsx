@@ -1,6 +1,6 @@
 import React from 'react';
 import { Product } from '../types';
-import { CreditCard } from 'lucide-react';
+import { BadgeCheck, CalendarClock } from 'lucide-react';
 
 interface ProductCardProps {
   product: Product;
@@ -8,11 +8,6 @@ interface ProductCardProps {
 }
 
 const ProductCard: React.FC<ProductCardProps> = ({ product, onOpenModal }) => {
-  // Calculate installment value if installments exist
-  const installmentValue = product.installments 
-    ? (product.price / product.installments).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })
-    : null;
-
   return (
     <div 
       className="group bg-white rounded-xl border border-gray-100 p-4 hover:shadow-xl hover:border-medical-200 transition-all duration-300 cursor-pointer flex flex-col h-full relative"
@@ -25,6 +20,14 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, onOpenModal }) => {
           alt={product.name} 
           className="max-h-full max-w-full object-contain transition-transform duration-500 group-hover:scale-105"
         />
+        {/* Tag Overlay if exists */}
+        {product.tags && product.tags.length > 0 && (
+           <div className="absolute top-2 left-2 flex flex-col gap-1">
+             <span className="bg-medical-500/10 text-medical-700 text-[9px] font-bold px-2 py-1 rounded border border-medical-100 backdrop-blur-sm">
+               {product.tags[0]}
+             </span>
+           </div>
+        )}
       </div>
       
       {/* Content */}
@@ -42,25 +45,24 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, onOpenModal }) => {
         </h3>
         
         {/* Description Code */}
-        <p className="text-[10px] text-gray-400 mb-3">{product.description}</p>
+        <p className="text-[11px] text-gray-500 mb-4 line-clamp-2">{product.description}</p>
 
-        {/* Installments Visual */}
-        {product.installments && installmentValue && (
-          <div className="mt-auto bg-medical-50 border border-medical-100 rounded-lg p-2 flex items-center gap-2 group-hover:border-medical-200 transition-colors">
-             <div className="bg-white p-1 rounded-full text-medical-600">
-               <CreditCard size={14} />
-             </div>
-             <div className="flex flex-col leading-none">
-                <span className="text-[10px] text-medical-800 font-bold uppercase">Em até {product.installments}x de</span>
-                <span className="text-sm font-extrabold text-medical-600">{installmentValue}</span>
-             </div>
-          </div>
-        )}
+        {/* Status / Call to action visual instead of price */}
+        <div className="mt-auto space-y-2">
+            <div className="flex items-center gap-2 text-gray-500 text-[10px]">
+               <BadgeCheck size={12} className="text-green-500"/>
+               <span>Entrega Técnica Incluída</span>
+            </div>
+            <div className="flex items-center gap-2 text-gray-500 text-[10px]">
+               <CalendarClock size={12} className="text-medical-500"/>
+               <span>Condições Especiais</span>
+            </div>
+        </div>
 
         {/* Fake CTA Button */}
-        <div className="mt-3">
-           <button className="w-full py-2 rounded-lg border border-medical-500 text-medical-600 font-bold text-xs uppercase hover:bg-medical-500 hover:text-white transition-all">
-             Saiba Mais
+        <div className="mt-4">
+           <button className="w-full py-2.5 rounded-lg border border-medical-500 text-medical-600 font-bold text-xs uppercase hover:bg-medical-500 hover:text-white transition-all">
+             Ver Detalhes
            </button>
         </div>
       </div>

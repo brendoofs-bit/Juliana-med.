@@ -5,11 +5,8 @@ export interface Product {
   subcategory: string;
   category: 'estetica' | 'hof';
   imageUrl: string;
-  price: number;
-  originalPrice?: number;
-  installments?: number;
-  discount?: number;
-  benefits?: string;
+  benefits?: string; // HTML content for the modal
+  tags?: string[]; // Ex: "Sob Encomenda", "Lançamento"
 }
 
 export interface QuoteRequest {
