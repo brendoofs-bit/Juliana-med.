@@ -47,15 +47,15 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, onOpenModal }) => {
         {/* Description Code */}
         <p className="text-[11px] text-gray-500 mb-4 line-clamp-2">{product.description}</p>
 
-        {/* Status / Call to action visual instead of price */}
-        <div className="mt-auto space-y-2">
-            <div className="flex items-center gap-2 text-gray-500 text-[10px]">
-               <BadgeCheck size={12} className="text-green-500"/>
-               <span>Sob Encomenda</span>
+        {/* Status / Call to action visual replacement for price */}
+        <div className="mt-auto space-y-2 border-t border-gray-50 pt-3">
+            <div className="flex items-center gap-2 text-gray-500 text-[10px] font-medium">
+               <BadgeCheck size={14} className="text-green-500"/>
+               <span>Sob encomenda</span>
             </div>
-            <div className="flex items-center gap-2 text-gray-500 text-[10px]">
-               <CalendarClock size={12} className="text-medical-500"/>
-               <span>Elegível para Financiamento</span>
+            <div className="flex items-center gap-2 text-gray-500 text-[10px] font-medium">
+               <CalendarClock size={14} className="text-medical-500"/>
+               <span>Elegível para financiamento</span>
             </div>
         </div>
 
