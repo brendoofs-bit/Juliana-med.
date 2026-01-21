@@ -89,10 +89,11 @@ const Footer: React.FC = () => {
                  rel="noopener noreferrer"
                  className="flex flex-col items-center gap-2 group"
                >
-                  {/* Placeholder for Google Seal Image */}
-                  <div className="w-32 h-12 bg-gray-100 border border-gray-200 rounded flex items-center justify-center text-xs text-gray-400 group-hover:border-medical-200 transition-colors">
-                    [Google Selo Img]
-                  </div>
+                  <img 
+                    src="https://res.cloudinary.com/doqw5aqcf/image/upload/v1769027153/selo-google-navegacao-segura_kcun8k.png" 
+                    alt="Google Navegação Segura" 
+                    className="w-32 object-contain hover:opacity-80 transition-opacity" 
+                  />
                </a>
             </div>
 
@@ -103,6 +104,9 @@ const Footer: React.FC = () => {
         <div className="border-t border-gray-100 py-8 text-[11px] text-gray-400 text-center leading-relaxed bg-gray-50 -mx-4 px-4">
           <p className="font-medium tracking-wide">
             © 2026 - VMAC REPRESENTACOES E SERVICOS LTDA | CNPJ: 3.847.273/0001-25 | Todos os direitos reservados.
+          </p>
+          <p className="mt-2 font-semibold">
+             Desenvolvido por <a href="https://altmakers.com.br" target="_blank" className="text-medical-600 hover:text-medical-800 transition-colors">ALTMAKERS</a>
           </p>
         </div>
       </div>

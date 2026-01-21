@@ -8,7 +8,7 @@ import ProductDetailsModal from './components/ProductDetailsModal';
 import ProductCarousel from './components/ProductCarousel';
 import { products } from './data/products';
 import { Product } from './types';
-import { ShieldCheck, TrendingUp, Users, CheckCircle, Zap, DollarSign } from 'lucide-react';
+import { ShieldCheck, TrendingUp, Users, CheckCircle, Zap, DollarSign, Building2, Award, Headphones } from 'lucide-react';
 
 const App: React.FC = () => {
   const [isQuoteModalOpen, setIsQuoteModalOpen] = useState(false);
@@ -54,25 +54,42 @@ const App: React.FC = () => {
         <Hero />
 
         {/* NOVA SEÇÃO: Autoridade (Stats) */}
-        <section className="bg-white py-10 border-b border-gray-100">
+        <section className="bg-white py-16 border-b border-gray-100">
            <div className="container mx-auto px-4 max-w-7xl">
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center divide-x divide-gray-100">
-                 <div>
-                    <span className="block text-3xl md:text-4xl font-black text-medical-800">+5.000</span>
-                    <span className="text-xs md:text-sm text-gray-500 font-medium uppercase tracking-wide">Clínicas Equipadas</span>
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+                 
+                 <div className="flex flex-col items-center justify-center p-6 bg-gray-50 rounded-2xl hover:shadow-lg transition-all group">
+                    <div className="bg-medical-100 text-medical-600 p-3 rounded-full mb-4 group-hover:scale-110 transition-transform">
+                       <Building2 size={24} />
+                    </div>
+                    <span className="block text-3xl md:text-4xl font-black text-medical-800 mb-1">+5.000</span>
+                    <span className="text-xs md:text-sm text-gray-500 font-bold uppercase tracking-wide text-center">Clínicas Equipadas</span>
                  </div>
-                 <div>
-                    <span className="block text-3xl md:text-4xl font-black text-medical-800">25</span>
-                    <span className="text-xs md:text-sm text-gray-500 font-medium uppercase tracking-wide">Anos de Inovação</span>
+
+                 <div className="flex flex-col items-center justify-center p-6 bg-gray-50 rounded-2xl hover:shadow-lg transition-all group">
+                    <div className="bg-purple-100 text-purple-600 p-3 rounded-full mb-4 group-hover:scale-110 transition-transform">
+                       <Award size={24} />
+                    </div>
+                    <span className="block text-3xl md:text-4xl font-black text-medical-800 mb-1">25</span>
+                    <span className="text-xs md:text-sm text-gray-500 font-bold uppercase tracking-wide text-center">Anos de Inovação</span>
                  </div>
-                 <div>
-                    <span className="block text-3xl md:text-4xl font-black text-medical-800">Anvisa</span>
-                    <span className="text-xs md:text-sm text-gray-500 font-medium uppercase tracking-wide">Certificação Total</span>
+
+                 <div className="flex flex-col items-center justify-center p-6 bg-gray-50 rounded-2xl hover:shadow-lg transition-all group">
+                    <div className="bg-green-100 text-green-600 p-3 rounded-full mb-4 group-hover:scale-110 transition-transform">
+                       <ShieldCheck size={24} />
+                    </div>
+                    <span className="block text-3xl md:text-4xl font-black text-medical-800 mb-1">Anvisa</span>
+                    <span className="text-xs md:text-sm text-gray-500 font-bold uppercase tracking-wide text-center">Certificação Total</span>
                  </div>
-                 <div>
-                    <span className="block text-3xl md:text-4xl font-black text-medical-800">24h</span>
-                    <span className="text-xs md:text-sm text-gray-500 font-medium uppercase tracking-wide">Suporte Técnico</span>
+
+                 <div className="flex flex-col items-center justify-center p-6 bg-gray-50 rounded-2xl hover:shadow-lg transition-all group">
+                    <div className="bg-orange-100 text-orange-600 p-3 rounded-full mb-4 group-hover:scale-110 transition-transform">
+                       <Headphones size={24} />
+                    </div>
+                    <span className="block text-3xl md:text-4xl font-black text-medical-800 mb-1">24h</span>
+                    <span className="text-xs md:text-sm text-gray-500 font-bold uppercase tracking-wide text-center">Suporte Técnico</span>
                  </div>
+
               </div>
            </div>
         </section>
@@ -125,22 +142,22 @@ const App: React.FC = () => {
                        <h3 className="text-xl font-bold mb-6 text-center">O que nossos parceiros dizem:</h3>
                        <div className="space-y-6">
                           <div className="bg-white/5 p-4 rounded-lg">
-                             <p className="italic text-gray-300 text-sm mb-3">"O Hakon mudou o patamar da minha clínica. Paguei o investimento em 4 meses apenas com a agenda de epilação."</p>
+                             <p className="italic text-gray-300 text-sm mb-3">"Já tenho 4 tecnologias, pretendo comprar mais. Todas entregaram não apenas resultado, como lucratividade em pouco tempo de uso. Eu recomendo."</p>
                              <div className="flex items-center gap-3">
-                                <div className="w-8 h-8 bg-gray-600 rounded-full"></div>
+                                <img src="https://res.cloudinary.com/doqw5aqcf/image/upload/v1769025481/doutora-amanda-yamamoto_lfstfc.png" alt="Dra. Amanda" className="w-12 h-12 object-cover rounded-full border border-gray-600" />
                                 <div>
-                                   <p className="text-sm font-bold">Dra. Amanda S.</p>
-                                   <p className="text-xs text-gray-500">Dermatologista - SP</p>
+                                   <p className="text-sm font-bold">Amanda Yamamoto</p>
+                                   <p className="text-xs text-gray-500">Avaliação Google</p>
                                 </div>
                              </div>
                           </div>
                           <div className="bg-white/5 p-4 rounded-lg">
-                             <p className="italic text-gray-300 text-sm mb-3">"O suporte da Medical San é diferenciado. A entrega técnica foi impecável e minha equipe saiu treinada para vender."</p>
+                             <p className="italic text-gray-300 text-sm mb-3">"Sou encantada com essa empresa, primeiro com os equipamentos, depois com a equipe e quando conhecemos a loja conceito em Estrela e a fábrica, nos encantamos com os valores, que são muito alinhados com os nossos."</p>
                              <div className="flex items-center gap-3">
-                                <div className="w-8 h-8 bg-gray-600 rounded-full"></div>
+                                <img src="https://res.cloudinary.com/doqw5aqcf/image/upload/v1769025480/doutora-raquel_wjmzfw.png" alt="Dra. Raquel" className="w-12 h-12 object-cover rounded-full border border-gray-600" />
                                 <div>
-                                   <p className="text-sm font-bold">Clínica Bellavie</p>
-                                   <p className="text-xs text-gray-500">Rede de Franquias - PR</p>
+                                   <p className="text-sm font-bold">Dra. Raquel</p>
+                                   <p className="text-xs text-gray-500">Avaliação Google</p>
                                 </div>
                              </div>
                           </div>

@@ -13,12 +13,12 @@ const ProductDetailsModal: React.FC<ProductDetailsModalProps> = ({ isOpen, onClo
   // Lock body scroll when modal is open
   useEffect(() => {
     if (isOpen) {
-      document.body.style.overflow = 'hidden';
+      document.body.classList.add('modal-scroll-lock');
     } else {
-      document.body.style.overflow = 'unset';
+      document.body.classList.remove('modal-scroll-lock');
     }
     return () => {
-      document.body.style.overflow = 'unset';
+      document.body.classList.remove('modal-scroll-lock');
     };
   }, [isOpen]);
 
@@ -39,8 +39,8 @@ const ProductDetailsModal: React.FC<ProductDetailsModalProps> = ({ isOpen, onClo
         aria-hidden="true"
       />
       
-      {/* Container Principal */}
-      <div className="relative bg-white rounded-2xl shadow-2xl w-full max-w-5xl overflow-hidden animate-fade-in-up flex flex-col md:flex-row max-h-[90vh] md:h-[85vh]">
+      {/* Container Principal - Height constraint important for mobile scroll */}
+      <div className="relative bg-white rounded-2xl shadow-2xl w-full max-w-5xl overflow-hidden animate-fade-in-up flex flex-col md:flex-row h-[90vh] md:h-[85vh]">
         
         {/* Seção Imagem (Esquerda) - BG White & Maximized Image */}
         <div className="w-full md:w-5/12 bg-white p-4 flex flex-col items-center justify-center border-b md:border-b-0 md:border-r border-gray-100 relative shrink-0 h-48 md:h-auto">
@@ -60,7 +60,7 @@ const ProductDetailsModal: React.FC<ProductDetailsModalProps> = ({ isOpen, onClo
         </div>
 
         {/* Seção Conteúdo (Direita) - Com Scroll Interno */}
-        <div className="w-full md:w-7/12 flex flex-col h-full bg-white relative">
+        <div className="w-full md:w-7/12 flex flex-col flex-1 min-h-0 bg-white relative">
             
             {/* Header Fixo */}
             <div className="p-5 md:p-6 border-b border-gray-100 flex justify-between items-start bg-white shrink-0 z-10">
@@ -89,7 +89,10 @@ const ProductDetailsModal: React.FC<ProductDetailsModalProps> = ({ isOpen, onClo
             {/* Conteúdo Scrollável (Descrição + CTA no final) */}
             <div 
               className="p-5 md:p-8 overflow-y-auto flex-1 custom-scrollbar text-sm text-gray-600 leading-relaxed bg-white overscroll-contain"
-              style={{ overscrollBehavior: 'contain' }}
+              style={{ 
+                overscrollBehavior: 'contain',
+                WebkitOverflowScrolling: 'touch' // Ensures smooth momentum scrolling on iOS
+              }}
             >
               
               <div className="bg-blue-50 border-l-4 border-blue-500 p-4 mb-6 rounded-r-lg">

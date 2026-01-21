@@ -10,7 +10,7 @@ interface ProductCardProps {
 const ProductCard: React.FC<ProductCardProps> = ({ product, onOpenModal }) => {
   return (
     <div 
-      className="group bg-white rounded-xl border border-gray-100 p-4 hover:shadow-xl hover:border-medical-200 transition-all duration-300 cursor-pointer flex flex-col h-full relative"
+      className="group/card bg-white rounded-xl border border-gray-100 p-4 hover:shadow-xl hover:border-medical-200 transition-all duration-300 cursor-pointer flex flex-col h-full relative"
       onClick={() => onOpenModal(product)}
     >
       {/* Image Area - White Background */}
@@ -18,7 +18,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, onOpenModal }) => {
         <img 
           src={product.imageUrl} 
           alt={product.name} 
-          className="max-h-full max-w-full object-contain transition-transform duration-500 group-hover:scale-105"
+          className="max-h-full max-w-full object-contain transition-transform duration-500 group-hover/card:scale-105"
         />
         {/* Tag Overlay if exists */}
         {product.tags && product.tags.length > 0 && (
@@ -40,7 +40,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, onOpenModal }) => {
         </div>
 
         {/* Full Name */}
-        <h3 className="text-sm font-bold text-medical-900 mb-1 leading-snug group-hover:text-medical-600 transition-colors">
+        <h3 className="text-sm font-bold text-medical-900 mb-1 leading-snug group-hover/card:text-medical-600 transition-colors">
           {product.name}
         </h3>
         

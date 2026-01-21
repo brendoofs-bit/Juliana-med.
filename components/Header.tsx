@@ -18,9 +18,6 @@ const Header: React.FC = () => {
                   <span className="text-2xl md:text-3xl font-extrabold tracking-tighter text-medical-800">
                     MEDICAL<span className="font-light">SAN</span>
                   </span>
-                  <span className="text-[8px] md:text-[10px] uppercase tracking-[0.3em] text-gray-400 w-full text-center">
-                    Technology
-                  </span>
                </div>
             </div>
 
