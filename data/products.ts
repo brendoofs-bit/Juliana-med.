@@ -29,7 +29,7 @@ export const products: Product[] = [
     description: 'Equipamento microcontrolado de laser de diodo para remoção de tatuagem, micropigmentação e rejuvenescimento.',
     subcategory: 'Estética Avançada',
     category: 'estetica',
-    imageUrl: 'https://res.cloudinary.com/doqw5aqcf/image/upload/v1769020006/equipamento-omer-smart_s2grpr.png',
+    imageUrl: 'https://res.cloudinary.com/doqw5aqcf/image/upload/v1774110620/novo-omer-smart-frontal_svkwkv.png',
     tags: ['Remoção de Tatuagem', 'Laserterapia Segura'],
     benefits: `
       <h4 class="font-bold mb-2 text-medical-800 uppercase">Tecnologia de Laser de Diodo Microcontrolada</h4>
@@ -84,27 +84,6 @@ export const products: Product[] = [
       </ul>
       
       <p class="text-gray-600 italic">A solução tecnológica ideal para quem busca eficiência em fotobiomodulação e contorno corporal.</p>
-    `
-  },
-  {
-    id: 'est-5',
-    name: 'Hyper Slim',
-    description: 'Equipamento de estimulação muscular por campo eletromagnético para fortalecimento e tonificação.',
-    subcategory: 'Estética Avançada',
-    category: 'estetica',
-    imageUrl: 'https://res.cloudinary.com/doqw5aqcf/image/upload/v1769021551/equipamento-hyper-slim_xwrayc.png',
-    tags: ['Tonificação Muscular', 'Contrações Supra Máximas'],
-    benefits: `
-      <h4 class="font-bold mb-2 text-medical-800 uppercase">Precisão e Resultados</h4>
-      <p class="mb-4 text-gray-600">O Hyper Slim é um sistema avançado da Medical San que utiliza a tecnologia de Campo Eletromagnético Pulsado (PEMF) para induzir contrações musculares intensas. Ao contrário do exercício físico comum, ele gera contrações supra máximas que aumentam o estresse e a carga de trabalho do músculo sem que ocorra adaptação, resultando em hipertrofia e tonificação acelerada.</p>
-      <h4 class="font-bold mb-2 text-medical-800 uppercase">Dupla Ação</h4>
-      <ul class="list-disc pl-5 space-y-2 mb-4 text-gray-600">
-        <li><strong>Ação Direta:</strong> Estimula impulsos que não dependem da função cerebral, agindo diretamente na placa mioneural.</li>
-        <li><strong>Versatilidade:</strong> Equipado com aplicadores anatômicos e planos para tratar diferentes áreas do corpo com total eficiência.</li>
-        <li><strong>Conformidade Médica:</strong> Equipamento microcontrolado e testado sob rigorosos padrões de biocompatibilidade e segurança elétrica.</li>
-      </ul>
-      
-      <p class="text-gray-600 italic">A escolha ideal para profissionais que buscam oferecer fortalecimento e definição muscular de alta performance.</p>
     `
   },
   {
@@ -345,7 +324,7 @@ export const products: Product[] = [
     description: 'Ultrassom microcontrolado de alta intensidade para tratamento de gordura localizada e flacidez.',
     subcategory: 'Estética Avançada',
     category: 'hof',
-    imageUrl: 'https://res.cloudinary.com/doqw5aqcf/image/upload/v1769024077/equipamento-ultramed-mpt_hkv766.png',
+    imageUrl: 'https://res.cloudinary.com/doqw5aqcf/image/upload/v1774112741/aparelho-ultramed-mpt-medicalsan_z1dobo.png',
     tags: ['Lifting Imediato', 'Lipo Sem Cortes'],
     benefits: `
       <h4 class="font-bold mb-2 text-medical-800 uppercase">Tecnologia HIFU MPT de Última Geração</h4>
@@ -400,6 +379,28 @@ export const products: Product[] = [
       </ul>
       
       <p class="text-gray-600 italic">Procedimento não invasivo com tecnologia microcontrolada para resultados de alta performance.</p>
+    `
+  },
+  {
+    id: 'hof-12',
+    name: 'Ultramed PRO',
+    description: 'Equipamento de ultrassom micro e macrofocado desenvolvido para o tratamento preciso de gordura localizada e flacidez',
+    subcategory: 'Estética Avançada',
+    category: 'hof',
+    imageUrl: 'https://res.cloudinary.com/doqw5aqcf/image/upload/v1774112559/aparelho-ultramed-pro-medicalsan_vzrguk.png',
+    tags: ['Lifting Não Invasivo', 'Redução de Medidas'],
+    benefits: `
+      <h4 class="font-bold mb-2 text-medical-800 uppercase">Tecnologia Ultramed PRO: Evolução em Ultrassom Micro e Macrofocado</h4>
+      <p class="mb-4 text-gray-600">O Ultramed PRO combina a potência das ondas de ultrassom com a versatilidade de uma ponteira pontual, permitindo intervenções detalhadas e precisas.
+      O equipamento emite energia que atravessa a pele sem lesionar a superfície, concentrando-se em profundidades específicas para estimular a contração tecidual e promover o rejuvenescimento.
+      <h4 class="font-bold mb-2 text-medical-800 uppercase">Versatilidade e Precisão</h4>
+      <ul class="list-disc pl-5 space-y-2 mb-4 text-gray-600">
+        <li><strong>Precisão em Áreas de Difícil Acesso:</strong> Graças ao seu aplicador pontual e design ergonômico, o equipamento permite realizar disparos estratégicos em regiões onde aplicadores convencionais têm dificuldade de alcançar.</li>
+        <li><strong>Múltiplas Profundidades de Atuação:</strong> Utiliza cartuchos modelo pen de 1,5mm, 3mm, 4,5mm e 8mm, adaptando-se tanto a tratamentos faciais quanto corporais de forma personalizada.</li>
+        <li><strong>Controle e Segurança Teórica:</strong> A tecnologia entrega energia exatamente onde é necessário, garantindo ao profissional controle total sobre a estratégia terapêutica e a profundidade da aplicação.</li>
+      </ul>
+      
+      <p class="text-gray-600 italic">Tecnologia de alta performance com disparos pontuais e precisos para resultados naturais e consistentes em procedimentos estéticos.</p>
     `
   }
 ];

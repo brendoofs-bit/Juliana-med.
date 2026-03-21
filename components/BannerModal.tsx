@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { X, MessageCircle, Tag } from 'lucide-react';
+import { trackLead } from '../src/utils/analytics';
 
 interface BannerModalProps {
   isOpen: boolean;
@@ -13,9 +14,21 @@ interface BannerModalProps {
 }
 
 const BannerModal: React.FC<BannerModalProps> = ({ isOpen, onClose, data }) => {
+  useEffect(() => {
+    if (isOpen) {
+      document.body.classList.add('modal-scroll-lock');
+    } else {
+      document.body.classList.remove('modal-scroll-lock');
+    }
+    return () => {
+      document.body.classList.remove('modal-scroll-lock');
+    };
+  }, [isOpen]);
+
   if (!isOpen || !data) return null;
 
   const handleWhatsAppRedirect = () => {
+    trackLead();
     const message = `Olá! Vi o banner promocional *${data.title}* no site e gostaria de saber mais sobre as condições especiais.`;
     const url = `https://wa.me/555180985851?text=${encodeURIComponent(message)}`;
     window.open(url, '_blank');

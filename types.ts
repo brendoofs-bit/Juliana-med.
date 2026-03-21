@@ -5,6 +5,7 @@ export interface Product {
   subcategory: string;
   category: 'estetica' | 'hof';
   imageUrl: string;
+  popupImageUrl?: string;
   benefits?: string; // HTML content for the modal
   tags?: string[]; // Ex: "Sob Encomenda", "Lançamento"
 }

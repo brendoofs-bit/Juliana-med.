@@ -6,24 +6,12 @@ const Footer: React.FC = () => {
     <footer className="bg-white pt-16 font-sans border-t border-gray-100">
       <div className="container mx-auto max-w-7xl px-4 text-center">
         
-        {/* Main Footer Links */}
+        {/* Footer Grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mb-16 justify-items-center">
           
-          {/* Column 1: Ajuda */}
+          {/* Column 1: Atendimento */}
           <div className="flex flex-col items-center">
-            <h4 className="text-gray-900 font-semibold mb-6 text-sm">Ajuda</h4>
-            <ul className="space-y-3 text-sm text-gray-500">
-              <li><a href="#" className="hover:text-medical-600">Dúvidas Frequentes</a></li>
-              <li><a href="#" className="hover:text-medical-600">Política de Frete</a></li>
-              <li><a href="#" className="hover:text-medical-600">Política de Privacidade</a></li>
-              <li><a href="#" className="hover:text-medical-600">Sobre nós</a></li>
-              <li><a href="#" className="hover:text-medical-600">Trocas e Devoluções</a></li>
-            </ul>
-          </div>
-
-           {/* Column 2: Atendimento */}
-           <div className="flex flex-col items-center">
-            <h4 className="text-gray-900 font-semibold mb-6 text-sm">Atendimento</h4>
+            <h4 className="text-gray-900 font-semibold mb-6 text-sm uppercase tracking-wider">Atendimento</h4>
             <div className="inline-flex items-center gap-2 bg-gray-100 px-4 py-2 rounded text-medical-800 text-sm font-medium">
                <Phone size={16} /> 0800 200 8022
             </div>
@@ -32,26 +20,11 @@ const Footer: React.FC = () => {
               08:00 às 18:00
             </p>
           </div>
-          
-          {/* Column 3: Siga nas Redes */}
+
+          {/* Column 2: Formas de pagamento */}
           <div className="flex flex-col items-center">
-              <h4 className="text-gray-900 font-semibold mb-6 text-sm">Siga nas Redes</h4>
-              <div className="flex gap-4 text-gray-600 justify-center">
-                <a href="#" className="hover:text-medical-600 transition-colors bg-gray-50 p-3 rounded-full"><Facebook size={24} /></a>
-                <a href="#" className="hover:text-medical-600 transition-colors bg-gray-50 p-3 rounded-full"><Instagram size={24} /></a>
-              </div>
-          </div>
-
-        </div>
-
-        {/* Security & Payment Row */}
-        <div className="border-t border-gray-100 py-10">
-          <div className="flex flex-col md:flex-row justify-center items-start md:items-center gap-12 md:gap-24">
-            
-            {/* Payment Methods */}
-            <div className="flex flex-col items-center w-full md:w-auto">
-              <h5 className="text-xs font-bold text-gray-900 mb-4 uppercase tracking-wider">Formas de pagamento</h5>
-              <div className="flex flex-wrap justify-center gap-6 text-gray-500">
+            <h5 className="text-gray-900 font-semibold mb-6 text-sm uppercase tracking-wider">Formas de pagamento</h5>
+            <div className="flex flex-wrap justify-center gap-6 text-gray-500">
                  {/* PIX */}
                  <div className="flex flex-col items-center gap-2" title="PIX">
                     <QrCode size={28} />
@@ -77,27 +50,26 @@ const Footer: React.FC = () => {
                     <Banknote size={28} />
                     <span className="text-[10px] font-medium">Depósito</span>
                  </div>
-              </div>
             </div>
-
-            {/* Security Certificates */}
-            <div className="flex flex-col items-center w-full md:w-auto">
-               <h5 className="text-xs font-bold text-gray-900 mb-4 uppercase tracking-wider">Segurança</h5>
-               <a 
-                 href="https://transparencyreport.google.com/safe-browsing/search" 
-                 target="_blank" 
-                 rel="noopener noreferrer"
-                 className="flex flex-col items-center gap-2 group"
-               >
-                  <img 
-                    src="https://res.cloudinary.com/doqw5aqcf/image/upload/v1769027153/selo-google-navegacao-segura_kcun8k.png" 
-                    alt="Google Navegação Segura" 
-                    className="w-32 object-contain hover:opacity-80 transition-opacity" 
-                  />
-               </a>
-            </div>
-
           </div>
+
+          {/* Column 3: Segurança */}
+          <div className="flex flex-col items-center">
+             <h5 className="text-gray-900 font-semibold mb-6 text-sm uppercase tracking-wider">Segurança</h5>
+             <a 
+               href="https://transparencyreport.google.com/safe-browsing/search" 
+               target="_blank" 
+               rel="noopener noreferrer"
+               className="flex flex-col items-center gap-2 group"
+             >
+                <img 
+                  src="https://res.cloudinary.com/doqw5aqcf/image/upload/v1769027153/selo-google-navegacao-segura_kcun8k.png" 
+                  alt="Google Navegação Segura" 
+                  className="w-32 object-contain hover:opacity-80 transition-opacity" 
+                />
+             </a>
+          </div>
+
         </div>
 
         {/* Copyright */}

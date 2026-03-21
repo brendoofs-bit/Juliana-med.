@@ -1,11 +1,12 @@
 import React from 'react';
+import { trackLead } from '../src/utils/analytics';
 
 const Header: React.FC = () => {
   return (
     <div className="w-full font-sans bg-white relative z-50 sticky top-0 shadow-sm transition-all duration-300">
       {/* Faixa de Urgência/Autoridade */}
       <div className="bg-medical-900 text-white text-[10px] md:text-xs py-2.5 px-4 text-center tracking-wide font-medium">
-        <p>🚀 <span className="font-bold text-action-cyan">OFERTA B2B:</span> Condições exclusivas de parcelamento para CNPJ neste mês.</p>
+        <p>🚀 Financiamento direto da fábrica com <span className="font-bold text-action-cyan uppercase">Frete grátis</span> para todo o Brasil.</p>
       </div>
 
       {/* Main Header */}
@@ -45,18 +46,24 @@ const Header: React.FC = () => {
 
             {/* CTA Header Desktop */}
             <div className="hidden md:block">
-               <a 
-                 href="https://wa.me/555180985851" 
-                 target="_blank"
+               <button 
+                 onClick={() => {
+                   trackLead();
+                   window.open("https://wa.me/555180985851", '_blank');
+                 }}
                  className="bg-green-500 hover:bg-green-600 text-white text-xs font-bold py-2.5 px-5 rounded-full uppercase tracking-wide transition-all shadow-md hover:shadow-lg flex items-center gap-2"
                >
                  Falar com Especialista
-               </a>
+               </button>
             </div>
             
              {/* Mobile Menu Icon (Simples) */}
              <div className="md:hidden text-gray-600">
-                <a href="#estetica" className="text-xs font-bold uppercase text-medical-600 border border-medical-100 px-3 py-1.5 rounded-lg bg-medical-50">
+                <a 
+                  href="#estetica" 
+                  onClick={trackLead}
+                  className="text-xs font-bold uppercase text-medical-600 border border-medical-100 px-3 py-1.5 rounded-lg bg-medical-50"
+                >
                   Ver Produtos
                 </a>
              </div>

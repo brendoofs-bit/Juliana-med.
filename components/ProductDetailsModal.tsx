@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { X, MessageCircle, FileText, Check } from 'lucide-react';
 import { Product } from '../types';
+import { trackLead } from '../src/utils/analytics';
 
 interface ProductDetailsModalProps {
   isOpen: boolean;
@@ -25,6 +26,7 @@ const ProductDetailsModal: React.FC<ProductDetailsModalProps> = ({ isOpen, onClo
   if (!isOpen || !product) return null;
 
   const handleWhatsAppRedirect = () => {
+    trackLead();
     const message = `Olá! Tenho interesse no equipamento *${product.name}*. Gostaria de receber a ficha técnica e condições de pagamento para CNPJ.`;
     const url = `https://wa.me/555180985851?text=${encodeURIComponent(message)}`;
     window.open(url, '_blank');
@@ -53,7 +55,7 @@ const ProductDetailsModal: React.FC<ProductDetailsModalProps> = ({ isOpen, onClo
            </div>
            
            <img 
-             src={product.imageUrl} 
+             src={product.popupImageUrl || product.imageUrl} 
              alt={product.name} 
              className="w-full h-full object-contain hover:scale-105 transition-transform duration-700 drop-shadow-lg"
            />

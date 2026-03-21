@@ -1,14 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { ChevronLeft, ChevronRight, CheckCircle2 } from 'lucide-react';
 import BannerModal from './BannerModal';
+import { trackLead } from '../src/utils/analytics';
 
 interface BannerData {
   title: string;
   subtitle?: string;
   description: string;
   imageUrl: string;
+  desktopImageUrl: string;
+  mobileImageUrl: string;
   promoText: string;
-  gradient: string;
   bullets?: string[];
 }
 
@@ -18,6 +20,7 @@ const Hero: React.FC = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
 
   const handleBannerClick = (data: BannerData) => {
+    trackLead();
     setSelectedBanner(data);
     setIsBannerModalOpen(true);
   };
@@ -29,58 +32,97 @@ const Hero: React.FC = () => {
 
   // COPYWRITING DE ALTA CONVERSÃO
   const omerData: BannerData = {
-    title: 'LUCRATIVIDADE IMEDIATA',
-    subtitle: 'OMER SMART: O FIM DAS TATUAGENS INDESEJADAS',
-    promoText: 'Tecnologia Q-Switched Acessível',
-    description: 'Entre no mercado que mais cresce na estética. O Omer Smart oferece a tecnologia Nd:YAG Q-Switched para remoção de tatuagens e micropigmentação com o melhor custo-benefício do Brasil. Payback estimado em menos de 6 meses.',
-    imageUrl: 'https://medicalsan.com.br/wp-content/uploads/2022/07/Omer-Smart.png',
-    gradient: 'from-[#1a0b40] via-[#2d1b69] to-[#050505]',
-    bullets: ['Remoção de Tatuagem', 'Black Peel (Hollywood)', 'Retorno Financeiro Rápido']
+    title: 'NOVO OMER LASER 3D',
+    subtitle: 'PORTÁTIL E EFICIENTE',
+    promoText: 'Tecnologia de Ponta',
+    description: 'A nova geração do laser 3D portátil, unindo potência e praticidade para sua clínica.',
+    imageUrl: 'https://res.cloudinary.com/doqw5aqcf/image/upload/v1774108155/novo-omer-laser-3d-portatil_i624q5.png',
+    desktopImageUrl: 'https://res.cloudinary.com/doqw5aqcf/image/upload/v1774108155/novo-omer-laser-3d-portatil_i624q5.png',
+    mobileImageUrl: 'https://res.cloudinary.com/doqw5aqcf/image/upload/v1774108661/novo-omer-laser-3d-mobile_yrmevb.png',
+    bullets: ['Portátil', 'Alta Potência', 'Resultados Rápidos']
+  };
+
+  const ultramedDataCarousel: BannerData = {
+    title: 'ULTRAMED',
+    subtitle: 'TECNOLOGIA AVANÇADA',
+    promoText: 'Lifting Sem Cirurgia',
+    description: 'Ultrassom micro e macrofocado de alta performance.',
+    imageUrl: 'https://res.cloudinary.com/doqw5aqcf/image/upload/v1774108155/ultramed_xpmjhj.png',
+    desktopImageUrl: 'https://res.cloudinary.com/doqw5aqcf/image/upload/v1774108155/ultramed_xpmjhj.png',
+    mobileImageUrl: 'https://res.cloudinary.com/doqw5aqcf/image/upload/v1774108661/ultramed-mobile_ykrall.png',
+    bullets: ['Lifting', 'Sem Cortes', 'Resultados Imediatos']
+  };
+
+  const hegonData: BannerData = {
+    title: 'HEGON LASER CO2',
+    subtitle: 'FRACIONADO PREMIUM',
+    promoText: 'Rejuvenescimento Total',
+    description: 'Laser de CO2 fracionado para rejuvenescimento e saúde íntima.',
+    imageUrl: 'https://res.cloudinary.com/doqw5aqcf/image/upload/v1774108155/hegon-laser-co2-fracionado_abfluk.png',
+    desktopImageUrl: 'https://res.cloudinary.com/doqw5aqcf/image/upload/v1774108155/hegon-laser-co2-fracionado_abfluk.png',
+    mobileImageUrl: 'https://res.cloudinary.com/doqw5aqcf/image/upload/v1774108661/hegon-laser-co2-mobile_vqjgmt.png',
+    bullets: ['Rejuvenescimento', 'Saúde Íntima', 'Alta Precisão']
   };
 
   const hakonData: BannerData = {
-    title: 'AUMENTE SEU FATURAMENTO',
-    subtitle: 'HAKON 4D: A EPILAÇÃO DEFINITIVA',
+    title: 'HAKON LASER',
+    subtitle: 'EPILAÇÃO PREMIUM 4D',
     promoText: 'Atenda Todos os Fototipos',
-    description: 'Não perca mais pacientes por conta do tom de pele. O Hakon 4D combina 4 comprimentos de onda, permitindo tratar desde peles claras até negras com segurança total e sem dor. A ferramenta definitiva para escalar sua agenda.',
-    imageUrl: 'https://medicalsan.com.br/wp-content/uploads/2022/07/Hakon-1.png',
-    gradient: 'from-[#3d2306] via-[#694b1b] to-[#1a1a1a]',
-    bullets: ['4 Comprimentos de Onda', 'Sem Dor (Ponteira Ice)', 'Sessões 2x Mais Rápidas']
+    description: 'A ferramenta definitiva para escalar sua agenda com epilação definitiva.',
+    imageUrl: 'https://res.cloudinary.com/doqw5aqcf/image/upload/v1774108155/hakon-laser-para-epilacao-premium_omz2vq.png',
+    desktopImageUrl: 'https://res.cloudinary.com/doqw5aqcf/image/upload/v1774108155/hakon-laser-para-epilacao-premium_omz2vq.png',
+    mobileImageUrl: 'https://res.cloudinary.com/doqw5aqcf/image/upload/v1774108661/hakon-laser-epilcacao-premium-4d-mobile_ekn4kn.png',
+    bullets: ['4 Comprimentos de Onda', 'Sem Dor', 'Sessões Rápidas']
   };
 
-  const mainSlides = [omerData, hakonData];
+  const criolipoliseData: BannerData = {
+    title: 'CRIOLIPÓLISE',
+    subtitle: 'TECNOLOGIA AVANÇADA',
+    promoText: 'Redução de Gordura',
+    description: 'Tecnologia avançada para redução de gordura localizada.',
+    imageUrl: 'https://res.cloudinary.com/doqw5aqcf/image/upload/v1774108155/tecnologia-avancada-em-criolpolise_ft9zv9.png',
+    desktopImageUrl: 'https://res.cloudinary.com/doqw5aqcf/image/upload/v1774108155/tecnologia-avancada-em-criolpolise_ft9zv9.png',
+    mobileImageUrl: 'https://res.cloudinary.com/doqw5aqcf/image/upload/v1774108662/tecnologia-avancada-criolpolise-mobile_ayhwmt.png',
+    bullets: ['Redução de Gordura', 'Não Invasivo', 'Resultados Seguros']
+  };
+
+  const mainSlides = [omerData, ultramedDataCarousel, hegonData, hakonData, criolipoliseData];
 
   // Dados para banners secundários
-  const ultramedData: BannerData = {
+  const liftendoData: BannerData = {
+    title: 'LIFTENDO',
+    promoText: 'A Era do Endolaser',
+    description: 'Resultados cirúrgicos no consultório.',
+    imageUrl: 'https://res.cloudinary.com/doqw5aqcf/image/upload/v1774109170/liftendo-desktop_up5n4l.png',
+    desktopImageUrl: 'https://res.cloudinary.com/doqw5aqcf/image/upload/v1774109170/liftendo-desktop_up5n4l.png',
+    mobileImageUrl: 'https://res.cloudinary.com/doqw5aqcf/image/upload/v1774118758/liftendo-mobile_s9ir45.png',
+  };
+
+  const ptolomeuData: BannerData = {
+    title: 'PTOLOMEU',
+    promoText: 'RF Microagulhada',
+    description: 'Rejuvenescimento e tratamento de flacidez.',
+    imageUrl: 'https://res.cloudinary.com/doqw5aqcf/image/upload/v1774109170/ptolomeu-desktop_x1nw1q.png',
+    desktopImageUrl: 'https://res.cloudinary.com/doqw5aqcf/image/upload/v1774109170/ptolomeu-desktop_x1nw1q.png',
+    mobileImageUrl: 'https://res.cloudinary.com/doqw5aqcf/image/upload/v1774118758/ptolomeu-mobile_rpkbro.png',
+  };
+
+  const ultramedMptData: BannerData = {
     title: 'ULTRAMED MPT',
     promoText: 'Lifting Sem Cirurgia',
-    description: 'Ultrassom Micro e Macrofocado.',
-    imageUrl: 'https://medicalsan.com.br/wp-content/uploads/2022/07/Ultramed-1.png',
-    gradient: ''
+    description: 'Ultrassom micro e macrofocado.',
+    imageUrl: 'https://res.cloudinary.com/doqw5aqcf/image/upload/v1774109170/ultramed-mpt-desktop_r6vf1f.png',
+    desktopImageUrl: 'https://res.cloudinary.com/doqw5aqcf/image/upload/v1774109170/ultramed-mpt-desktop_r6vf1f.png',
+    mobileImageUrl: 'https://res.cloudinary.com/doqw5aqcf/image/upload/v1774118758/ultramed-mobile_xhp6kt.png',
   };
 
   const velaryanData: BannerData = {
     title: 'VELARYAN',
     promoText: 'Mãos Livres, Lucro Alto',
     description: 'Laser estacionário para emagrecimento.',
-    imageUrl: 'https://medicalsan.com.br/wp-content/uploads/2022/07/Velaryan-1.png',
-    gradient: ''
-  };
-
-  const magniData: BannerData = {
-    title: 'MAGNI',
-    promoText: 'Corporal Completo',
-    description: 'Tecnologia híbrida.',
-    imageUrl: 'https://medicalsan.com.br/wp-content/uploads/2022/07/Magni-1.png',
-    gradient: ''
-  };
-
-  const liftendoData: BannerData = {
-    title: 'LIFTENDO',
-    promoText: 'A Era do Endolaser',
-    description: 'Resultados cirúrgicos no consultório.',
-    imageUrl: 'https://medicalsan.com.br/wp-content/uploads/2022/07/LiftEndo.png',
-    gradient: ''
+    imageUrl: 'https://res.cloudinary.com/doqw5aqcf/image/upload/v1774109170/velaryan-desktop_nltbnp.png',
+    desktopImageUrl: 'https://res.cloudinary.com/doqw5aqcf/image/upload/v1774109170/velaryan-desktop_nltbnp.png',
+    mobileImageUrl: 'https://res.cloudinary.com/doqw5aqcf/image/upload/v1774118758/velaryan-mobile_dho64i.png',
   };
 
   // Carousel Logic
@@ -116,55 +158,20 @@ const Hero: React.FC = () => {
             className="relative w-full rounded-2xl overflow-hidden shadow-2xl h-[400px] md:h-[500px] mb-8 group cursor-pointer transition-transform duration-500 hover:scale-[1.005]" 
             onClick={() => handleBannerClick(mainSlides[currentSlide])}
           >
-            {/* Background Gradient */}
-            <div className={`absolute inset-0 bg-gradient-to-r ${mainSlides[currentSlide].gradient} z-0`}></div>
-            
-            {/* Efeito de brilho de fundo */}
-            <div className="absolute top-0 right-0 w-2/3 h-full bg-white/5 skew-x-12 blur-3xl rounded-full mix-blend-overlay"></div>
-
-            {/* Imagem de Fundo */}
+            {/* Imagem Desktop */}
             <img 
-               key={currentSlide} 
-               src={mainSlides[currentSlide].imageUrl}
-               className="absolute right-0 bottom-0 h-[85%] md:h-[105%] w-auto object-contain md:mr-10 z-10 animate-fade-in drop-shadow-[0_20px_50px_rgba(0,0,0,0.5)]" 
+               key={`desktop-${currentSlide}`} 
+               src={mainSlides[currentSlide].desktopImageUrl}
+               className="hidden md:block absolute inset-0 w-full h-full object-cover z-10 animate-fade-in" 
                alt={mainSlides[currentSlide].title}
             />
-
-            {/* Texto Persuasivo */}
-            <div className="absolute inset-0 z-20 flex flex-col justify-center px-6 md:px-20 text-white max-w-3xl">
-              <span className="inline-block bg-action-cyan text-medical-900 text-[10px] md:text-xs font-bold px-3 py-1 rounded mb-4 w-fit animate-slide-up">
-                 {mainSlides[currentSlide].promoText.toUpperCase()}
-              </span>
-              
-              <h2 className="text-3xl md:text-6xl font-extrabold mb-2 uppercase tracking-tight leading-[0.9] animate-slide-up">
-                {mainSlides[currentSlide].title}
-              </h2>
-              
-              <h3 className="text-lg md:text-2xl font-light text-gray-200 mb-6 animate-slide-up-delay">
-                 {mainSlides[currentSlide].subtitle}
-              </h3>
-
-              {/* Bullets de Benefícios (Desktop) */}
-              {mainSlides[currentSlide].bullets && (
-                <div className="hidden md:flex flex-col gap-2 mb-8 animate-slide-up-delay">
-                  {mainSlides[currentSlide].bullets.map((bullet, i) => (
-                    <div key={i} className="flex items-center gap-2 text-sm font-medium text-gray-100">
-                      <CheckCircle2 size={16} className="text-action-cyan" />
-                      {bullet}
-                    </div>
-                  ))}
-                </div>
-              )}
-
-              <button 
-                className="w-full md:w-fit bg-[#25D366] hover:bg-[#1ebc57] text-white font-bold py-4 px-8 rounded-xl transition-all text-sm md:text-base tracking-wider uppercase z-30 shadow-[0_0_20px_rgba(37,211,102,0.4)] flex items-center justify-center gap-2 hover:-translate-y-1"
-              >
-                Solicitar Orçamento VIP
-              </button>
-              <p className="mt-3 text-[10px] text-gray-400 md:text-gray-300 opacity-80 animate-pulse">
-                *Últimas unidades com IPI reduzido.
-              </p>
-            </div>
+            {/* Imagem Mobile */}
+            <img 
+               key={`mobile-${currentSlide}`} 
+               src={mainSlides[currentSlide].mobileImageUrl}
+               className="block md:hidden absolute inset-0 w-full h-full object-cover z-10 animate-fade-in" 
+               alt={mainSlides[currentSlide].title}
+            />
 
             {/* Navigation Arrows */}
             <button 
@@ -198,54 +205,38 @@ const Hero: React.FC = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
              {/* Card 1 */}
              <div 
-               className="relative rounded-xl overflow-hidden h-40 bg-gradient-to-br from-gray-900 to-gray-800 p-6 flex flex-col justify-center cursor-pointer group shadow-lg border-b-4 border-action-cyan"
-               onClick={() => handleBannerClick(ultramedData)}
+               className="relative rounded-xl overflow-hidden h-[160px] w-full md:h-40 bg-gray-100 flex flex-col justify-center cursor-pointer group shadow-lg"
+               onClick={() => handleBannerClick(liftendoData)}
              >
-                <div className="z-10 relative">
-                  <span className="text-[10px] text-action-cyan font-bold uppercase">Lifting HIFU</span>
-                  <h3 className="text-xl font-black text-white leading-none mt-1 mb-2 group-hover:text-action-cyan transition-colors">ULTRAMED<br/>MPT</h3>
-                  <p className="text-[10px] text-gray-400">Clique para ver detalhes</p>
-                </div>
-                <img src="https://medicalsan.com.br/wp-content/uploads/2022/07/Ultramed-1.png" className="absolute right-[-20px] bottom-[-20px] h-32 object-contain opacity-40 group-hover:opacity-100 group-hover:scale-110 transition-all duration-500" alt="Ultramed"/>
+                <img src={liftendoData.desktopImageUrl} className="hidden md:absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" alt="Liftendo Desktop"/>
+                <img src={liftendoData.mobileImageUrl} className="block md:absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" alt="Liftendo Mobile"/>
              </div>
 
              {/* Card 2 */}
              <div 
-               className="relative rounded-xl overflow-hidden h-40 bg-gradient-to-br from-medical-900 to-medical-800 p-6 flex flex-col justify-center cursor-pointer group shadow-lg border-b-4 border-medical-500"
-               onClick={() => handleBannerClick(velaryanData)}
+               className="relative rounded-xl overflow-hidden h-[160px] w-full md:h-40 bg-gray-100 flex flex-col justify-center cursor-pointer group shadow-lg"
+               onClick={() => handleBannerClick(ptolomeuData)}
              >
-                <div className="z-10 relative">
-                  <span className="text-[10px] text-medical-300 font-bold uppercase">Emagrecimento</span>
-                  <h3 className="text-xl font-black text-white leading-none mt-1 mb-2 group-hover:text-medical-300 transition-colors">VELARYAN<br/>LASER</h3>
-                  <p className="text-[10px] text-gray-400">Clique para ver detalhes</p>
-                </div>
-                <img src="https://medicalsan.com.br/wp-content/uploads/2022/07/Velaryan-1.png" className="absolute right-[-20px] bottom-[-20px] h-32 object-contain opacity-40 group-hover:opacity-100 group-hover:scale-110 transition-all duration-500" alt="Velaryan"/>
+                <img src={ptolomeuData.desktopImageUrl} className="hidden md:absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" alt="Ptolomeu Desktop"/>
+                <img src={ptolomeuData.mobileImageUrl} className="block md:absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" alt="Ptolomeu Mobile"/>
              </div>
 
              {/* Card 3 */}
              <div 
-               className="relative rounded-xl overflow-hidden h-40 bg-gradient-to-br from-gray-800 to-gray-700 p-6 flex flex-col justify-center cursor-pointer group shadow-lg border-b-4 border-purple-500"
-               onClick={() => handleBannerClick(magniData)}
+               className="relative rounded-xl overflow-hidden h-[160px] w-full md:h-40 bg-gray-100 flex flex-col justify-center cursor-pointer group shadow-lg"
+               onClick={() => handleBannerClick(ultramedMptData)}
              >
-                <div className="z-10 relative">
-                  <span className="text-[10px] text-purple-300 font-bold uppercase">Corporal</span>
-                  <h3 className="text-xl font-black text-white leading-none mt-1 mb-2 group-hover:text-purple-300 transition-colors">MAGNI<br/>HÍBRIDO</h3>
-                  <p className="text-[10px] text-gray-400">Clique para ver detalhes</p>
-                </div>
-                <img src="https://medicalsan.com.br/wp-content/uploads/2022/07/Magni-1.png" className="absolute right-[-20px] bottom-[-20px] h-32 object-contain opacity-40 group-hover:opacity-100 group-hover:scale-110 transition-all duration-500" alt="Magni"/>
+                <img src={ultramedMptData.desktopImageUrl} className="hidden md:absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" alt="Ultramed MPT Desktop"/>
+                <img src={ultramedMptData.mobileImageUrl} className="block md:absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" alt="Ultramed MPT Mobile"/>
              </div>
 
              {/* Card 4 */}
              <div 
-               className="relative rounded-xl overflow-hidden h-40 bg-gradient-to-br from-[#1E3A5F] to-[#0f1d30] p-6 flex flex-col justify-center cursor-pointer group shadow-lg border-b-4 border-orange-500"
-               onClick={() => handleBannerClick(liftendoData)}
+               className="relative rounded-xl overflow-hidden h-[160px] w-full md:h-40 bg-gray-100 flex flex-col justify-center cursor-pointer group shadow-lg"
+               onClick={() => handleBannerClick(velaryanData)}
              >
-                <div className="z-10 relative">
-                  <span className="text-[10px] text-orange-300 font-bold uppercase">Endolaser</span>
-                  <h3 className="text-xl font-black text-white leading-none mt-1 mb-2 group-hover:text-orange-300 transition-colors">LIFTENDO<br/>SUBDÉRMICO</h3>
-                  <p className="text-[10px] text-gray-400">Clique para ver detalhes</p>
-                </div>
-                <img src="https://medicalsan.com.br/wp-content/uploads/2022/07/LiftEndo.png" className="absolute right-[-20px] bottom-[-20px] h-32 object-contain opacity-40 group-hover:opacity-100 group-hover:scale-110 transition-all duration-500" alt="LiftEndo"/>
+                <img src={velaryanData.desktopImageUrl} className="hidden md:absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" alt="Velaryan Desktop"/>
+                <img src={velaryanData.mobileImageUrl} className="block md:absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" alt="Velaryan Mobile"/>
              </div>
           </div>
 

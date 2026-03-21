@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { X, CheckCircle } from 'lucide-react';
 import { Product } from '../types';
+import { trackLead } from '../src/utils/analytics';
 
 interface QuoteModalProps {
   isOpen: boolean;
@@ -17,6 +18,17 @@ const QuoteModal: React.FC<QuoteModalProps> = ({ isOpen, onClose, product }) => 
   });
   const [isSubmitted, setIsSubmitted] = useState(false);
 
+  useEffect(() => {
+    if (isOpen) {
+      document.body.classList.add('modal-scroll-lock');
+    } else {
+      document.body.classList.remove('modal-scroll-lock');
+    }
+    return () => {
+      document.body.classList.remove('modal-scroll-lock');
+    };
+  }, [isOpen]);
+
   if (!isOpen) return null;
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -25,6 +37,7 @@ const QuoteModal: React.FC<QuoteModalProps> = ({ isOpen, onClose, product }) => 
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    trackLead();
     
     // Simulate sending email to brendoofs@gmail.com
     console.log(`Sending quote for ${product?.name} to brendoofs@gmail.com`, formData);
