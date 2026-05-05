@@ -20,6 +20,10 @@ const Hero: React.FC = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
 
   const handleBannerClick = (data: BannerData) => {
+    if (data.title === 'HAKON LASER') {
+      window.location.href = '/hakon/index.html';
+      return;
+    }
     trackLead();
     setSelectedBanner(data);
     setIsBannerModalOpen(true);

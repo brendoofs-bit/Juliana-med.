@@ -1,0 +1,969 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hakon - Alta Performance</title>
+    <!-- CSS Link -->
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <!--
+      NAVBAR
+    -->
+    <nav class="navbar__container" id="navbar">
+        <div class="navbar__inner">
+            <a href="#" class="navbar__logo">
+                <img src="https://via.placeholder.com/150x40/FAFAF8/B8935A?text=MEDICAL+SAN" alt="Medical San">
+            </a>
+            
+            <div class="navbar__links">
+                <a href="#showcase" class="navbar__link">Produto</a>
+                <a href="#process" class="navbar__link">Como Funciona</a>
+                <a href="#specs" class="navbar__link">Especificações</a>
+                <a href="#testimonials" class="navbar__link">Depoimentos</a>
+                <a href="#pricing" class="navbar__link">Investimento</a>
+            </div>
+
+            <a href="#pricing" class="navbar__cta">Solicitar Proposta</a>
+
+            <!-- Mobile Menu Toggle -->
+            <button class="navbar__hamburger" id="navToggle" aria-label="Abrir Menu">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+            </button>
+        </div>
+
+        <!-- Mobile Drawer -->
+        <div class="navbar__mobile-drawer" id="mobileDrawer">
+            <div class="navbar__drawer-header">
+                <img src="https://via.placeholder.com/150x40/FAFAF8/B8935A?text=MEDICAL+SAN" alt="Medical San" class="navbar__drawer-logo">
+                <button class="navbar__drawer-close" id="navClose" aria-label="Fechar Menu">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                </button>
+            </div>
+            <div class="navbar__drawer-links">
+                <a href="#showcase" class="navbar__drawer-link">Produto</a>
+                <a href="#process" class="navbar__drawer-link">Como Funciona</a>
+                <a href="#specs" class="navbar__drawer-link">Especificações</a>
+                <a href="#testimonials" class="navbar__drawer-link">Depoimentos</a>
+                <a href="#pricing" class="navbar__drawer-link">Investimento</a>
+                <a href="#pricing" class="navbar__cta navbar__drawer-cta">Solicitar Proposta</a>
+            </div>
+        </div>
+        <div class="navbar__overlay" id="navOverlay"></div>
+    </nav>
+
+    <!--
+      HERO SECTION
+      Section baseada no Design System: Medical San
+      Cores: Off-white quente, detalhes em dourado
+      Tipografia: Cormorant Garamond (H1), DM Sans (Body), Josefin Sans (Accents)
+      Layout: 2 colunas (desktop), flex direcional (mobile).
+    -->
+    <section id="hero" class="hero__section">
+        
+        <!-- Fundo com noise (grain) texture via CSS -->
+        <div class="hero__bg-noise"></div>
+        
+        <!-- Decoração Geométrica Dourada Abstrata -->
+        <div class="hero__bg-shape"></div>
+
+        <div class="hero__container">
+            
+            <!-- PAINEL ESQUERDO: Conteúdo (Texto e CTAs) -->
+            <div class="hero__content">
+                <!-- Label Pill -->
+                <div class="hero__pill">Laser Corporal · Alta Potência</div>
+                
+                <!-- H1 - Nome do Produto -->
+                <h1 class="hero__title">HAKON LASER 4D</h1>
+                
+                <!-- Subtítulo / Frase de Impacto -->
+                <p class="hero__subtitle">A ferramenta definitiva para escalar sua agenda com epilação premium.</p>
+                
+                <!-- Divider (linha fina dourada) -->
+                <hr class="hero__divider" />
+                
+                <!-- Benefits Bullets -->
+                <ul class="hero__benefits">
+                    <li class="hero__benefit-item">
+                        <svg class="hero__benefit-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M20 6L9 17l-5-5" />
+                        </svg>
+                        4 comprimentos de onda inovadores
+                    </li>
+                    <li class="hero__benefit-item">
+                        <svg class="hero__benefit-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M20 6L9 17l-5-5" />
+                        </svg>
+                        Atende todos os fototipos (I a VI)
+                    </li>
+                    <li class="hero__benefit-item">
+                        <svg class="hero__benefit-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M20 6L9 17l-5-5" />
+                        </svg>
+                        Ponteira Ice 360º para máxima segurança e conforto
+                    </li>
+                </ul>
+
+                <!-- CTAs -->
+                <div class="hero__actions">
+                    <div class="hero__buttons">
+                        <a href="https://wa.me/555180985851" class="hero__cta-primary">Solicitar Proposta Comercial</a>
+                        <a href="#specs" class="hero__cta-secondary">Ver Especificações Técnicas</a>
+                    </div>
+                    <p class="hero__phone-text">
+                        <svg class="hero__phone-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+                        </svg>
+                        Ou ligue: 0800 200 8022
+                    </p>
+                </div>
+            </div>
+
+            <!-- PAINEL DIREITO: Imagem (Visual) -->
+            <div class="hero__visual">
+                <div class="hero__image-wrapper">
+                    <img src="https://res.cloudinary.com/doqw5aqcf/image/upload/v1774108155/hakon-laser-para-epilacao-premium_omz2vq.png" alt="Hakon Laser" class="hero__image" />
+                    
+                    <!-- Brilho no chão para simular reflexo -->
+                    <div class="hero__image-glow"></div>
+
+                    <!-- Badge Superior Direito -->
+                    <div class="hero__badge hero__badge--tr">
+                        <svg class="hero__badge-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="2" y="5" width="20" height="14" rx="2" />
+                            <line x1="2" y1="10" x2="22" y2="10" />
+                        </svg>
+                        <span>12x sem juros</span>
+                    </div>
+
+                    <!-- Badge Inferior Esquerdo -->
+                    <div class="hero__badge hero__badge--bl">
+                        <div class="hero__stars">
+                            <!-- 5 estrelas sólidas -->
+                            <svg viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                            <svg viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                            <svg viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                            <svg viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                            <svg viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                        </div>
+                        <span>Mais de 1.200 clínicas equipadas</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!--
+      SOCIAL PROOF BAR
+      Section baseada no Design System: Medical San
+      Barra horizontal de prova social com ícones e contadores animados.
+    -->
+    <section id="social-bar" class="social-bar__section">
+        <div class="social-bar__container">
+            <!-- Item 1: Counter -->
+            <div class="social-bar__item">
+                <div class="social-bar__number"><span class="counter-val" data-target="1200">0</span></div>
+                <div class="social-bar__label">Clínicas equipadas no Brasil</div>
+            </div>
+            
+            <div class="social-bar__divider"></div>
+
+            <!-- Item 2: Icon + Text -->
+            <div class="social-bar__item">
+                <svg class="social-bar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                </svg>
+                <div class="social-bar__text">Garantia de 3 anos inclusa</div>
+            </div>
+
+            <div class="social-bar__divider"></div>
+
+            <!-- Item 3: Icon + Text -->
+            <div class="social-bar__item">
+                <svg class="social-bar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="8" r="7"/>
+                    <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/>
+                </svg>
+                <div class="social-bar__text">Certificado ANVISA / INMETRO</div>
+            </div>
+
+            <div class="social-bar__divider"></div>
+
+            <!-- Item 4: Counter -->
+            <div class="social-bar__item">
+                <div class="social-bar__number">+ <span class="counter-val" data-target="15000">0</span></div>
+                <div class="social-bar__label">Procedimentos realizados</div>
+            </div>
+
+            <div class="social-bar__divider"></div>
+
+            <!-- Item 5: Icon + Text -->
+            <div class="social-bar__item">
+                <svg class="social-bar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                    <path d="M14.05 2a9 9 0 0 1 8 7.94"/>
+                    <path d="M14.05 6A5 5 0 0 1 18 10"/>
+                </svg>
+                <div class="social-bar__text">Suporte técnico especializado 24/7</div>
+            </div>
+        </div>
+    </section>
+
+    <!--
+      GALLERY SECTION
+      Section baseada no Design System: Medical San
+      Galeria de produto com grid criativo (desktop), lightbox e slider-snap nativo (mobile).
+    -->
+    <section id="gallery" class="gallery__section">
+        <div class="gallery__container">
+            <div class="gallery__header">
+                <h2 class="gallery__title">Design & Sofisticação</h2>
+                <div class="gallery__tabs">
+                    <button class="gallery__tab active" data-filter="produto">Produto</button>
+                    <button class="gallery__tab" data-filter="clinica">Em Clínica</button>
+                    <button class="gallery__tab" data-filter="uso">Em Uso</button>
+                </div>
+            </div>
+
+            <!-- Desktop View -->
+            <div class="gallery__desktop">
+                <div class="gallery__grid">
+                    <div class="gallery__main">
+                        <div class="gallery__badge">
+                            📍 Foto Real — Clínica Parceira
+                        </div>
+                        <img src="" alt="Vista Principal" class="gallery__main-img" id="galleryMainImg" />
+                    </div>
+                    <div class="gallery__side">
+                        <div class="gallery__side-item">
+                            <img src="" alt="Vista Fundo 1" class="gallery__side-img" id="gallerySide1" />
+                        </div>
+                        <div class="gallery__side-item">
+                            <img src="" alt="Vista Fundo 2" class="gallery__side-img" id="gallerySide2" />
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery__thumbnails" id="galleryThumbnails">
+                    <!-- Gerado via JS dinamicamente com base nas tabs -->
+                </div>
+            </div>
+
+            <!-- Mobile View -->
+            <div class="gallery__mobile">
+                <div class="gallery__slider" id="galleryMobileSlider">
+                    <!-- Gerado via JS dinamicamente com base nas tabs -->
+                </div>
+                <div class="gallery__pagination" id="galleryMobilePagination">
+                    <!-- Gerado via JS -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- LIGHTBOX OVERLAY -->
+    <div class="gallery__lightbox" id="galleryLightbox">
+        <button class="gallery__lightbox-close" id="lightboxClose" aria-label="Fechar Galeria">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+        </button>
+        <button class="gallery__lightbox-nav gallery__lightbox-prev" id="lightboxPrev" aria-label="Anterior">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
+        </button>
+        <div class="gallery__lightbox-content">
+            <img src="" alt="Zoom" class="gallery__lightbox-img" id="lightboxImg" />
+        </div>
+        <button class="gallery__lightbox-nav gallery__lightbox-next" id="lightboxNext" aria-label="Próximo">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+        </button>
+    </div>
+
+    <!--
+      BENEFITS SECTION
+    -->
+    <section id="benefits" class="benefits__section content-section">
+        <div class="benefits__container">
+            <div class="benefits__header">
+                <span class="section-label">POR QUE ESCOLHER</span>
+                <h2 class="section-title">O que o Hakon transforma na sua clínica</h2>
+                <p class="section-subtitle">Resultados excepcionais para os seus pacientes com máxima rentabilidade e segurança para o seu negócio.</p>
+            </div>
+
+            <div class="benefits__aux">
+                <div class="benefits__aux-image-wrapper">
+                    <img src="https://res.cloudinary.com/doqw5aqcf/image/upload/v1774108155/hakon-laser-para-epilacao-premium_omz2vq.png" alt="Hakon em uso na clínica" class="benefits__aux-img" />
+                    <div class="benefits__aux-overlay"></div>
+                    <div class="benefits__aux-caption">Hakon Laser — Alta Performance Clínica</div>
+                </div>
+            </div>
+
+            <div class="benefits__grid">
+                <!-- Card 1 -->
+                <div class="benefits__card">
+                    <svg class="benefits__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                        <polyline points="22 4 12 14.01 9 11.01"/>
+                    </svg>
+                    <h3 class="benefits__card-title">Resultados Visíveis na 1ª Sessão</h3>
+                    <p class="benefits__card-desc">Redução progressiva e duradoura de pelos com eficácia comprovada desde a primeira aplicação clínica.</p>
+                </div>
+                <!-- Card 2 -->
+                <div class="benefits__card">
+                    <svg class="benefits__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="12" y1="1" x2="12" y2="23"/>
+                        <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+                    </svg>
+                    <h3 class="benefits__card-title">ROI Acelerado</h3>
+                    <p class="benefits__card-desc">Equipamento de alta procura e operação otimizada, permitindo recuperar o investimento em poucos meses de uso.</p>
+                </div>
+                <!-- Card 3 -->
+                <div class="benefits__card">
+                    <svg class="benefits__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <polygon points="12 2 2 7 12 12 22 7 12 2"/>
+                        <polyline points="2 17 12 22 22 17"/>
+                        <polyline points="2 12 12 17 22 12"/>
+                    </svg>
+                    <h3 class="benefits__card-title">Para Todos os Fototipos</h3>
+                    <p class="benefits__card-desc">Assegure a epilação eficaz e segura de fototipos I ao VI devido ao sistema inteligente e inovador 4D.</p>
+                </div>
+                <!-- Card 4 -->
+                <div class="benefits__card">
+                    <svg class="benefits__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                    </svg>
+                    <h3 class="benefits__card-title">Segurança Clínica Comprovada</h3>
+                    <p class="benefits__card-desc">Certificações de operação rigorosas, sistemas de resfriamento contínuo e total confiabilidade ANVISA e INMETRO.</p>
+                </div>
+                <!-- Card 5 -->
+                <div class="benefits__card">
+                    <svg class="benefits__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                    </svg>
+                    <h3 class="benefits__card-title">Treinamento e Suporte Inclusos</h3>
+                    <p class="benefits__card-desc">Acesso total ao suporte comercial e técnico especializado para máxima performance operacional desde o primeiro dia.</p>
+                </div>
+                <!-- Card 6 -->
+                <div class="benefits__card">
+                    <svg class="benefits__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="10"/>
+                        <line x1="12" y1="8" x2="12" y2="12"/>
+                        <line x1="12" y1="16" x2="12.01" y2="16"/>
+                    </svg>
+                    <h3 class="benefits__card-title">Ponteira Ice 360º</h3>
+                    <p class="benefits__card-desc">Garante tratamentos confortáveis e sem dor graças à refrigeração de ponta que gela a epiderme em segundos.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--
+      PROCESS / HOW IT WORKS SECTION
+    -->
+    <section id="process" class="process__section content-section">
+        <div class="process__container">
+            <div class="process__header">
+                <span class="section-label">TECNOLOGIA</span>
+                <h2 class="section-title">Como o Hakon age no organismo</h2>
+                <p class="section-subtitle">Tecnologia avançada projetada tanto para a performance clínica do profissional quanto para o conforto supremo do paciente.</p>
+            </div>
+
+            <div class="process__tabs-nav">
+                <button class="process__tab-btn active" data-tab="clinica">Para a Clínica</button>
+                <button class="process__tab-btn" data-tab="paciente">Para o Paciente</button>
+            </div>
+
+            <div class="process__content-wrap">
+                <!-- Tab Clínica -->
+                <div class="process__tab-content active" id="tab-clinica">
+                    <div class="process__visual">
+                        <img src="https://res.cloudinary.com/doqw5aqcf/image/upload/v1774108155/hakon-laser-para-epilacao-premium_omz2vq.png" alt="Hakon em uso pelo profissional" />
+                    </div>
+                    <div class="process__steps">
+                        <div class="process__step">
+                            <div class="process__step-num">01</div>
+                            <div class="process__step-text">
+                                <h3 class="process__step-title">Avaliação e Fototipo</h3>
+                                <p class="process__step-desc">Identificação simples e rápida do fototipo do paciente para ajuste das energias diretamente no painel touchscreen intuitivo.</p>
+                            </div>
+                        </div>
+                        <div class="process__step">
+                            <div class="process__step-num">02</div>
+                            <div class="process__step-text">
+                                <h3 class="process__step-title">Parâmetros Ajustáveis</h3>
+                                <p class="process__step-desc">Ajuste de energia (Joules) e largura de pulso (ms) com base na espessura e densidade do pelo alvo.</p>
+                            </div>
+                        </div>
+                        <div class="process__step">
+                            <div class="process__step-num">03</div>
+                            <div class="process__step-text">
+                                <h3 class="process__step-title">Ponteira Ice 360º em Ação</h3>
+                                <p class="process__step-desc">Resfriamento instantâneo ativado para propiciar disparos uniformes com máxima varredura e agilidade operacional.</p>
+                            </div>
+                        </div>
+                        <div class="process__step">
+                            <div class="process__step-num">04</div>
+                            <div class="process__step-text">
+                                <h3 class="process__step-title">Higienização Simples</h3>
+                                <p class="process__step-desc">Design ergonômico que facilita a limpeza entre sessões, otimizando o fluxo e rentabilizando o uso da clínica.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tab Paciente -->
+                <div class="process__tab-content" id="tab-paciente">
+                    <div class="process__visual">
+                        <img src="https://res.cloudinary.com/doqw5aqcf/image/upload/v1774108155/hakon-laser-para-epilacao-premium_omz2vq.png" alt="Hakon experiência do paciente" />
+                    </div>
+                    <div class="process__steps">
+                        <div class="process__step">
+                            <div class="process__step-num">01</div>
+                            <div class="process__step-text">
+                                <h3 class="process__step-title">Conforto Térmico</h3>
+                                <p class="process__step-desc">Graças ao resfriamento da ponteira a temperaturas amenas, o processo gera apenas um grau leve de calor pontual sem dor aguda.</p>
+                            </div>
+                        </div>
+                        <div class="process__step">
+                            <div class="process__step-num">02</div>
+                            <div class="process__step-text">
+                                <h3 class="process__step-title">Velocidade da Sessão</h3>
+                                <p class="process__step-desc">A tecnologia 4D atua emitindo feixes eficientes e abrangentes, reduzindo consideravelmente o tempo em cabine.</p>
+                            </div>
+                        </div>
+                        <div class="process__step">
+                            <div class="process__step-num">03</div>
+                            <div class="process__step-text">
+                                <h3 class="process__step-title">Reação Imediata</h3>
+                                <p class="process__step-desc">O pelo retrai por ação fototérmica direta na raiz, promovendo a desnaturação progressiva e definitiva sem agredir apele.</p>
+                            </div>
+                        </div>
+                        <div class="process__step">
+                            <div class="process__step-num">04</div>
+                            <div class="process__step-text">
+                                <h3 class="process__step-title">Pós sem Downtime</h3>
+                                <p class="process__step-desc">A paciente pode retomar as atividades de imediato. A pele permanece íntegra, suportando tratamentos de forma segura.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--
+      SPECS SECTION
+    -->
+    <section id="specs" class="specs__section content-section">
+        <div class="specs__container">
+            <div class="specs__header">
+                <span class="section-label">FICHA TÉCNICA</span>
+                <h2 class="section-title">Especificações Técnicas</h2>
+                <p class="section-subtitle">Alta precisão e tecnologia desenvolvidas com rigor para esteticistas avançadas e médicos que priorizam performance clínica e durabilidade.</p>
+            </div>
+
+            <div class="specs__layout">
+                <!-- Panel Left (Table) -->
+                <div class="specs__table-panel">
+                    <div class="specs__row">
+                        <div class="specs__label">Tecnologia Laser</div>
+                        <div class="specs__value">4D (Alexandrite, Diodo, ND-Yag e Rubi)</div>
+                    </div>
+                    <div class="specs__row">
+                        <div class="specs__label">Comprimentos de Onda</div>
+                        <div class="specs__value">755nm, 808nm, 1064nm, 940nm</div>
+                    </div>
+                    <div class="specs__row">
+                        <div class="specs__label">Potência Consumida</div>
+                        <div class="specs__value">4000 VA</div>
+                    </div>
+                    <div class="specs__row">
+                        <div class="specs__label">Resfriamento</div>
+                        <div class="specs__value">Ponteira translúcida Ice 360º (Chiller Integrado)</div>
+                    </div>
+                    <div class="specs__row">
+                        <div class="specs__label">Fototipos</div>
+                        <div class="specs__value">I ao VI (Todos os biótipos)</div>
+                    </div>
+                    <div class="specs__row">
+                        <div class="specs__label">Garantia</div>
+                        <div class="specs__value">Até 40 milhões de disparos ou 18 meses</div>
+                    </div>
+                    <div class="specs__row">
+                        <div class="specs__label">Registro ANVISA</div>
+                        <div class="specs__value">81243810006</div>
+                    </div>
+                    <div class="specs__row">
+                        <div class="specs__label">Peso e Dimensões</div>
+                        <div class="specs__value">55kg, 120 x 45 x 60 cm</div>
+                    </div>
+                </div>
+
+                <!-- Panel Right (Download / Visual) -->
+                <div class="specs__download-panel">
+                    <div class="specs__wireframe-circle"></div>
+                    <img src="https://res.cloudinary.com/doqw5aqcf/image/upload/v1774108155/hakon-laser-para-epilacao-premium_omz2vq.png" alt="Especificações Visuais do Hakon" class="specs__visual-img" />
+                    <div class="specs__badges">
+                        <span class="specs__badge">ANVISA</span>
+                        <span class="specs__badge">INMETRO</span>
+                        <span class="specs__badge">ISO 9001</span>
+                    </div>
+                    <button class="specs__cta-secondary">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                            <polyline points="7 10 12 15 17 10"></polyline>
+                            <line x1="12" y1="15" x2="12" y2="3"></line>
+                        </svg>
+                        Baixar Ficha Técnica
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--
+      TRUST SECTION
+    -->
+    <section id="trust" class="trust__section content-section">
+        <div class="trust__container">
+            <div class="trust__header">
+                <span class="section-label">CONFIANÇA E SEGURANÇA</span>
+                <h2 class="section-title">A escolha de +1.200 clínicas em todo o Brasil</h2>
+                <p class="section-subtitle">A Medical San é referência na fabricação de equipamentos de alta tecnologia e confiabilidade, apoiando o crescimento contínuo de profissionais da estética.</p>
+            </div>
+
+            <!-- Bloco 1: Logos -->
+            <div class="trust__logos">
+                <img src="https://via.placeholder.com/150x60/fff/ccc?text=ANVISA" alt="ANVISA" class="trust__logo" />
+                <img src="https://via.placeholder.com/150x60/fff/ccc?text=INMETRO" alt="INMETRO" class="trust__logo" />
+                <img src="https://via.placeholder.com/150x60/fff/ccc?text=ISO" alt="ISO 9001" class="trust__logo" />
+                <img src="https://via.placeholder.com/150x60/fff/ccc?text=MEDICALSAN" alt="Medical San" class="trust__logo" />
+                <img src="https://via.placeholder.com/150x60/fff/ccc?text=PARCEIRO" alt="Parceiro" class="trust__logo" />
+            </div>
+
+            <!-- Bloco 2: Features Empresa -->
+            <div class="trust__features">
+                <div class="trust__feature-card">
+                    <h3 class="trust__feature-title">Empresa Especializada desde 1994</h3>
+                    <p class="trust__feature-desc">Mais de duas décadas desenvolvendo tecnologia de ponta para a estética médica com fabricação nacional e excelência global.</p>
+                </div>
+                <div class="trust__feature-card">
+                    <h3 class="trust__feature-title">Assistência Técnica Autorizada</h3>
+                    <p class="trust__feature-desc">Rede de suporte rápido e eficiente em todo o território nacional, garantindo que sua clínica nunca pare.</p>
+                </div>
+                <div class="trust__feature-card">
+                    <h3 class="trust__feature-title">Financiamento Facilitado</h3>
+                    <p class="trust__feature-desc">Condições especiais direto de fábrica para você escalar seu negócio com o melhor equipamento do mercado.</p>
+                </div>
+            </div>
+
+            <!-- Bloco 3: Authority Quote -->
+            <div class="trust__authority">
+                <div class="trust__auth-quotes">“</div>
+                <p class="trust__auth-text">O Hakon revolucionou a entrega de resultados na minha clínica. A segurança da plataforma aliada ao conforto para o paciente fideliza nossa agenda rapidamente e amplifica nossos lucros.</p>
+                <div class="trust__auth-profile">
+                    <img src="https://res.cloudinary.com/doqw5aqcf/image/upload/v1774108154/profissional-exemplo_wexqzv.jpg" alt="Dra. Mariana Silva" class="trust__auth-img" onerror="this.src='https://via.placeholder.com/80'" />
+                    <div class="trust__auth-info">
+                        <div class="trust__auth-name">Dra. Mariana Silva</div>
+                        <div class="trust__auth-role">Dermatologista · CRM-SP 123456 · São Paulo, SP</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--
+      TESTIMONIALS SECTION
+    -->
+    <section id="testimonials" class="testimonials__section content-section">
+        <div class="testimonials__container">
+            <div class="testimonials__header">
+                <span class="section-label">DEPOIMENTOS</span>
+                <h2 class="section-title">Quem já transformou a clínica com o Hakon</h2>
+                <p class="section-subtitle">Profissionais reais que escalaram seus atendimentos e elevaram o padrão de epilação com a nossa tecnologia.</p>
+            </div>
+
+            <div class="testimonials__slider-wrapper" id="testimonialsSliderWrapper">
+                <button class="testimonials__nav prev" id="testiPrev" aria-label="Anterior">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+                </button>
+                
+                <div class="testimonials__track-container">
+                    <div class="testimonials__track" id="testimonialsTrack">
+                        <!-- Card 1 -->
+                        <div class="testimonials__card">
+                            <div class="testimonials__card-top">
+                                <div class="testimonials__stars">
+                                    <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                                    <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                                    <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                                    <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                                    <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                                </div>
+                                <div class="testimonials__quote-mark">“</div>
+                                <p class="testimonials__quote">Um investimento que se pagou em menos de 5 meses. Nossos pacientes elogiam muito o conforto da ponteira resfriada em todas as sessões.</p>
+                            </div>
+                            <hr class="testimonials__divider">
+                            <div class="testimonials__footer">
+                                <img src="https://via.placeholder.com/56" alt="Ana Souza" class="testimonials__avatar">
+                                <div class="testimonials__info">
+                                    <h4 class="testimonials__name">Ana Souza</h4>
+                                    <p class="testimonials__role">Proprietária Clínica Ana Bella · Curitiba, PR</p>
+                                    <a href="#" class="testimonials__ig">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                                        @anabella.estetica
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Card 2 -->
+                        <div class="testimonials__card">
+                            <div class="testimonials__card-top">
+                                <div class="testimonials__stars">
+                                    <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                                    <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                                    <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                                    <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                                    <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                                </div>
+                                <div class="testimonials__quote-mark">“</div>
+                                <p class="testimonials__quote">A interface é super intuitiva e o fato de abranger todos os fototipos triplicou as consultas de epilação que recebemos mensalmente.</p>
+                            </div>
+                            <hr class="testimonials__divider">
+                            <div class="testimonials__footer">
+                                <img src="https://via.placeholder.com/56" alt="Carlos Mendes" class="testimonials__avatar">
+                                <div class="testimonials__info">
+                                    <h4 class="testimonials__name">Carlos Mendes</h4>
+                                    <p class="testimonials__role">Diretor Mendes MedSPA · Rio de Janeiro, RJ</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Card 3 -->
+                        <div class="testimonials__card">
+                            <div class="testimonials__card-top">
+                                <div class="testimonials__stars">
+                                    <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                                    <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                                    <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                                    <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                                    <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                                </div>
+                                <div class="testimonials__quote-mark">“</div>
+                                <p class="testimonials__quote">Equipamento forte e estável. As sessões ficaram mais curtas pela grande área de contato da ponteira. Recomendo de olhos fechados.</p>
+                            </div>
+                            <hr class="testimonials__divider">
+                            <div class="testimonials__footer">
+                                <img src="https://via.placeholder.com/56" alt="Luciana Castro" class="testimonials__avatar">
+                                <div class="testimonials__info">
+                                    <h4 class="testimonials__name">Luciana Castro</h4>
+                                    <p class="testimonials__role">Esteticista Master · Belo Horizonte, MG</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Card 4 -->
+                        <div class="testimonials__card">
+                            <div class="testimonials__card-top">
+                                <div class="testimonials__stars">
+                                    <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                                    <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                                    <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                                    <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                                    <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                                </div>
+                                <div class="testimonials__quote-mark">“</div>
+                                <p class="testimonials__quote">Um marco para minha clínica. O treinamento que recebemos foi impecável e o equipamento em si exala sofisticação e tecnologia em cada detalhe.</p>
+                            </div>
+                            <hr class="testimonials__divider">
+                            <div class="testimonials__footer">
+                                <img src="https://via.placeholder.com/56" alt="Dr. Ricardo Nunes" class="testimonials__avatar">
+                                <div class="testimonials__info">
+                                    <h4 class="testimonials__name">Dr. Ricardo Nunes</h4>
+                                    <p class="testimonials__role">Diretor Técnico · São Paulo, SP</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Card 5 -->
+                        <div class="testimonials__card">
+                            <div class="testimonials__card-top">
+                                <div class="testimonials__stars">
+                                    <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                                    <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                                    <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                                    <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                                    <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                                </div>
+                                <div class="testimonials__quote-mark">“</div>
+                                <p class="testimonials__quote">Atendimento de primeira, do comercial à entrega. Meus clientes de pelo mais fino (fototipo baixo) agora têm resultados reais de longa duração com a tecnologia 4D.</p>
+                            </div>
+                            <hr class="testimonials__divider">
+                            <div class="testimonials__footer">
+                                <img src="https://via.placeholder.com/56" alt="Julia Fernandes" class="testimonials__avatar">
+                                <div class="testimonials__info">
+                                    <h4 class="testimonials__name">Julia Fernandes</h4>
+                                    <p class="testimonials__role">CEO JF Studio · Goiânia, GO</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <button class="testimonials__nav next" id="testiNext" aria-label="Próximo">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+                </button>
+            </div>
+            
+            <div class="testimonials__pagination" id="testiPagination"></div>
+
+            <div class="testimonials__social">
+                <p class="testimonials__social-caption">📸 Clínicas parceiras que compartilharam resultados</p>
+                <div class="testimonials__social-grid">
+                    <img src="https://via.placeholder.com/150" alt="Feed 1" class="testimonials__social-img">
+                    <img src="https://via.placeholder.com/150" alt="Feed 2" class="testimonials__social-img">
+                    <img src="https://via.placeholder.com/150" alt="Feed 3" class="testimonials__social-img">
+                    <img src="https://via.placeholder.com/150" alt="Feed 4" class="testimonials__social-img">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--
+      PRICING SECTION
+    -->
+    <section id="pricing" class="pricing__section content-section">
+        <div class="pricing__container">
+            <!-- Parte A: ROI -->
+            <div class="pricing__roi-block">
+                <h2 class="pricing__roi-title">Quanto você pode gerar com o Hakon?</h2>
+                <div class="pricing__roi-grid">
+                    <div class="pricing__roi-item">
+                        <div class="pricing__roi-number">R$ 350</div>
+                        <div class="pricing__roi-label">Ticket médio<br>por área</div>
+                    </div>
+                    <div class="pricing__roi-divider"></div>
+                    <div class="pricing__roi-item">
+                        <div class="pricing__roi-number">12</div>
+                        <div class="pricing__roi-label">Pacientes<br>por dia</div>
+                    </div>
+                    <div class="pricing__roi-divider"></div>
+                    <div class="pricing__roi-item highlight">
+                        <div class="pricing__roi-number">R$ 84k</div>
+                        <div class="pricing__roi-label">Faturamento<br>mensal potencial</div>
+                    </div>
+                </div>
+                <p class="pricing__roi-note">*Estimativa baseada em 20 dias úteis e ticket médio de mercado para epilação a laser.</p>
+            </div>
+
+            <!-- Parte B: Preço -->
+            <div class="pricing__card">
+                <div class="pricing__card-top-border"></div>
+                
+                <span class="pricing__card-label">INVESTIMENTO</span>
+                
+                <div class="pricing__price">
+                    <span class="pricing__currency">R$</span>
+                    <span class="pricing__amount">149.000</span>
+                    <span class="pricing__cents">,00</span>
+                </div>
+                
+                <p class="pricing__installments">ou financiamento em até <strong>72x</strong> via parceiros financeiros</p>
+                
+                <hr class="pricing__divider">
+                
+                <ul class="pricing__includes">
+                    <li>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                        Equipamento Hakon 4D completo
+                    </li>
+                    <li>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                        Treinamento operacional VIP incluso
+                    </li>
+                    <li>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                        Garantia de 40 milhões de disparos
+                    </li>
+                    <li>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                        Suporte técnico ágil e especializado
+                    </li>
+                    <li>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                        Frete e instalação grátis para todo o Brasil
+                    </li>
+                </ul>
+
+                <button class="pricing__cta">
+                    Solicitar Simulação de Parcelas
+                </button>
+                <p class="pricing__contact-note">💬 Atendimento consultivo personalizado para sua clínica.</p>
+            </div>
+            
+            <!-- Parte C: Urgência -->
+            <div class="pricing__urgency">
+                ⏳ Condições comerciais e taxas estruturadas sujeitas à análise de crédito e variações mensais.
+            </div>
+        </div>
+    </section>
+
+    <!--
+      FAQ SECTION
+    -->
+    <section id="faq" class="faq__section content-section">
+        <div class="faq__container">
+            <div class="faq__header">
+                <span class="section-label">FAQ</span>
+                <h2 class="section-title">Perguntas Frequentes</h2>
+                <p class="section-subtitle">Tudo que você precisa saber antes de tomar sua decisão técnica e de negócios.</p>
+            </div>
+
+            <div class="faq__grid">
+                <!-- Coluna 1 -->
+                <div class="faq__col">
+                    <div class="faq__item">
+                        <button class="faq__question">
+                            <span class="faq__q-text">1. Qual a diferença entre o Hakon e equipamentos similares do mercado?</span>
+                            <span class="faq__icon">+</span>
+                        </button>
+                        <div class="faq__answer">
+                            <p>O Hakon destaca-se por incorporar a verdadeira tecnologia 4D, unindo 4 comprimentos de onda (Alexandrite, Diodo, ND-Yag e Rubi) em um único disparo. Isso confere uma abrangência superior e resultados imediatos muito acima da média, além da ponteira Ice 360º que gela rapidamente a região, tornando o procedimento virtualmente indolor.</p>
+                        </div>
+                    </div>
+                    <div class="faq__item">
+                        <button class="faq__question">
+                            <span class="faq__q-text">2. O equipamento possui registro na ANVISA?</span>
+                            <span class="faq__icon">+</span>
+                        </button>
+                        <div class="faq__answer">
+                            <p>Sim. O Hakon é 100% regularizado e possui registro ativo na ANVISA (Nº 81243810006), além de certificações INMETRO e o alto padrão de controle de qualidade da indústria Medical San.</p>
+                        </div>
+                    </div>
+                    <div class="faq__item">
+                        <button class="faq__question">
+                            <span class="faq__q-text">3. Como funciona o treinamento para uso do equipamento?</span>
+                            <span class="faq__icon">+</span>
+                        </button>
+                        <div class="faq__answer">
+                            <p>A compra inclui um treinamento operacional completo para você e sua equipe (formatos presencial ou híbrido, sob consulta). Nossa equipe de Educação Corporativa ensina protocolos exclusivos para extrair o máximo de performance desde o primeiro uso.</p>
+                        </div>
+                    </div>
+                    <div class="faq__item">
+                        <button class="faq__question">
+                            <span class="faq__q-text">4. Qual o prazo de entrega e como é feita a instalação?</span>
+                            <span class="faq__icon">+</span>
+                        </button>
+                        <div class="faq__answer">
+                            <p>O prazo varia de acordo com a região (em média 7 a 20 dias úteis). O frete é gratuito para todo o Brasil e a instalação inicial é guiada por nossa assistência técnica para garantir condições ideais de elétrica e refrigeração ambiente.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Coluna 2 -->
+                <div class="faq__col">
+                    <div class="faq__item">
+                        <button class="faq__question">
+                            <span class="faq__q-text">5. Quais são as condições de financiamento disponíveis?</span>
+                            <span class="faq__icon">+</span>
+                        </button>
+                        <div class="faq__answer">
+                            <p>Trabalhamos com parcelamento direto e parceria com as principais instituições financeiras, permitindo financiamentos de equipamentos estéticos em até 72x. Seu CNPJ e documentações passarão por uma esteira rápida de aprovação.</p>
+                        </div>
+                    </div>
+                    <div class="faq__item">
+                        <button class="faq__question">
+                            <span class="faq__q-text">6. Qual a garantia do equipamento e assistência técnica?</span>
+                            <span class="faq__icon">+</span>
+                        </button>
+                        <div class="faq__answer">
+                            <p>O Hakon conta com garantia de fábrica de 18 meses ou até 40 milhões de disparos. Possuímos rede de assistência autorizada abrangente e canal de suporte direto que atende eventuais paradas ou calibrações de modo prioritário.</p>
+                        </div>
+                    </div>
+                    <div class="faq__item">
+                        <button class="faq__question">
+                            <span class="faq__q-text">7. O equipamento exige estrutura elétrica especial na clínica?</span>
+                            <span class="faq__icon">+</span>
+                        </button>
+                        <div class="faq__answer">
+                            <p>Recomendamos tomada exclusiva (220V com suporte de aterramento compatível com a potência de 4000VA). Nossa equipe técnica fornecerá um checklist estrutural de preparação antes do embarque do equipamento.</p>
+                        </div>
+                    </div>
+                    <div class="faq__item">
+                        <button class="faq__question">
+                            <span class="faq__q-text">8. Como faço para solicitar uma demonstração?</span>
+                            <span class="faq__icon">+</span>
+                        </button>
+                        <div class="faq__answer">
+                            <p>Verifique com nosso consultor técnico a disponibilidade de showroom, eventos Medical San ou clínicas parceiras de referência óptica na sua região para você experienciar o Hakon na prática.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--
+      FINAL CTA SECTION
+    -->
+    <section class="cta-final__section content-section">
+        <div class="cta-final__container">
+            <div class="cta-final__content">
+                <span class="section-label">PRONTO PARA DAR O PRÓXIMO PASSO?</span>
+                <h2 class="cta-final__title">Eleve o nível da <i>sua clínica</i> com o Hakon</h2>
+                <p class="cta-final__desc">Fale com nossa equipe comercial de alta performance hoje mesmo. Descubra planos customizados para viabilizar este salto no seu negócio.</p>
+                
+                <div class="cta-final__actions">
+                    <button class="cta-final__btn-primary">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+                        Quero uma Proposta Personalizada
+                    </button>
+                    <button class="cta-final__btn-secondary">
+                        Falar com um Especialista
+                    </button>
+                </div>
+                
+                <p class="cta-final__hours">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                    Atendimento de segunda à sexta, das 9h às 18h
+                </p>
+                
+                <div class="cta-final__trust">
+                    <div class="cta-final__trust-item">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+                        Compra 100% Segura
+                    </div>
+                    <div class="cta-final__trust-item">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>
+                        Entrega em Todo Brasil
+                    </div>
+                    <div class="cta-final__trust-item">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                        Suporte Especializado
+                    </div>
+                </div>
+            </div>
+            
+            <div class="cta-final__visual">
+                <img src="https://res.cloudinary.com/doqw5aqcf/image/upload/v1774108154/hakon-lifestyle-uso_z8gqu8.png" alt="Profissional e Equipamento Hakon" class="cta-final__img">
+            </div>
+        </div>
+    </section>
+
+    <!--
+      FOOTER
+    -->
+    <footer class="footer__section">
+        <div class="footer__container">
+            <div class="footer__logo-wrap">
+                <img src="https://via.placeholder.com/150x40/fff/1c1a18?text=MEDICAL+SAN" alt="Logo Medical San Branco" class="footer__logo">
+            </div>
+            <div class="footer__links">
+                <a href="#">Política de Privacidade</a>
+                <span class="footer__sep">•</span>
+                <a href="#">Termos de Uso</a>
+            </div>
+            <div class="footer__company">
+                Medical San Indústria e Comércio LTDA — CNPJ: 00.000.000/0001-00<br>
+                Todos os direitos reservados © 2026
+            </div>
+        </div>
+    </footer>
+</html>

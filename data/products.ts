@@ -45,27 +45,6 @@ export const products: Product[] = [
     `
   },
   {
-    id: 'est-3',
-    name: 'Ômer Premium',
-    description: 'Equipamento microcontrolado de laser de diodo para remoção de tatuagens, micropigmentação e rejuvenescimento.',
-    subcategory: 'Estética Avançada',
-    category: 'estetica',
-    imageUrl: 'https://res.cloudinary.com/doqw5aqcf/image/upload/v1769020885/equipamento-omer-premium_nfdm55.png',
-    tags: ['Remoção de Tatuagem', 'Tecnologia de Diodo'],
-    benefits: `
-      <h4 class="font-bold mb-2 text-medical-800 uppercase">Tecnologia de Diodo de Alta Precisão</h4>
-      <p class="mb-4 text-gray-600">O Ômer Premium é um sistema microcontrolado que opera nos comprimentos de onda de 532nm e 1064nm. Sua energia atinge alvos específicos como melanina e tintas de tatuagem, promovendo a fragmentação do pigmento ou o estímulo térmico para colágeno.</p>
-      <h4 class="font-bold mb-2 text-medical-800 uppercase">Diferenciais Técnicos</h4>
-      <ul class="list-disc pl-5 space-y-2 mb-4 text-gray-600">
-        <li><strong>Potência e Frequência:</strong> Entrega até 1000mJ com repetição de pulso de 1 a 10 Hz para sessões rápidas.</li>
-        <li><strong>Segurança Óptica:</strong> Equipamento Classe 4, exigindo uso de óculos de proteção para operador e paciente.</li>
-        <li><strong>Versatilidade de Spot:</strong> Diâmetro ajustável entre 1 e 10mm para tratar desde pequenas áreas de micropigmentação até grandes tatuagens.</li>
-      </ul>
-      
-      <p class="text-gray-600 italic">Tecnologia robusta para resultados excepcionais em despigmentação e rejuvenescimento.</p>
-    `
-  },
-  {
     id: 'est-4',
     name: 'Velaryan Harmonização Corporal',
     description: 'Sistema de laser para terapia focado em gordura localizada, processos inflamatórios e reparo tecidual.',

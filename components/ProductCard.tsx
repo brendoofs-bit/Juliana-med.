@@ -11,7 +11,13 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, onOpenModal }) => {
   return (
     <div 
       className="group/card bg-white rounded-xl border border-gray-100 p-4 hover:shadow-xl hover:border-medical-200 transition-all duration-300 cursor-pointer flex flex-col h-full relative"
-      onClick={() => onOpenModal(product)}
+      onClick={() => {
+        if (product.id === 'est-1') {
+          window.location.href = '/hakon/index.html';
+        } else {
+          onOpenModal(product);
+        }
+      }}
     >
       {/* Image Area - White Background */}
       <div className="relative h-56 mb-4 flex items-center justify-center p-2 bg-white rounded-lg transition-colors">
