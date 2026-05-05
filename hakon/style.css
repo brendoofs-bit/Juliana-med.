@@ -1,29 +1,29 @@
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=DM+Sans:wght@300;400;500&family=Josefin+Sans:wght@100;300;400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
 
 /* =========================================================================
    DESIGN SYSTEM - VARIÁVEIS
    ========================================================================= */
 :root {
   /* Cores */
-  --color-bg:            #FAFAF8;
-  --color-bg-alt:        #F4F0EB;
+  --color-bg:            #FFFFFF;
+  --color-bg-alt:        #f0f9ff;
   --color-surface:       #FFFFFF;
-  --color-primary:       #B8935A;
-  --color-primary-light: #D4AF7A;
-  --color-primary-dark:  #8B6A3A;
-  --color-text:          #1C1A18;
-  --color-text-muted:    #6B6560;
-  --color-text-light:    #A09890;
-  --color-accent:        #C8A882;
-  --color-rose:          #E8D5CC;
-  --color-border:        #E8E2D9;
-  --color-cta:           #B8935A;
-  --color-cta-hover:     #8B6A3A;
+  --color-primary:       #00C8FF;
+  --color-primary-light: #e0f2fe;
+  --color-primary-dark:  #0369a1;
+  --color-text:          #051330;
+  --color-text-muted:    #475569;
+  --color-text-light:    #94a3b8;
+  --color-accent:        #0284c7;
+  --color-rose:          #e0f2fe;
+  --color-border:        #e2e8f0;
+  --color-cta:           #F25D27;
+  --color-cta-hover:     #c2410c;
 
   /* Fontes */
-  --font-display: "Cormorant Garamond", serif;
-  --font-body:    "DM Sans", sans-serif;
-  --font-accent:  "Josefin Sans", sans-serif;
+  --font-display: "Inter", sans-serif;
+  --font-body:    "Inter", sans-serif;
+  --font-accent:  "Inter", sans-serif;
 
   /* Escala Tipográfica fluida */
   --fs-hero:   clamp(3.5rem, 7vw, 7rem);

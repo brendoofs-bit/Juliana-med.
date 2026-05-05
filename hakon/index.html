@@ -4,8 +4,39 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hakon - Alta Performance</title>
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2220%22 fill=%22%2300C8FF%22/><path d=%22M50 20v60M20 50h60%22 stroke=%22white%22 stroke-width=%2215%22 stroke-linecap=%22round%22/></svg>">
     <!-- CSS Link -->
     <link rel="stylesheet" href="./style.css">
+
+    <!-- Tailwind CSS for global components -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Inter', 'sans-serif'],
+            },
+            colors: {
+              medical: {
+                50: '#f0f9ff',
+                100: '#e0f2fe',
+                500: '#00C8FF', 
+                600: '#0284c7',
+                700: '#0369a1',
+                800: '#0B1E48', 
+                900: '#051330',
+              },
+              action: {
+                cyan: '#00D1FF', 
+                red: '#F25D27', 
+              }
+            }
+          }
+        }
+      }
+    </script>
 </head>
 <body>
     <!--
@@ -13,9 +44,13 @@
     -->
     <nav class="navbar__container" id="navbar">
         <div class="navbar__inner">
-            <a href="#" class="navbar__logo">
-                <img src="https://via.placeholder.com/150x40/FAFAF8/B8935A?text=MEDICAL+SAN" alt="Medical San">
+            
+            <a href="/" class="flex flex-col items-center leading-none select-none hover:opacity-80 transition-opacity" style="text-decoration: none;">
+                <span class="text-2xl md:text-3xl font-extrabold tracking-tighter" style="color: #0B1E48;">
+                MEDICAL<span class="font-light" style="font-weight: 300;">SAN</span>
+                </span>
             </a>
+
             
             <div class="navbar__links">
                 <a href="#showcase" class="navbar__link">Produto</a>
@@ -36,7 +71,13 @@
         <!-- Mobile Drawer -->
         <div class="navbar__mobile-drawer" id="mobileDrawer">
             <div class="navbar__drawer-header">
-                <img src="https://via.placeholder.com/150x40/FAFAF8/B8935A?text=MEDICAL+SAN" alt="Medical San" class="navbar__drawer-logo">
+                
+            <a href="/" class="flex flex-col items-center leading-none select-none hover:opacity-80 transition-opacity" style="text-decoration: none;">
+                <span class="text-2xl md:text-3xl font-extrabold tracking-tighter" style="color: #0B1E48;">
+                MEDICAL<span class="font-light" style="font-weight: 300;">SAN</span>
+                </span>
+            </a>
+
                 <button class="navbar__drawer-close" id="navClose" aria-label="Fechar Menu">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
                 </button>
@@ -124,6 +165,7 @@
             <!-- PAINEL DIREITO: Imagem (Visual) -->
             <div class="hero__visual">
                 <div class="hero__image-wrapper">
+                    <!-- Dimensão sugerida para imagem hero (equipamento): 600x800px (fundo transparente) -->
                     <img src="https://res.cloudinary.com/doqw5aqcf/image/upload/v1774108155/hakon-laser-para-epilacao-premium_omz2vq.png" alt="Hakon Laser" class="hero__image" />
                     
                     <!-- Brilho no chão para simular reflexo -->
@@ -235,13 +277,16 @@
                         <div class="gallery__badge">
                             📍 Foto Real — Clínica Parceira
                         </div>
+                        <!-- Dimensão sugerida galeria principal: 800x800px -->
                         <img src="" alt="Vista Principal" class="gallery__main-img" id="galleryMainImg" />
                     </div>
                     <div class="gallery__side">
                         <div class="gallery__side-item">
+                            <!-- Dimensão sugerida galeria - thumb 1: 800x800px -->
                             <img src="" alt="Vista Fundo 1" class="gallery__side-img" id="gallerySide1" />
                         </div>
                         <div class="gallery__side-item">
+                            <!-- Dimensão sugerida galeria - thumb 2: 800x800px -->
                             <img src="" alt="Vista Fundo 2" class="gallery__side-img" id="gallerySide2" />
                         </div>
                     </div>
@@ -272,6 +317,7 @@
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
         </button>
         <div class="gallery__lightbox-content">
+            <!-- Dimensão sugerida galeria - lightbox zoom: 1200x1200px -->
             <img src="" alt="Zoom" class="gallery__lightbox-img" id="lightboxImg" />
         </div>
         <button class="gallery__lightbox-nav gallery__lightbox-next" id="lightboxNext" aria-label="Próximo">
@@ -292,6 +338,7 @@
 
             <div class="benefits__aux">
                 <div class="benefits__aux-image-wrapper">
+                    <!-- Dimensão sugerida - equipamento auxiliar beneficios: 600x600px -->
                     <img src="https://res.cloudinary.com/doqw5aqcf/image/upload/v1774108155/hakon-laser-para-epilacao-premium_omz2vq.png" alt="Hakon em uso na clínica" class="benefits__aux-img" />
                     <div class="benefits__aux-overlay"></div>
                     <div class="benefits__aux-caption">Hakon Laser — Alta Performance Clínica</div>
@@ -377,6 +424,7 @@
                 <!-- Tab Clínica -->
                 <div class="process__tab-content active" id="tab-clinica">
                     <div class="process__visual">
+                        <!-- Dimensão sugerida - foto clínica 1: 800x600px (Paisagem) -->
                         <img src="https://res.cloudinary.com/doqw5aqcf/image/upload/v1774108155/hakon-laser-para-epilacao-premium_omz2vq.png" alt="Hakon em uso pelo profissional" />
                     </div>
                     <div class="process__steps">
@@ -414,6 +462,7 @@
                 <!-- Tab Paciente -->
                 <div class="process__tab-content" id="tab-paciente">
                     <div class="process__visual">
+                        <!-- Dimensão sugerida - foto clínica 2: 800x600px (Paisagem) -->
                         <img src="https://res.cloudinary.com/doqw5aqcf/image/upload/v1774108155/hakon-laser-para-epilacao-premium_omz2vq.png" alt="Hakon experiência do paciente" />
                     </div>
                     <div class="process__steps">
@@ -502,6 +551,7 @@
                 <!-- Panel Right (Download / Visual) -->
                 <div class="specs__download-panel">
                     <div class="specs__wireframe-circle"></div>
+                    <!-- Dimensão sugerida - equipamento especificações: 500x700px -->
                     <img src="https://res.cloudinary.com/doqw5aqcf/image/upload/v1774108155/hakon-laser-para-epilacao-premium_omz2vq.png" alt="Especificações Visuais do Hakon" class="specs__visual-img" />
                     <div class="specs__badges">
                         <span class="specs__badge">ANVISA</span>
@@ -534,10 +584,15 @@
 
             <!-- Bloco 1: Logos -->
             <div class="trust__logos">
+                <!-- Dimensões sugeridas logo confiança: 150x60px -->
                 <img src="https://via.placeholder.com/150x60/fff/ccc?text=ANVISA" alt="ANVISA" class="trust__logo" />
+                <!-- Dimensões sugeridas logo confiança: 150x60px -->
                 <img src="https://via.placeholder.com/150x60/fff/ccc?text=INMETRO" alt="INMETRO" class="trust__logo" />
+                <!-- Dimensões sugeridas logo confiança: 150x60px -->
                 <img src="https://via.placeholder.com/150x60/fff/ccc?text=ISO" alt="ISO 9001" class="trust__logo" />
+                <!-- Dimensões sugeridas logo confiança: 150x60px -->
                 <img src="https://via.placeholder.com/150x60/fff/ccc?text=MEDICALSAN" alt="Medical San" class="trust__logo" />
+                <!-- Dimensões sugeridas logo confiança: 150x60px -->
                 <img src="https://via.placeholder.com/150x60/fff/ccc?text=PARCEIRO" alt="Parceiro" class="trust__logo" />
             </div>
 
@@ -562,6 +617,7 @@
                 <div class="trust__auth-quotes">“</div>
                 <p class="trust__auth-text">O Hakon revolucionou a entrega de resultados na minha clínica. A segurança da plataforma aliada ao conforto para o paciente fideliza nossa agenda rapidamente e amplifica nossos lucros.</p>
                 <div class="trust__auth-profile">
+                    <!-- Dimensão sugerida autoridade (circular): 150x150px -->
                     <img src="https://res.cloudinary.com/doqw5aqcf/image/upload/v1774108154/profissional-exemplo_wexqzv.jpg" alt="Dra. Mariana Silva" class="trust__auth-img" onerror="this.src='https://via.placeholder.com/80'" />
                     <div class="trust__auth-info">
                         <div class="trust__auth-name">Dra. Mariana Silva</div>
@@ -605,6 +661,7 @@
                             </div>
                             <hr class="testimonials__divider">
                             <div class="testimonials__footer">
+                                <!-- Dimensão sugerida depoimento avatar: 100x100px -->
                                 <img src="https://via.placeholder.com/56" alt="Ana Souza" class="testimonials__avatar">
                                 <div class="testimonials__info">
                                     <h4 class="testimonials__name">Ana Souza</h4>
@@ -631,6 +688,7 @@
                             </div>
                             <hr class="testimonials__divider">
                             <div class="testimonials__footer">
+                                <!-- Dimensão sugerida depoimento avatar: 100x100px -->
                                 <img src="https://via.placeholder.com/56" alt="Carlos Mendes" class="testimonials__avatar">
                                 <div class="testimonials__info">
                                     <h4 class="testimonials__name">Carlos Mendes</h4>
@@ -653,6 +711,7 @@
                             </div>
                             <hr class="testimonials__divider">
                             <div class="testimonials__footer">
+                                <!-- Dimensão sugerida depoimento avatar: 100x100px -->
                                 <img src="https://via.placeholder.com/56" alt="Luciana Castro" class="testimonials__avatar">
                                 <div class="testimonials__info">
                                     <h4 class="testimonials__name">Luciana Castro</h4>
@@ -675,6 +734,7 @@
                             </div>
                             <hr class="testimonials__divider">
                             <div class="testimonials__footer">
+                                <!-- Dimensão sugerida depoimento avatar: 100x100px -->
                                 <img src="https://via.placeholder.com/56" alt="Dr. Ricardo Nunes" class="testimonials__avatar">
                                 <div class="testimonials__info">
                                     <h4 class="testimonials__name">Dr. Ricardo Nunes</h4>
@@ -697,6 +757,7 @@
                             </div>
                             <hr class="testimonials__divider">
                             <div class="testimonials__footer">
+                                <!-- Dimensão sugerida depoimento avatar: 100x100px -->
                                 <img src="https://via.placeholder.com/56" alt="Julia Fernandes" class="testimonials__avatar">
                                 <div class="testimonials__info">
                                     <h4 class="testimonials__name">Julia Fernandes</h4>
@@ -717,9 +778,13 @@
             <div class="testimonials__social">
                 <p class="testimonials__social-caption">📸 Clínicas parceiras que compartilharam resultados</p>
                 <div class="testimonials__social-grid">
+                    <!-- Dimensão sugerida foto instagram/feed quadrada: 300x300px -->
                     <img src="https://via.placeholder.com/150" alt="Feed 1" class="testimonials__social-img">
+                    <!-- Dimensão sugerida foto instagram/feed quadrada: 300x300px -->
                     <img src="https://via.placeholder.com/150" alt="Feed 2" class="testimonials__social-img">
+                    <!-- Dimensão sugerida foto instagram/feed quadrada: 300x300px -->
                     <img src="https://via.placeholder.com/150" alt="Feed 3" class="testimonials__social-img">
+                    <!-- Dimensão sugerida foto instagram/feed quadrada: 300x300px -->
                     <img src="https://via.placeholder.com/150" alt="Feed 4" class="testimonials__social-img">
                 </div>
             </div>
@@ -942,28 +1007,12 @@
             </div>
             
             <div class="cta-final__visual">
+                <!-- Dimensão sugerida CTA Final Banner (Paisagem): 800x600px -->
                 <img src="https://res.cloudinary.com/doqw5aqcf/image/upload/v1774108154/hakon-lifestyle-uso_z8gqu8.png" alt="Profissional e Equipamento Hakon" class="cta-final__img">
             </div>
         </div>
     </section>
 
-    <!--
-      FOOTER
-    -->
-    <footer class="footer__section">
-        <div class="footer__container">
-            <div class="footer__logo-wrap">
-                <img src="https://via.placeholder.com/150x40/fff/1c1a18?text=MEDICAL+SAN" alt="Logo Medical San Branco" class="footer__logo">
-            </div>
-            <div class="footer__links">
-                <a href="#">Política de Privacidade</a>
-                <span class="footer__sep">•</span>
-                <a href="#">Termos de Uso</a>
-            </div>
-            <div class="footer__company">
-                Medical San Indústria e Comércio LTDA — CNPJ: 00.000.000/0001-00<br>
-                Todos os direitos reservados © 2026
-            </div>
-        </div>
-    </footer>
+    <div id="global-footer"></div>
+    <script type="module" src="/src/mountFooter.tsx"></script>
 </html>

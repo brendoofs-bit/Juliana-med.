@@ -15,11 +15,11 @@ const Header: React.FC = () => {
             
             {/* Logo Profissional */}
             <div className="flex items-center gap-2 shrink-0">
-               <div className="flex flex-col items-center leading-none select-none">
+               <a href="/" className="flex flex-col items-center leading-none select-none hover:opacity-80 transition-opacity cursor-pointer">
                   <span className="text-2xl md:text-3xl font-extrabold tracking-tighter text-medical-800">
                     MEDICAL<span className="font-light">SAN</span>
                   </span>
-               </div>
+               </a>
             </div>
 
             {/* Desktop Navigation */}
