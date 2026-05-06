@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 import Header from './components/Header';
 import Hero from './components/Hero';
-import Footer from './components/Footer';
-import WhatsAppButton from './components/WhatsAppButton';
 import QuoteModal from './components/QuoteModal';
 import ProductDetailsModal from './components/ProductDetailsModal';
 import ProductCarousel from './components/ProductCarousel';
@@ -242,9 +240,6 @@ const App: React.FC = () => {
         </section>
       </main>
 
-      <Footer />
-      <WhatsAppButton />
-      
       <ProductDetailsModal 
         isOpen={isDetailsModalOpen} 
         onClose={handleCloseModals} 

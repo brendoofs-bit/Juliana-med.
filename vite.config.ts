@@ -9,7 +9,25 @@ export default defineConfig(({ mode }) => {
         port: 3000,
         host: '0.0.0.0',
       },
-      plugins: [react()],
+      plugins: [
+        react(),
+        {
+          name: 'inject-global-components',
+          transformIndexHtml(html) {
+            if (!html.includes('global-footer')) {
+              const injection = `\n    <div id="global-footer"></div>\n    <div id="global-whatsapp"></div>\n    <script type="module" src="/src/global.tsx"></script>\n  `;
+              if (html.includes('</body>')) {
+                return html.replace('</body>', injection + '</body>');
+              } else if (html.includes('</html>')) {
+                return html.replace('</html>', injection + '</html>');
+              } else {
+                return html + injection;
+              }
+            }
+            return html;
+          }
+        }
+      ],
       define: {
         'process.env.API_KEY': JSON.stringify(env.GEMINI_API_KEY),
         'process.env.GEMINI_API_KEY': JSON.stringify(env.GEMINI_API_KEY)
