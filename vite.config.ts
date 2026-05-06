@@ -16,13 +16,7 @@ export default defineConfig(({ mode }) => {
           transformIndexHtml(html) {
             if (!html.includes('global-footer')) {
               const injection = `\n    <div id="global-footer"></div>\n    <div id="global-whatsapp"></div>\n    <script type="module" src="/src/global.tsx"></script>\n  `;
-              if (html.includes('</body>')) {
-                return html.replace('</body>', injection + '</body>');
-              } else if (html.includes('</html>')) {
-                return html.replace('</html>', injection + '</html>');
-              } else {
-                return html + injection;
-              }
+              return html.replace(/<\/body>/i, injection + '</body>');
             }
             return html;
           }
