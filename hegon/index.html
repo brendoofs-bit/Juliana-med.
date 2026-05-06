@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hegon - Laser de CO2 Fracionado</title>
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2220%22 fill=%22%2300C8FF%22/><path d=%22M50 20v60M20 50h60%22 stroke=%22white%22 stroke-width=%2215%22 stroke-linecap=%22round%22/></svg>">
+    <!-- CSS Link -->
+    <link rel="stylesheet" href="./style.css">
+    
+    <script type="importmap">
+    {
+      "imports": {
+        "react": "https://esm.sh/react@^19.2.3",
+        "react-dom/client": "https://esm.sh/react-dom@^19.2.3/client",
+        "lucide-react": "https://esm.sh/lucide-react@^0.562.0",
+        "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
+        "react/": "https://esm.sh/react@^19.2.3/"
+      }
+    }
+    </script>
+
+    <!-- Tailwind CSS for global components -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Inter', 'sans-serif'],
+            },
+            colors: {
+              medical: {
+                50: '#f0f9ff',
+                100: '#e0f2fe',
+                500: '#00C8FF', 
+                600: '#0284c7',
+                700: '#0369a1',
+                800: '#0B1E48', 
+                900: '#051330',
+              },
+              action: {
+                cyan: '#00D1FF', 
+                red: '#F25D27', 
+              }
+            }
+          }
+        }
+      }
+    </script>
+  <style>html { scroll-behavior: smooth; }</style>
+</head>
+<body>
+    <!--
+      NAVBAR
+    -->
+    <nav class="absolute top-0 left-0 w-full bg-white z-50 flex items-center justify-center py-4 border-b border-gray-100">
+        <a href="/" class="flex flex-col items-center leading-none select-none hover:opacity-80 transition-opacity" style="text-decoration: none;">
+            <span class="text-2xl md:text-3xl font-extrabold tracking-tighter" style="color: #0B1E48;">
+            MEDICAL<span class="font-light" style="font-weight: 300;">SAN</span>
+            </span>
+        </a>
+    </nav>
+
+    <!--
+      HERO SECTION
+      Section baseada no Design System: Medical San
+      Cores: Off-white quente, detalhes em dourado
+      Tipografia: Cormorant Garamond (H1), DM Sans (Body), Josefin Sans (Accents)
+      Layout: 2 colunas (desktop), flex direcional (mobile).
+    -->
+    
+    <section id="hero" class="pt-28 pb-8 md:pt-32 md:pb-12 bg-white relative">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
+            <div class="flex flex-col lg:grid lg:grid-cols-12 gap-y-4 lg:gap-y-6 lg:gap-x-12 items-start">
+                
+                <!-- 1. Code and Title -->
+                <div class="order-1 lg:col-span-7 lg:col-start-6 lg:row-start-1 text-left mt-2">
+                    <span class="text-sm text-medical-500 mb-2 font-semibold tracking-wider uppercase block">Cód: ME21360A</span>
+                    <h1 class="text-3xl md:text-4xl lg:text-[40px] font-extrabold text-medical-900 leading-[1.1] tracking-tight">
+                        Hegon Medical San - Laser de CO2 Fracionado
+                    </h1>
+                </div>
+
+                <!-- 2. Image and Carousel -->
+                <div class="order-2 lg:col-span-5 lg:col-start-1 lg:row-start-1 lg:row-span-5 w-full flex flex-col gap-3 relative z-0">
+                    <div class="border border-gray-100 rounded-[2rem] bg-white p-6 md:p-10 flex items-center justify-center relative aspect-[4/3] md:aspect-square overflow-hidden shadow-sm">
+                        <img src="https://res.cloudinary.com/doqw5aqcf/image/upload/v1778100983/01_-_hagon_qz6bkd.png" class="max-h-[300px] md:max-h-[460px] w-auto object-contain" alt="Hegon Laser Principal" id="ecommerceMainImg">
+                    </div>
+                    
+                    <!-- Carousel Row -->
+                    <div class="relative flex items-center justify-center mt-1 px-8">
+                        <button onclick="scrollCarousel(-1)" class="absolute left-0 z-10 bg-white shadow-sm rounded-full w-8 h-8 flex items-center justify-center text-gray-600 hover:text-medical-600 border border-gray-200 transition-colors">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+                        </button>
+                        
+                        <div id="thumbCarousel" class="flex gap-2 overflow-x-auto scroll-smooth w-full py-1 snap-x" style="-ms-overflow-style: none; scrollbar-width: none;">
+                            <style>#thumbCarousel::-webkit-scrollbar { display: none; }</style>
+                            
+                            <button onclick="changeImage(this, 'https://res.cloudinary.com/doqw5aqcf/image/upload/v1778100983/01_-_hagon_qz6bkd.png')" class="thumb-btn border-2 flex-shrink-0 w-16 h-16 rounded-xl border-medical-500 bg-white p-1 overflow-hidden transition-all snap-start">
+                                <img src="https://res.cloudinary.com/doqw5aqcf/image/upload/v1778100983/01_-_hagon_qz6bkd.png" class="w-full h-full object-contain mix-blend-multiply">
+                            </button>
+                            
+                            <button onclick="changeImage(this, 'https://res.cloudinary.com/doqw5aqcf/image/upload/v1778100983/02_-_hagon_r0ntl0.png')" class="thumb-btn border-2 flex-shrink-0 w-16 h-16 rounded-xl border-transparent hover:border-gray-300 opacity-60 hover:opacity-100 bg-white p-1 overflow-hidden transition-all snap-start">
+                                <img src="https://res.cloudinary.com/doqw5aqcf/image/upload/v1778100983/02_-_hagon_r0ntl0.png" class="w-full h-full object-contain mix-blend-multiply">
+                            </button>
+                            
+                            <button onclick="changeImage(this, 'https://res.cloudinary.com/doqw5aqcf/image/upload/v1778100983/03_-_hagon_sjn27n.png')" class="thumb-btn border-2 flex-shrink-0 w-16 h-16 rounded-xl border-transparent hover:border-gray-300 opacity-60 hover:opacity-100 bg-white p-1 overflow-hidden transition-all snap-start">
+                                <img src="https://res.cloudinary.com/doqw5aqcf/image/upload/v1778100983/03_-_hagon_sjn27n.png" class="w-full h-full object-contain mix-blend-multiply">
+                            </button>
+                            
+                            <button onclick="changeImage(this, 'https://res.cloudinary.com/doqw5aqcf/image/upload/v1778100983/04_-_hagon_f1jspm.png')" class="thumb-btn border-2 flex-shrink-0 w-16 h-16 rounded-xl border-transparent hover:border-gray-300 opacity-60 hover:opacity-100 bg-white p-1 overflow-hidden transition-all snap-start">
+                                <img src="https://res.cloudinary.com/doqw5aqcf/image/upload/v1778100983/04_-_hagon_f1jspm.png" class="w-full h-full object-contain mix-blend-multiply">
+                            </button>
+                            
+                            <button onclick="changeImage(this, 'https://res.cloudinary.com/doqw5aqcf/image/upload/v1778100983/05_-_hagon_iaqavv.png')" class="thumb-btn border-2 flex-shrink-0 w-16 h-16 rounded-xl border-transparent hover:border-gray-300 opacity-60 hover:opacity-100 bg-white p-1 overflow-hidden transition-all snap-start">
+                                <img src="https://res.cloudinary.com/doqw5aqcf/image/upload/v1778100983/05_-_hagon_iaqavv.png" class="w-full h-full object-contain mix-blend-multiply">
+                            </button>
+                            
+                            <button onclick="changeImage(this, 'https://res.cloudinary.com/doqw5aqcf/image/upload/v1778100983/06_-_hagon_kcyvxg.png')" class="thumb-btn border-2 flex-shrink-0 w-16 h-16 rounded-xl border-transparent hover:border-gray-300 opacity-60 hover:opacity-100 bg-white p-1 overflow-hidden transition-all snap-start">
+                                <img src="https://res.cloudinary.com/doqw5aqcf/image/upload/v1778100983/06_-_hagon_kcyvxg.png" class="w-full h-full object-contain mix-blend-multiply">
+                            </button>
+                            <button onclick="changeImage(this, 'https://res.cloudinary.com/doqw5aqcf/image/upload/v1778100983/07_-_hagon4_nd4hiw.png')" class="thumb-btn border-2 flex-shrink-0 w-16 h-16 rounded-xl border-transparent hover:border-gray-300 opacity-60 hover:opacity-100 bg-white p-1 overflow-hidden transition-all snap-start">
+                                <img src="https://res.cloudinary.com/doqw5aqcf/image/upload/v1778100983/07_-_hagon4_nd4hiw.png" class="w-full h-full object-contain mix-blend-multiply">
+                            </button>
+                            
+                        </div>
+
+                        <button onclick="scrollCarousel(1)" class="absolute right-0 z-10 bg-white shadow-sm rounded-full w-8 h-8 flex items-center justify-center text-gray-600 hover:text-medical-600 border border-gray-200 transition-colors">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                        </button>
+                    </div>
+
+                    <script>
+                        function changeImage(el, src) {
+                            document.getElementById('ecommerceMainImg').src = src;
+                            document.querySelectorAll('.thumb-btn').forEach(btn => {
+                                btn.classList.remove('border-medical-500');
+                                btn.classList.add('border-transparent', 'opacity-60');
+                                btn.classList.remove('hover:border-gray-300'); // reset
+                            });
+                            el.classList.remove('border-transparent', 'opacity-60');
+                            el.classList.add('border-medical-500');
+                        }
+
+                        function scrollCarousel(direction) {
+                            const container = document.getElementById('thumbCarousel');
+                            const scrollAmount = 80; // approx width of one thumb + gap
+                            container.scrollBy({ left: direction * scrollAmount, behavior: 'smooth' });
+                        }
+                    </script>
+                </div>
+
+                <!-- 3. Tags -->
+                <div class="order-3 lg:col-span-7 lg:col-start-6 lg:row-start-2 flex flex-wrap gap-2 mt-2">
+                    <span class="inline-flex items-center gap-1 bg-green-50 text-green-700 border border-green-200 px-2 py-1 rounded-full text-[11px] font-semibold shadow-sm">
+                        <svg class="w-3.5 h-3.5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+                        Crédito pré-aprovado no boleto
+                    </span>
+                    <span class="inline-flex items-center gap-1 bg-green-50 text-green-700 border border-green-200 px-2 py-1 rounded-full text-[11px] font-semibold shadow-sm">
+                        <svg class="w-3.5 h-3.5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+                        Aprovação rápida
+                    </span>
+                    <span class="inline-flex items-center gap-1 bg-green-50 text-green-700 border border-green-200 px-2 py-1 rounded-full text-[11px] font-semibold shadow-sm">
+                        <svg class="w-3.5 h-3.5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+                        Treinamento incluso
+                    </span>
+                </div>
+
+                <!-- 4. Brief description -->
+                <div class="order-4 lg:col-span-7 lg:col-start-6 lg:row-start-3 border border-gray-100 rounded-2xl p-4 md:p-5 bg-white shadow-sm mt-3 w-full">
+                    <p class="text-sm md:text-base font-medium text-gray-600 leading-relaxed text-justify">
+                        O Hegon é uma tecnologia de Laser CO2 ablativo fracionado desenvolvida para aplicações dermatológicas. Opera com comprimento de onda de 10.600nm e potência de 60W, oferecendo ampla capacidade de ajuste para diferentes abordagens de tratamento.
+                    </p>
+                </div>
+                
+                <!-- 6. CTA -->
+                <div class="order-5 lg:col-span-7 lg:col-start-6 lg:row-start-4 mt-6 text-center md:text-left mb-10 w-full">
+                    <a href="https://wa.me/555180985851" target="_blank" class="w-full sm:w-auto inline-flex justify-center items-center gap-3 bg-[#25D366] text-white font-bold py-3.5 px-8 rounded-xl hover:bg-[#1DA851] transition-all shadow-[0_8px_30px_rgba(37,211,102,0.3)] hover:-translate-y-1 hover:shadow-[0_12px_40px_rgba(37,211,102,0.4)] text-lg border border-[#25D366]">
+                        <svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+                        Comprar pelo WhatsApp
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Descrição do Produto (New Section outside HERO) -->
+    <section id="descricao" class="py-12 bg-gray-50 border-t border-gray-100">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+            <h2 class="text-xl md:text-2xl font-extrabold text-medical-900 mb-6 uppercase tracking-wider text-center">Descrição do Produto</h2>
+            <div class="bg-white p-6 md:p-8 rounded-2xl shadow-sm border border-gray-100">
+                <p class="text-sm md:text-base font-medium text-gray-600 leading-relaxed text-justify max-w-4xl mx-auto">
+                    O Hegon da Medical San é uma solução avançada para tratamentos dermatológicos utilizando Laser de CO2. Seu aplicador especializado e modos de operação diversificados permitem tratamentos eficazes e seguros. A alta tecnologia do Hegon proporciona aos profissionais de saúde a capacidade de realizar intervenções precisas, desde rejuvenescimento facial até cirurgias dermatológicas menores.<br><br>Sua interface moderna facilita o ajuste preciso e a monitoramento em tempo real, garantindo sessões personalizadas e ágeis. Com 60W de potência de laser e um sistema eficiente de refrigeração interno, o equipamento garante alto desempenho. O Hegon é, portanto, o investimento ideal para clínicas focadas em modernidade e resultados clínicos exemplares.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Diferenciais e Benefícios -->
+    <section id="diferenciais" class="py-16 bg-white border-t border-gray-100">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+            <h2 class="text-xl md:text-2xl font-extrabold text-medical-900 mb-10 uppercase tracking-wider text-center">Diferenciais e Benefícios</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
+                <div class="flex gap-4 items-start p-5 rounded-2xl bg-gray-50 border border-gray-100 transition-all hover:shadow-md">
+                    <div class="bg-medical-100 text-medical-600 p-2.5 rounded-xl shrink-0 mt-0.5">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                    </div>
+                    <div>
+                        <h4 class="text-sm font-extrabold text-medical-900 mb-1 uppercase tracking-tight">Aplicador Corporal 4D</h4>
+                        <p class="text-xs md:text-sm text-gray-600 font-medium leading-relaxed">O grande diferencial é a combinação de quatro comprimentos de onda (695nm, 755nm, 808nm e 1064nm) em um único aplicador, o que permite atingir diferentes profundidades e tratar diversos tipos de pelos e tons de pele com eficácia.</p>
+                    </div>
+                </div>
+
+                <div class="flex gap-4 items-start p-5 rounded-2xl bg-gray-50 border border-gray-100 transition-all hover:shadow-md">
+                    <div class="bg-medical-100 text-medical-600 p-2.5 rounded-xl shrink-0 mt-0.5">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"></path></svg>
+                    </div>
+                    <div>
+                        <h4 class="text-sm font-extrabold text-medical-900 mb-1 uppercase tracking-tight">Sistema Microcontrolado</h4>
+                        <p class="text-xs md:text-sm text-gray-600 font-medium leading-relaxed">O equipamento utiliza tecnologia microcontrolada de alta precisão para garantir que a entrega da energia do laser de diodo seja estável e segura.</p>
+                    </div>
+                </div>
+
+                <div class="flex gap-4 items-start p-5 rounded-2xl bg-gray-50 border border-gray-100 transition-all hover:shadow-md">
+                    <div class="bg-medical-100 text-medical-600 p-2.5 rounded-xl shrink-0 mt-0.5">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path></svg>
+                    </div>
+                    <div>
+                        <h4 class="text-sm font-extrabold text-medical-900 mb-1 uppercase tracking-tight">Alta Performance</h4>
+                        <p class="text-xs md:text-sm text-gray-600 font-medium leading-relaxed">Com uma potência total de 1500 VA, o sistema oferece o desempenho necessário para resultados rápidos e duradouros.</p>
+                    </div>
+                </div>
+
+                <div class="flex gap-4 items-start p-5 rounded-2xl bg-gray-50 border border-gray-100 transition-all hover:shadow-md">
+                    <div class="bg-medical-100 text-medical-600 p-2.5 rounded-xl shrink-0 mt-0.5">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
+                    </div>
+                    <div>
+                        <h4 class="text-sm font-extrabold text-medical-900 mb-1 uppercase tracking-tight">Tratamento Humanizado</h4>
+                        <p class="text-xs md:text-sm text-gray-600 font-medium leading-relaxed">A terapia é não invasiva, não causa dependência e é projetada para não apresentar efeitos sistêmicos ou colaterais indesejáveis.</p>
+                    </div>
+                </div>
+
+                <div class="flex gap-4 items-start p-5 rounded-2xl bg-gray-50 border border-gray-100 transition-all hover:shadow-md">
+                    <div class="bg-medical-100 text-medical-600 p-2.5 rounded-xl shrink-0 mt-0.5">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+                    </div>
+                    <div>
+                        <h4 class="text-sm font-extrabold text-medical-900 mb-1 uppercase tracking-tight">Biocompatibilidade Testada</h4>
+                        <p class="text-xs md:text-sm text-gray-600 font-medium leading-relaxed">O aplicador é fabricado com materiais que não ocasionam reações alérgicas, irritações ou sensibilidade na pele, seguindo normas internacionais de segurança.</p>
+                    </div>
+                </div>
+
+                <div class="flex gap-4 items-start p-5 rounded-2xl bg-gray-50 border border-gray-100 transition-all hover:shadow-md">
+                    <div class="bg-medical-100 text-medical-600 p-2.5 rounded-xl shrink-0 mt-0.5">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg>
+                    </div>
+                    <div>
+                        <h4 class="text-sm font-extrabold text-medical-900 mb-1 uppercase tracking-tight">Controle Térmico</h4>
+                        <p class="text-xs md:text-sm text-gray-600 font-medium leading-relaxed">A interface permite monitorar em tempo real a temperatura da água do sistema de refrigeração, garantindo o resfriamento adequado e o conforto térmico durante os disparos.</p>
+                    </div>
+                </div>
+
+                <div class="flex gap-4 items-start p-5 rounded-2xl bg-gray-50 border border-gray-100 transition-all hover:shadow-md">
+                    <div class="bg-medical-100 text-medical-600 p-2.5 rounded-xl shrink-0 mt-0.5">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"></path></svg>
+                    </div>
+                    <div>
+                        <h4 class="text-sm font-extrabold text-medical-900 mb-1 uppercase tracking-tight">Customização Total</h4>
+                        <p class="text-xs md:text-sm text-gray-600 font-medium leading-relaxed">O profissional tem controle total sobre a dosimetria, podendo ajustar energia, largura de pulso, frequência e fototipo (tom de pele) diretamente na tela intuitiva.</p>
+                    </div>
+                </div>
+
+                <div class="flex gap-4 items-start p-5 rounded-2xl bg-gray-50 border border-gray-100 transition-all hover:shadow-md">
+                    <div class="bg-medical-100 text-medical-600 p-2.5 rounded-xl shrink-0 mt-0.5">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+                    </div>
+                    <div>
+                        <h4 class="text-sm font-extrabold text-medical-900 mb-1 uppercase tracking-tight">Monitoramento da Sessão</h4>
+                        <p class="text-xs md:text-sm text-gray-600 font-medium leading-relaxed">O software exibe o total de energia utilizada e o contador de disparos da aplicação corrente, facilitando a gestão do tratamento.</p>
+                    </div>
+                </div>
+
+                <div class="flex gap-4 items-start p-5 rounded-2xl bg-gray-50 border border-gray-100 transition-all hover:shadow-md">
+                    <div class="bg-medical-100 text-medical-600 p-2.5 rounded-xl shrink-0 mt-0.5">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path></svg>
+                    </div>
+                    <div>
+                        <h4 class="text-sm font-extrabold text-medical-900 mb-1 uppercase tracking-tight">Design e Mobilidade</h4>
+                        <p class="text-xs md:text-sm text-gray-600 font-medium leading-relaxed">Apesar de sua robustez, o equipamento é considerado portátil para sua categoria, facilitando o posicionamento e a operação dentro da clínica.</p>
+                    </div>
+                </div>
+
+                <div class="flex gap-4 items-start p-5 rounded-2xl bg-gray-50 border border-gray-100 transition-all hover:shadow-md">
+                    <div class="bg-medical-100 text-medical-600 p-2.5 rounded-xl shrink-0 mt-0.5">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    </div>
+                    <div>
+                        <h4 class="text-sm font-extrabold text-medical-900 mb-1 uppercase tracking-tight">Ampla Cobertura</h4>
+                        <p class="text-xs md:text-sm text-gray-600 font-medium leading-relaxed">Um benefício comercial significativo é o prazo de garantia, que se estende por 18 meses para o equipamento (sendo 3 meses de garantia legal e 15 meses de garantia contratual).</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Indicações -->
+    <section id="efeitos" class="py-16 bg-gray-50 border-t border-gray-100">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+            <h2 class="text-xl md:text-2xl font-extrabold text-medical-900 mb-10 uppercase tracking-wider text-center">Indicações</h2>
+            
+            <div class="bg-white p-6 md:p-8 rounded-2xl shadow-sm border border-gray-100">
+                <ul class="space-y-4">
+<li class="flex gap-3 items-start"><div class="bg-medical-100 text-medical-600 p-1.5 rounded-full shrink-0 mt-0.5"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg></div><p class="text-sm md:text-base text-gray-600 font-medium leading-relaxed">Fotoenvelhecimento severo</p></li>
+<li class="flex gap-3 items-start"><div class="bg-medical-100 text-medical-600 p-1.5 rounded-full shrink-0 mt-0.5"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg></div><p class="text-sm md:text-base text-gray-600 font-medium leading-relaxed">Ritides</p></li>
+<li class="flex gap-3 items-start"><div class="bg-medical-100 text-medical-600 p-1.5 rounded-full shrink-0 mt-0.5"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg></div><p class="text-sm md:text-base text-gray-600 font-medium leading-relaxed">Tratamento de lesões pigmentadas</p></li>
+<li class="flex gap-3 items-start"><div class="bg-medical-100 text-medical-600 p-1.5 rounded-full shrink-0 mt-0.5"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg></div><p class="text-sm md:text-base text-gray-600 font-medium leading-relaxed">Melhora de ceratose actínicas</p></li>
+<li class="flex gap-3 items-start"><div class="bg-medical-100 text-medical-600 p-1.5 rounded-full shrink-0 mt-0.5"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg></div><p class="text-sm md:text-base text-gray-600 font-medium leading-relaxed">Neocolagênese</p></li>
+<li class="flex gap-3 items-start"><div class="bg-medical-100 text-medical-600 p-1.5 rounded-full shrink-0 mt-0.5"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg></div><p class="text-sm md:text-base text-gray-600 font-medium leading-relaxed">Cicatrizes hipertróficas</p></li>
+<li class="flex gap-3 items-start"><div class="bg-medical-100 text-medical-600 p-1.5 rounded-full shrink-0 mt-0.5"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg></div><p class="text-sm md:text-base text-gray-600 font-medium leading-relaxed">Cicatrizes após queimaduras</p></li>
+<li class="flex gap-3 items-start"><div class="bg-medical-100 text-medical-600 p-1.5 rounded-full shrink-0 mt-0.5"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg></div><p class="text-sm md:text-base text-gray-600 font-medium leading-relaxed">Região íntima interna e externa</p></li>
+<li class="flex gap-3 items-start"><div class="bg-medical-100 text-medical-600 p-1.5 rounded-full shrink-0 mt-0.5"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg></div><p class="text-sm md:text-base text-gray-600 font-medium leading-relaxed">Corte cirúrgico</p></li>
+<li class="flex gap-3 items-start"><div class="bg-medical-100 text-medical-600 p-1.5 rounded-full shrink-0 mt-0.5"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg></div><p class="text-sm md:text-base text-gray-600 font-medium leading-relaxed">Noodoplastia subdérmica do clitóris</p></li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Contraindicações -->
+    <section id="contraindicacoes" class="py-16 bg-white border-t border-gray-100">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+            <h2 class="text-xl md:text-2xl font-extrabold text-medical-900 mb-10 uppercase tracking-wider text-center">Contraindicações</h2>
+            
+            <div class="bg-white p-6 md:p-8 rounded-2xl shadow-sm border border-gray-100 max-w-4xl mx-auto">
+                <ul class="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-4">
+                    <li class="flex gap-3 items-center">
+                        <div class="bg-red-50 text-red-500 p-1.5 rounded-full shrink-0">
+                            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M6 18L18 6M6 6l12 12"></path></svg>
+                        </div>
+                        <p class="text-sm md:text-base text-gray-600 font-medium">Gravidez</p>
+                    </li>
+                    <li class="flex gap-3 items-center">
+                        <div class="bg-red-50 text-red-500 p-1.5 rounded-full shrink-0">
+                            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M6 18L18 6M6 6l12 12"></path></svg>
+                        </div>
+                        <p class="text-sm md:text-base text-gray-600 font-medium">Lactantes</p>
+                    </li>
+                    <li class="flex gap-3 items-center">
+                        <div class="bg-red-50 text-red-500 p-1.5 rounded-full shrink-0">
+                            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M6 18L18 6M6 6l12 12"></path></svg>
+                        </div>
+                        <p class="text-sm md:text-base text-gray-600 font-medium">Herpes ativa</p>
+                    </li>
+                    <li class="flex gap-3 items-center">
+                        <div class="bg-red-50 text-red-500 p-1.5 rounded-full shrink-0">
+                            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M6 18L18 6M6 6l12 12"></path></svg>
+                        </div>
+                        <p class="text-sm md:text-base text-gray-600 font-medium">Tratamento com isotretinoína há menos de 6 meses</p>
+                    </li>
+                    <li class="flex gap-3 items-center">
+                        <div class="bg-red-50 text-red-500 p-1.5 rounded-full shrink-0">
+                            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M6 18L18 6M6 6l12 12"></path></svg>
+                        </div>
+                        <p class="text-sm md:text-base text-gray-600 font-medium">Doenças autoimunes</p>
+                    </li>
+                    <li class="flex gap-3 items-center">
+                        <div class="bg-red-50 text-red-500 p-1.5 rounded-full shrink-0">
+                            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M6 18L18 6M6 6l12 12"></path></svg>
+                        </div>
+                        <p class="text-sm md:text-base text-gray-600 font-medium">Câncer há menos de 5 anos</p>
+                    </li>
+                    <li class="flex gap-3 items-center">
+                        <div class="bg-red-50 text-red-500 p-1.5 rounded-full shrink-0">
+                            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M6 18L18 6M6 6l12 12"></path></svg>
+                        </div>
+                        <p class="text-sm md:text-base text-gray-600 font-medium">Lesão pigmentar maligna</p>
+                    </li>
+                    <li class="flex gap-3 items-center">
+                        <div class="bg-red-50 text-red-500 p-1.5 rounded-full shrink-0">
+                            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M6 18L18 6M6 6l12 12"></path></svg>
+                        </div>
+                        <p class="text-sm md:text-base text-gray-600 font-medium">Doenças fotossensibilizantes</p>
+                    </li>
+                    <li class="flex gap-3 items-center">
+                        <div class="bg-red-50 text-red-500 p-1.5 rounded-full shrink-0">
+                            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M6 18L18 6M6 6l12 12"></path></svg>
+                        </div>
+                        <p class="text-sm md:text-base text-gray-600 font-medium">Uso de medicamentos fotossensibilizantes</p>
+                    </li>
+                    <li class="flex gap-3 items-center">
+                        <div class="bg-red-50 text-red-500 p-1.5 rounded-full shrink-0">
+                            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M6 18L18 6M6 6l12 12"></path></svg>
+                        </div>
+                        <p class="text-sm md:text-base text-gray-600 font-medium">Diabetes descompensado</p>
+                    </li>
+                    <li class="flex gap-3 items-center">
+                        <div class="bg-red-50 text-red-500 p-1.5 rounded-full shrink-0">
+                            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M6 18L18 6M6 6l12 12"></path></svg>
+                        </div>
+                        <p class="text-sm md:text-base text-gray-600 font-medium">DIU</p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Especificações Técnicas -->
+    <section id="especificacoes" class="py-16 bg-gray-50 border-t border-gray-100">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+            <h2 class="text-xl md:text-2xl font-extrabold text-medical-900 mb-10 uppercase tracking-wider text-center">Especificações Técnicas</h2>
+            
+            <div class="bg-white p-6 md:p-8 rounded-2xl shadow-sm border border-gray-100 max-w-4xl mx-auto">
+                <div class="flex flex-col">
+                    <div class="flex flex-col md:flex-row md:justify-between py-3 border-b border-gray-100 last:border-0 gap-1 md:gap-4">
+                        <span class="text-sm font-bold text-gray-700 md:w-1/3 shrink-0">Equipamento</span>
+                        <span class="text-sm text-gray-600 font-medium md:text-left">Hegon Medical San - Laser de CO2 Fracionado</span>
+                    </div>
+                    <div class="flex flex-col md:flex-row md:justify-between py-3 border-b border-gray-100 last:border-0 gap-1 md:gap-4">
+                        <span class="text-sm font-bold text-gray-700 md:w-1/3 shrink-0">Comprimento de onda</span>
+                        <span class="text-sm text-gray-600 font-medium md:text-left">Rubi (694nm), Alexandrite (755nm), Diodo (808nm) e ND-YAG (1064nm)</span>
+                    </div>
+                    <div class="flex flex-col md:flex-row md:justify-between py-3 border-b border-gray-100 last:border-0 gap-1 md:gap-4">
+                        <span class="text-sm font-bold text-gray-700 md:w-1/3 shrink-0">Área do Spot</span>
+                        <span class="text-sm text-gray-600 font-medium md:text-left">1cm²</span>
+                    </div>
+                    <div class="flex flex-col md:flex-row md:justify-between py-3 border-b border-gray-100 last:border-0 gap-1 md:gap-4">
+                        <span class="text-sm font-bold text-gray-700 md:w-1/3 shrink-0">Disparos</span>
+                        <span class="text-sm text-gray-600 font-medium md:text-left">40 milhões</span>
+                    </div>
+                    <div class="flex flex-col md:flex-row md:justify-between py-3 border-b border-gray-100 last:border-0 gap-1 md:gap-4">
+                        <span class="text-sm font-bold text-gray-700 md:w-1/3 shrink-0">Energia</span>
+                        <span class="text-sm text-gray-600 font-medium md:text-left">150J/cm²</span>
+                    </div>
+                    <div class="flex flex-col md:flex-row md:justify-between py-3 border-b border-gray-100 last:border-0 gap-1 md:gap-4">
+                        <span class="text-sm font-bold text-gray-700 md:w-1/3 shrink-0">Modo</span>
+                        <span class="text-sm text-gray-600 font-medium md:text-left">Pulsado</span>
+                    </div>
+                    <div class="flex flex-col md:flex-row md:justify-between py-3 border-b border-gray-100 last:border-0 gap-1 md:gap-4">
+                        <span class="text-sm font-bold text-gray-700 md:w-1/3 shrink-0">Modo de aplicação</span>
+                        <span class="text-sm text-gray-600 font-medium md:text-left">Pontual e varredura</span>
+                    </div>
+                    <div class="flex flex-col md:flex-row md:justify-between py-3 border-b border-gray-100 last:border-0 gap-1 md:gap-4">
+                        <span class="text-sm font-bold text-gray-700 md:w-1/3 shrink-0">Repetição de pulso</span>
+                        <span class="text-sm text-gray-600 font-medium md:text-left">Até 10 pulsos por segundo</span>
+                    </div>
+                    <div class="flex flex-col md:flex-row md:justify-between py-3 border-b border-gray-100 last:border-0 gap-1 md:gap-4">
+                        <span class="text-sm font-bold text-gray-700 md:w-1/3 shrink-0">Resfriamento da ponteira</span>
+                        <span class="text-sm text-gray-600 font-medium md:text-left">Por água</span>
+                    </div>
+                    <div class="flex flex-col md:flex-row md:justify-between py-3 border-b border-gray-100 last:border-0 gap-1 md:gap-4">
+                        <span class="text-sm font-bold text-gray-700 md:w-1/3 shrink-0">Temperatura de resfriamento da ponteira</span>
+                        <span class="text-sm text-gray-600 font-medium md:text-left">-12°</span>
+                    </div>
+                    <div class="flex flex-col md:flex-row md:justify-between py-3 border-b border-gray-100 last:border-0 gap-1 md:gap-4">
+                        <span class="text-sm font-bold text-gray-700 md:w-1/3 shrink-0">Display</span>
+                        <span class="text-sm text-gray-600 font-medium md:text-left">LCD touch screen, com dimensão de 8"</span>
+                    </div>
+                    <div class="flex flex-col md:flex-row md:justify-between py-3 border-b border-gray-100 last:border-0 gap-1 md:gap-4">
+                        <span class="text-sm font-bold text-gray-700 md:w-1/3 shrink-0">Voltagem</span>
+                        <span class="text-sm text-gray-600 font-medium md:text-left">Bivolt</span>
+                    </div>
+                    <div class="flex flex-col md:flex-row md:justify-between py-3 border-b border-gray-100 last:border-0 gap-1 md:gap-4">
+                        <span class="text-sm font-bold text-gray-700 md:w-1/3 shrink-0">Dimensões</span>
+                        <span class="text-sm text-gray-600 font-medium md:text-left">30x44x102cm (CxLxA)</span>
+                    </div>
+                    <div class="flex flex-col md:flex-row md:justify-between py-3 border-b border-gray-100 last:border-0 gap-1 md:gap-4">
+                        <span class="text-sm font-bold text-gray-700 md:w-1/3 shrink-0">Peso</span>
+                        <span class="text-sm text-gray-600 font-medium md:text-left">65kg</span>
+                    </div>
+                    <div class="flex flex-col md:flex-row md:justify-between py-3 border-b border-gray-100 last:border-0 gap-1 md:gap-4">
+                        <span class="text-sm font-bold text-gray-700 md:w-1/3 shrink-0">Anvisa</span>
+                        <span class="text-sm text-gray-600 font-medium md:text-left">82338020001</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Ficha Técnica -->
+    <section id="ficha-tecnica" class="py-16 bg-white border-t border-gray-100">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+            <h2 class="text-xl md:text-2xl font-extrabold text-medical-900 mb-10 uppercase tracking-wider text-center">Ficha Técnica</h2>
+            
+            <div class="bg-gray-50 p-6 md:p-8 rounded-2xl shadow-sm border border-gray-100 max-w-4xl mx-auto">
+                <div class="flex flex-col">
+                    <div class="flex flex-col md:flex-row md:justify-between py-3 border-b border-gray-100 last:border-0 gap-1 md:gap-4">
+                        <span class="text-sm font-bold text-gray-700 md:w-1/3 shrink-0">Spot (área útil do aplicador)</span>
+                        <span class="text-sm text-gray-600 font-medium md:text-left">1cm²</span>
+                    </div>
+                    <div class="flex flex-col md:flex-row md:justify-between py-3 border-b border-gray-100 last:border-0 gap-1 md:gap-4">
+                        <span class="text-sm font-bold text-gray-700 md:w-1/3 shrink-0">Resfriamento</span>
+                        <span class="text-sm text-gray-600 font-medium md:text-left">Por água</span>
+                    </div>
+                    <div class="flex flex-col md:flex-row md:justify-between py-3 border-b border-gray-100 last:border-0 gap-1 md:gap-4">
+                        <span class="text-sm font-bold text-gray-700 md:w-1/3 shrink-0">Repetição de pulso</span>
+                        <span class="text-sm text-gray-600 font-medium md:text-left">Até 10 pulsos por segundo</span>
+                    </div>
+                    <div class="flex flex-col md:flex-row md:justify-between py-3 border-b border-gray-100 last:border-0 gap-1 md:gap-4">
+                        <span class="text-sm font-bold text-gray-700 md:w-1/3 shrink-0">Temperatura de resfriamento da ponteira</span>
+                        <span class="text-sm text-gray-600 font-medium md:text-left">-12°</span>
+                    </div>
+                    <div class="flex flex-col md:flex-row md:justify-between py-3 border-b border-gray-100 last:border-0 gap-1 md:gap-4">
+                        <span class="text-sm font-bold text-gray-700 md:w-1/3 shrink-0">Modo</span>
+                        <span class="text-sm text-gray-600 font-medium md:text-left">Pontual e varredura</span>
+                    </div>
+                    <div class="flex flex-col md:flex-row md:justify-between py-3 border-b border-gray-100 last:border-0 gap-1 md:gap-4">
+                        <span class="text-sm font-bold text-gray-700 md:w-1/3 shrink-0">Energia</span>
+                        <span class="text-sm text-gray-600 font-medium md:text-left">150J/cm²</span>
+                    </div>
+                    <div class="flex flex-col md:flex-row md:justify-between py-3 border-b border-gray-100 last:border-0 gap-1 md:gap-4">
+                        <span class="text-sm font-bold text-gray-700 md:w-1/3 shrink-0">Reservatório de água</span>
+                        <span class="text-sm text-gray-600 font-medium md:text-left">1,2L</span>
+                    </div>
+                    <div class="flex flex-col md:flex-row md:justify-between py-3 border-b border-gray-100 last:border-0 gap-1 md:gap-4">
+                        <span class="text-sm font-bold text-gray-700 md:w-1/3 shrink-0">Comprimento de onda</span>
+                        <span class="text-sm text-gray-600 font-medium md:text-left">Rubi (694nm), Alexandrite (755nm), Diodo (808nm) e ND-YAG (1064nm)</span>
+                    </div>
+                    <div class="flex flex-col md:flex-row md:justify-between py-3 border-b border-gray-100 last:border-0 gap-1 md:gap-4">
+                        <span class="text-sm font-bold text-gray-700 md:w-1/3 shrink-0">Voltagem</span>
+                        <span class="text-sm text-gray-600 font-medium md:text-left">Bivolt</span>
+                    </div>
+                    <div class="flex flex-col md:flex-row md:justify-between py-3 border-b border-gray-100 last:border-0 gap-1 md:gap-4">
+                        <span class="text-sm font-bold text-gray-700 md:w-1/3 shrink-0">Disparos</span>
+                        <span class="text-sm text-gray-600 font-medium md:text-left">40 milhões</span>
+                    </div>
+                    <div class="flex flex-col md:flex-row md:justify-between py-3 border-b border-gray-100 last:border-0 gap-1 md:gap-4">
+                        <span class="text-sm font-bold text-gray-700 md:w-1/3 shrink-0">Dimensões (C x L x A)</span>
+                        <span class="text-sm text-gray-600 font-medium md:text-left">50.0 x 53.0 x 102.0 cm</span>
+                    </div>
+                    <div class="flex flex-col md:flex-row md:justify-between py-3 border-b border-gray-100 last:border-0 gap-1 md:gap-4">
+                        <span class="text-sm font-bold text-gray-700 md:w-1/3 shrink-0">Peso Kg</span>
+                        <span class="text-sm text-gray-600 font-medium md:text-left">35.0</span>
+                    </div>
+                    <div class="flex flex-col md:flex-row md:justify-between py-3 border-b border-gray-100 last:border-0 gap-1 md:gap-4">
+                        <span class="text-sm font-bold text-gray-700 md:w-1/3 shrink-0">Dimensões Embalado (C x L x A)</span>
+                        <span class="text-sm text-gray-600 font-medium md:text-left">74.0 x 62.0 x 151.0 cm</span>
+                    </div>
+                    <div class="flex flex-col md:flex-row md:justify-between py-3 border-b border-gray-100 last:border-0 gap-1 md:gap-4">
+                        <span class="text-sm font-bold text-gray-700 md:w-1/3 shrink-0">Peso Embalado Kg</span>
+                        <span class="text-sm text-gray-600 font-medium md:text-left">75.0</span>
+                    </div>
+                    <div class="flex flex-col md:flex-row md:justify-between py-3 border-b border-gray-100 last:border-0 gap-1 md:gap-4">
+                        <span class="text-sm font-bold text-gray-700 md:w-1/3 shrink-0">Marca</span>
+                        <span class="text-sm text-gray-600 font-medium md:text-left">MEDICAL SAN</span>
+                    </div>
+                    <div class="flex flex-col md:flex-row md:justify-between py-3 border-b border-gray-100 last:border-0 gap-1 md:gap-4">
+                        <span class="text-sm font-bold text-gray-700 md:w-1/3 shrink-0">Garantia</span>
+                        <span class="text-sm text-gray-600 font-medium md:text-left">18 meses</span>
+                    </div>
+                    <div class="flex flex-col md:flex-row md:justify-between py-3 border-b border-gray-100 last:border-0 gap-1 md:gap-4">
+                        <span class="text-sm font-bold text-gray-700 md:w-1/3 shrink-0">NCM</span>
+                        <span class="text-sm text-gray-600 font-medium md:text-left">90189099</span>
+                    </div>
+                    <div class="flex flex-col md:flex-row md:justify-between py-3 border-b border-gray-100 last:border-0 gap-1 md:gap-4">
+                        <span class="text-sm font-bold text-gray-700 md:w-1/3 shrink-0">Anvisa</span>
+                        <span class="text-sm text-gray-600 font-medium md:text-left">81243810012</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- O que vem na caixa? -->
+    <section id="itens-inclusos" class="py-16 bg-white border-t border-gray-100">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+            <h2 class="text-xl md:text-2xl font-extrabold text-medical-900 mb-10 uppercase tracking-wider text-center flex items-center justify-center gap-3">
+                <span class="text-medical-500">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"></path></svg>
+                </span>
+                O que vem na caixa?
+            </h2>
+            
+            <div class="bg-gray-50 p-6 md:p-8 rounded-2xl shadow-sm border border-gray-100 max-w-5xl mx-auto">
+                <ul class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-4">
+                    <li class="flex gap-3 items-center">
+                        <span class="text-medical-500 font-bold bg-medical-100 px-2 flex items-center justify-center py-1 rounded text-xs border border-medical-200 leading-none">01</span>
+                        <span class="text-sm md:text-base text-gray-700 font-medium">Hegon Medical San – Laser de CO2 Fracionado</span>
+                    </li>
+                    <li class="flex gap-3 items-center">
+                        <span class="text-medical-500 font-bold bg-medical-100 px-2 flex items-center justify-center py-1 rounded text-xs border border-medical-200 leading-none">01</span>
+                        <span class="text-sm md:text-base text-gray-700 font-medium">Braço articulado</span>
+                    </li>
+                    <li class="flex gap-3 items-center">
+                        <span class="text-medical-500 font-bold bg-medical-100 px-2 flex items-center justify-center py-1 rounded text-xs border border-medical-200 leading-none">01</span>
+                        <span class="text-sm md:text-base text-gray-700 font-medium">Cabo de força</span>
+                    </li>
+                    <li class="flex gap-3 items-center">
+                        <span class="text-medical-500 font-bold bg-medical-100 px-2 flex items-center justify-center py-1 rounded text-xs border border-medical-200 leading-none">01</span>
+                        <span class="text-sm md:text-base text-gray-700 font-medium">Pedal de acionamento</span>
+                    </li>
+                    <li class="flex gap-3 items-center">
+                        <span class="text-medical-500 font-bold bg-medical-100 px-2 flex items-center justify-center py-1 rounded text-xs border border-medical-200 leading-none">01</span>
+                        <span class="text-sm md:text-base text-gray-700 font-medium">Óculos de proteção – operador</span>
+                    </li>
+                    <li class="flex gap-3 items-center">
+                        <span class="text-medical-500 font-bold bg-medical-100 px-2 flex items-center justify-center py-1 rounded text-xs border border-medical-200 leading-none">01</span>
+                        <span class="text-sm md:text-base text-gray-700 font-medium">Óculos de proteção – paciente</span>
+                    </li>
+                    <li class="flex gap-3 items-center">
+                        <span class="text-medical-500 font-bold bg-medical-100 px-2 flex items-center justify-center py-1 rounded text-xs border border-medical-200 leading-none">02</span>
+                        <span class="text-sm md:text-base text-gray-700 font-medium">Chaves</span>
+                    </li>
+                    <li class="flex gap-3 items-center">
+                        <span class="text-medical-500 font-bold bg-medical-100 px-2 flex items-center justify-center py-1 rounded text-xs border border-medical-200 leading-none">02</span>
+                        <span class="text-sm md:text-base text-gray-700 font-medium">Ponteiras íntimas – 90° e 360°</span>
+                    </li>
+                    <li class="flex gap-3 items-center">
+                        <span class="text-medical-500 font-bold bg-medical-100 px-2 flex items-center justify-center py-1 rounded text-xs border border-medical-200 leading-none">02</span>
+                        <span class="text-sm md:text-base text-gray-700 font-medium">Ponteiras alongadas</span>
+                    </li>
+                    <li class="flex gap-3 items-center">
+                        <span class="text-medical-500 font-bold bg-medical-100 px-2 flex items-center justify-center py-1 rounded text-xs border border-medical-200 leading-none">02</span>
+                        <span class="text-sm md:text-base text-gray-700 font-medium">Ponteira corte cirúrgico</span>
+                    </li>
+                    <li class="flex gap-3 items-center">
+                        <span class="text-medical-500 font-bold bg-medical-100 px-2 flex items-center justify-center py-1 rounded text-xs border border-medical-200 leading-none">01</span>
+                        <span class="text-sm md:text-base text-gray-700 font-medium">Ponteira grande ponto fracionado</span>
+                    </li>
+                    <li class="flex gap-3 items-center">
+                        <span class="text-medical-500 font-bold bg-medical-100 px-2 flex items-center justify-center py-1 rounded text-xs border border-medical-200 leading-none">01</span>
+                        <span class="text-sm md:text-base text-gray-700 font-medium">Ponteira fracionada micro-ablativa – 100mm</span>
+                    </li>
+                    <li class="flex gap-3 items-center">
+                        <span class="text-medical-500 font-bold bg-medical-100 px-2 flex items-center justify-center py-1 rounded text-xs border border-medical-200 leading-none">01</span>
+                        <span class="text-sm md:text-base text-gray-700 font-medium">Ponteira fracionada ablativa – 50mm</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Perguntas Frequentes -->
+    <section id="faq" class="py-16 bg-gray-50 border-t border-gray-100">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+            <h2 class="text-xl md:text-2xl font-extrabold text-medical-900 mb-10 uppercase tracking-wider text-center">Perguntas Frequentes</h2>
+            
+            <div class="space-y-4">
+                <div class="bg-white border text-left border-gray-100 rounded-xl overflow-hidden hover:shadow-sm transition-shadow">
+                    <details class="group p-5 md:p-6 cursor-pointer">
+                        <summary class="flex justify-between items-center font-bold text-medical-900 list-none selection:bg-transparent" style="list-style: none;">
+                            <span class="text-sm md:text-base">Qual meio condutor deve ser utilizado?</span>
+                            <span class="transition group-open:rotate-180">
+                                <svg fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" width="24" class="text-medical-600"><path d="M6 9l6 6 6-6"></path></svg>
+                            </span>
+                        </summary>
+                        <p class="text-gray-600 mt-4 text-sm md:text-base leading-relaxed group-open:animate-fadeIn">
+                            Deve ser utilizado gel condutor neutro.
+                        </p>
+                    </details>
+                </div>
+                <div class="bg-white border text-left border-gray-100 rounded-xl overflow-hidden hover:shadow-sm transition-shadow">
+                    <details class="group p-5 md:p-6 cursor-pointer">
+                        <summary class="flex justify-between items-center font-bold text-medical-900 list-none selection:bg-transparent" style="list-style: none;">
+                            <span class="text-sm md:text-base">Pode ser utilizado em qualquer fototipo de pele?</span>
+                            <span class="transition group-open:rotate-180">
+                                <svg fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" width="24" class="text-medical-600"><path d="M6 9l6 6 6-6"></path></svg>
+                            </span>
+                        </summary>
+                        <p class="text-gray-600 mt-4 text-sm md:text-base leading-relaxed group-open:animate-fadeIn">
+                            Sim, atende do fototipo 1 ao fototipo 6.
+                        </p>
+                    </details>
+                </div>
+                <div class="bg-white border text-left border-gray-100 rounded-xl overflow-hidden hover:shadow-sm transition-shadow">
+                    <details class="group p-5 md:p-6 cursor-pointer">
+                        <summary class="flex justify-between items-center font-bold text-medical-900 list-none selection:bg-transparent" style="list-style: none;">
+                            <span class="text-sm md:text-base">Quais são os modos de aplicação disponíveis?</span>
+                            <span class="transition group-open:rotate-180">
+                                <svg fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" width="24" class="text-medical-600"><path d="M6 9l6 6 6-6"></path></svg>
+                            </span>
+                        </summary>
+                        <p class="text-gray-600 mt-4 text-sm md:text-base leading-relaxed group-open:animate-fadeIn">
+                            O equipamento possui modo pontual, com disparos singulares, e modo varredura, com emissão contínua de 5 disparos por segundo.
+                        </p>
+                    </details>
+                </div>
+                <div class="bg-white border text-left border-gray-100 rounded-xl overflow-hidden hover:shadow-sm transition-shadow">
+                    <details class="group p-5 md:p-6 cursor-pointer">
+                        <summary class="flex justify-between items-center font-bold text-medical-900 list-none selection:bg-transparent" style="list-style: none;">
+                            <span class="text-sm md:text-base">O equipamento possui ponteira resfriada?</span>
+                            <span class="transition group-open:rotate-180">
+                                <svg fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" width="24" class="text-medical-600"><path d="M6 9l6 6 6-6"></path></svg>
+                            </span>
+                        </summary>
+                        <p class="text-gray-600 mt-4 text-sm md:text-base leading-relaxed group-open:animate-fadeIn">
+                            Sim, possui sistema de resfriamento que atinge até -12°C em aproximadamente 50 segundos, proporcionando maior conforto.
+                        </p>
+                    </details>
+                </div>
+                <div class="bg-white border text-left border-gray-100 rounded-xl overflow-hidden hover:shadow-sm transition-shadow">
+                    <details class="group p-5 md:p-6 cursor-pointer">
+                        <summary class="flex justify-between items-center font-bold text-medical-900 list-none selection:bg-transparent" style="list-style: none;">
+                            <span class="text-sm md:text-base">Quantos disparos o aplicador possui?</span>
+                            <span class="transition group-open:rotate-180">
+                                <svg fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" width="24" class="text-medical-600"><path d="M6 9l6 6 6-6"></path></svg>
+                            </span>
+                        </summary>
+                        <p class="text-gray-600 mt-4 text-sm md:text-base leading-relaxed group-open:animate-fadeIn">
+                            O aplicador disponibiliza 40 milhões de disparos.
+                        </p>
+                    </details>
+                </div>
+                <div class="bg-white border text-left border-gray-100 rounded-xl overflow-hidden hover:shadow-sm transition-shadow">
+                    <details class="group p-5 md:p-6 cursor-pointer">
+                        <summary class="flex justify-between items-center font-bold text-medical-900 list-none selection:bg-transparent" style="list-style: none;">
+                            <span class="text-sm md:text-base">Qual é a tecnologia do aplicador do Hegon?</span>
+                            <span class="transition group-open:rotate-180">
+                                <svg fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" width="24" class="text-medical-600"><path d="M6 9l6 6 6-6"></path></svg>
+                            </span>
+                        </summary>
+                        <p class="text-gray-600 mt-4 text-sm md:text-base leading-relaxed group-open:animate-fadeIn">
+                            O Hegon utiliza uma tecnologia avançada de Laser de CO2 Fracionado.
+                        </p>
+                    </details>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div id="global-footer"></div>
+    <div id="global-whatsapp"></div>
+    <script type="module" src="/src/global.tsx"></script>
+</body>
+</html>

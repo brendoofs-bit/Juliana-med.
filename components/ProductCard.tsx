@@ -14,6 +14,8 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, onOpenModal }) => {
       onClick={() => {
         if (product.id === 'est-1') {
           window.location.href = '/hakon/index.html';
+        } else if (product.id === 'hof-2') {
+          window.location.href = '/hegon/index.html';
         } else {
           onOpenModal(product);
         }
