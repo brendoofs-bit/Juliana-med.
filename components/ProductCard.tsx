@@ -18,6 +18,8 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, onOpenModal }) => {
           window.location.href = '/hegon/index.html';
         } else if (product.id === 'hof-12') {
           window.location.href = '/ultramed-pro/index.html';
+        } else if (product.id === 'hof-4') {
+          window.location.href = '/pisom/index.html';
         } else {
           onOpenModal(product);
         }
