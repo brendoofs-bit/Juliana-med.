@@ -16,6 +16,8 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, onOpenModal }) => {
           window.location.href = '/hakon/index.html';
         } else if (product.id === 'est-2') {
           window.location.href = '/omer-smart-3d/index.html';
+        } else if (product.id === 'est-4') {
+          window.location.href = '/velaryan-medical-san/index.html';
         } else if (product.id === 'hof-2') {
           window.location.href = '/hegon/index.html';
         } else if (product.id === 'hof-12') {

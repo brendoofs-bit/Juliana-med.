@@ -24,6 +24,10 @@ const Hero: React.FC = () => {
       window.location.href = '/hakon/index.html';
       return;
     }
+    if (data.title === 'VELARYAN') {
+      window.location.href = '/velaryan-medical-san/index.html';
+      return;
+    }
     trackLead();
     setSelectedBanner(data);
     setIsBannerModalOpen(true);
@@ -90,7 +94,16 @@ const Hero: React.FC = () => {
     bullets: ['Redução de Gordura', 'Não Invasivo', 'Resultados Seguros']
   };
 
-  const mainSlides = [omerData, ultramedDataCarousel, hegonData, hakonData, criolipoliseData];
+  const velaryanData: BannerData = {
+    title: 'VELARYAN',
+    promoText: 'Mãos Livres, Lucro Alto',
+    description: 'Laser estacionário para emagrecimento.',
+    imageUrl: 'https://res.cloudinary.com/doqw5aqcf/image/upload/v1774109170/velaryan-desktop_nltbnp.png',
+    desktopImageUrl: 'https://res.cloudinary.com/doqw5aqcf/image/upload/v1774109170/velaryan-desktop_nltbnp.png',
+    mobileImageUrl: 'https://res.cloudinary.com/doqw5aqcf/image/upload/v1774118758/velaryan-mobile_dho64i.png',
+  };
+
+  const mainSlides = [velaryanData, omerData, ultramedDataCarousel, hegonData, hakonData, criolipoliseData];
 
   // Dados para banners secundários
   const liftendoData: BannerData = {
@@ -118,15 +131,6 @@ const Hero: React.FC = () => {
     imageUrl: 'https://res.cloudinary.com/doqw5aqcf/image/upload/v1774109170/ultramed-mpt-desktop_r6vf1f.png',
     desktopImageUrl: 'https://res.cloudinary.com/doqw5aqcf/image/upload/v1774109170/ultramed-mpt-desktop_r6vf1f.png',
     mobileImageUrl: 'https://res.cloudinary.com/doqw5aqcf/image/upload/v1774118758/ultramed-mobile_xhp6kt.png',
-  };
-
-  const velaryanData: BannerData = {
-    title: 'VELARYAN',
-    promoText: 'Mãos Livres, Lucro Alto',
-    description: 'Laser estacionário para emagrecimento.',
-    imageUrl: 'https://res.cloudinary.com/doqw5aqcf/image/upload/v1774109170/velaryan-desktop_nltbnp.png',
-    desktopImageUrl: 'https://res.cloudinary.com/doqw5aqcf/image/upload/v1774109170/velaryan-desktop_nltbnp.png',
-    mobileImageUrl: 'https://res.cloudinary.com/doqw5aqcf/image/upload/v1774118758/velaryan-mobile_dho64i.png',
   };
 
   // Carousel Logic
