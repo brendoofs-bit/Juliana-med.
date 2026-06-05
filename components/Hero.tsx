@@ -94,6 +94,15 @@ const Hero: React.FC = () => {
     bullets: ['Redução de Gordura', 'Não Invasivo', 'Resultados Seguros']
   };
 
+  const [isDesktop, setIsDesktop] = useState(false);
+
+  useEffect(() => {
+    const checkDesktop = () => setIsDesktop(window.innerWidth >= 768);
+    checkDesktop();
+    window.addEventListener('resize', checkDesktop);
+    return () => window.removeEventListener('resize', checkDesktop);
+  }, []);
+
   const velaryanData: BannerData = {
     title: 'VELARYAN',
     promoText: 'Mãos Livres, Lucro Alto',
@@ -103,7 +112,9 @@ const Hero: React.FC = () => {
     mobileImageUrl: 'https://res.cloudinary.com/doqw5aqcf/image/upload/v1774118758/velaryan-mobile_dho64i.png',
   };
 
-  const mainSlides = [velaryanData, omerData, ultramedDataCarousel, hegonData, hakonData, criolipoliseData];
+  const desktopSlides = [omerData, ultramedDataCarousel, hegonData, hakonData, criolipoliseData];
+  const mobileSlides = [velaryanData, omerData, ultramedDataCarousel, hegonData, hakonData, criolipoliseData];
+  const mainSlides = isDesktop ? desktopSlides : mobileSlides;
 
   // Dados para banners secundários
   const liftendoData: BannerData = {
@@ -150,11 +161,19 @@ const Hero: React.FC = () => {
   };
 
   useEffect(() => {
+    if (currentSlide >= mainSlides.length) {
+      setCurrentSlide(0);
+    }
+  }, [mainSlides.length, currentSlide]);
+
+  useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentSlide((prev) => (prev === mainSlides.length - 1 ? 0 : prev + 1));
+      setCurrentSlide((prev) => (prev >= mainSlides.length - 1 ? 0 : prev + 1));
     }, 6000);
     return () => clearInterval(interval);
   }, [mainSlides.length]);
+
+  const safeSlide = currentSlide >= mainSlides.length ? 0 : currentSlide;
 
   return (
     <>
@@ -164,21 +183,21 @@ const Hero: React.FC = () => {
           {/* Banner Principal (Slider) */}
           <div 
             className="relative w-full rounded-2xl overflow-hidden shadow-2xl h-[400px] md:h-[500px] mb-8 group cursor-pointer transition-transform duration-500 hover:scale-[1.005]" 
-            onClick={() => handleBannerClick(mainSlides[currentSlide])}
+            onClick={() => handleBannerClick(mainSlides[safeSlide])}
           >
             {/* Imagem Desktop */}
             <img 
-               key={`desktop-${currentSlide}`} 
-               src={mainSlides[currentSlide].desktopImageUrl}
+               key={`desktop-${safeSlide}`} 
+               src={mainSlides[safeSlide].desktopImageUrl}
                className="hidden md:block absolute inset-0 w-full h-full object-cover z-10 animate-fade-in" 
-               alt={mainSlides[currentSlide].title}
+               alt={mainSlides[safeSlide].title}
             />
             {/* Imagem Mobile */}
             <img 
-               key={`mobile-${currentSlide}`} 
-               src={mainSlides[currentSlide].mobileImageUrl}
+               key={`mobile-${safeSlide}`} 
+               src={mainSlides[safeSlide].mobileImageUrl}
                className="block md:hidden absolute inset-0 w-full h-full object-cover z-10 animate-fade-in" 
-               alt={mainSlides[currentSlide].title}
+               alt={mainSlides[safeSlide].title}
             />
 
             {/* Navigation Arrows */}
@@ -202,7 +221,7 @@ const Hero: React.FC = () => {
                   key={index}
                   onClick={(e) => goToSlide(e, index)}
                   className={`h-1.5 rounded-full transition-all duration-300 ${
-                    currentSlide === index ? 'bg-action-cyan w-8' : 'bg-white/30 w-4 hover:bg-white'
+                    safeSlide === index ? 'bg-action-cyan w-8' : 'bg-white/30 w-4 hover:bg-white'
                   }`}
                 />
               ))}
