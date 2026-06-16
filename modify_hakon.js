@@ -28,12 +28,11 @@ htmlContent = htmlContent.replace(/<script type="module" src="\/src\/mountFooter
 // Since nav is absolute, hero needs top margin. It already has pt-28.
 // 2. Carousel for image cards.
 const carouselImages = [
-    "https://res.cloudinary.com/doqw5aqcf/image/upload/v1778022679/01_-_Frente_jcq9n2.png",
-    "https://res.cloudinary.com/doqw5aqcf/image/upload/v1778022679/02_-_Diagonal_direito_osbdgr.png",
-    "https://res.cloudinary.com/doqw5aqcf/image/upload/v1778022679/03_-_Lateral_direito_f6ju8x.png",
-    "https://res.cloudinary.com/doqw5aqcf/image/upload/v1778022679/04_-_traseiro_fpgrbe.png",
-    "https://res.cloudinary.com/doqw5aqcf/image/upload/v1778022679/05_-_Lateral_esquerdo_cwqvvu.png",
-    "https://res.cloudinary.com/doqw5aqcf/image/upload/v1778022679/06_-_Diagonal_esquerdo_hbbcax.png"
+    "https://res.cloudinary.com/dy0ialgio/image/upload/v1780962845/aparelho-de-depilacao-a-laser-hakar-com-painel-touchscreen-e-rodizios_zny7ck.webp",
+    "https://res.cloudinary.com/dy0ialgio/image/upload/v1780962844/equipamento-medico-diagnostico-haakon-tela-toque-carrinho-rodas-azul-preto_uqnesh.webp",
+    "https://res.cloudinary.com/dy0ialgio/image/upload/v1780962854/dispositivo-medico-estetica-tela-touchscreen-cabo-flexivel_lwow1l.webp",
+    "https://res.cloudinary.com/dy0ialgio/image/upload/v1780962855/apontador-laser-hikronil-empunhadura-ergonomica-preto_qwhxtc.webp",
+    "https://res.cloudinary.com/dy0ialgio/image/upload/v1780962846/pistola-acionamento-cabo-preto-halon-detalhe_bglxqc.webp"
 ];
 
 const newImagesSection = `

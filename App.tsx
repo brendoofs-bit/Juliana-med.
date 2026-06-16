@@ -142,7 +142,7 @@ const App: React.FC = () => {
                           <div className="bg-white/5 p-4 rounded-lg">
                              <p className="italic text-gray-300 text-sm mb-3">"Já tenho 4 tecnologias, pretendo comprar mais. Todas entregaram não apenas resultado, como lucratividade em pouco tempo de uso. Eu recomendo."</p>
                              <div className="flex items-center gap-3">
-                                <img src="https://res.cloudinary.com/doqw5aqcf/image/upload/v1769025481/doutora-amanda-yamamoto_lfstfc.png" alt="Dra. Amanda" className="w-12 h-12 object-cover rounded-full border border-gray-600" />
+                                <img src="https://res.cloudinary.com/dy0ialgio/image/upload/v1780962420/mulher-com-icone-de-estrela-laranja-destaque_hmdmic.webp" alt="Dra. Amanda" className="w-12 h-12 object-cover rounded-full border border-gray-600" />
                                 <div>
                                    <p className="text-sm font-bold">Amanda Yamamoto</p>
                                    <p className="text-xs text-gray-500">Avaliação Google</p>
@@ -152,7 +152,7 @@ const App: React.FC = () => {
                           <div className="bg-white/5 p-4 rounded-lg">
                              <p className="italic text-gray-300 text-sm mb-3">"Sou encantada com essa empresa, primeiro com os equipamentos, depois com a equipe e quando conhecemos a loja conceito em Estrela e a fábrica, nos encantamos com os valores, que são muito alinhados com os nossos."</p>
                              <div className="flex items-center gap-3">
-                                <img src="https://res.cloudinary.com/doqw5aqcf/image/upload/v1769025480/doutora-raquel_wjmzfw.png" alt="Dra. Raquel" className="w-12 h-12 object-cover rounded-full border border-gray-600" />
+                                <img src="https://res.cloudinary.com/dy0ialgio/image/upload/v1780962465/retrato-feminino-sorridente-foto-circular_adjwow.webp" alt="Dra. Raquel" className="w-12 h-12 object-cover rounded-full border border-gray-600" />
                                 <div>
                                    <p className="text-sm font-bold">Dra. Raquel</p>
                                    <p className="text-xs text-gray-500">Avaliação Google</p>

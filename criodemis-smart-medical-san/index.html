@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-MN6J49PP');</script>
+<!-- End Google Tag Manager -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Criodermis Smart - Criolipólise de Placas</title>
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2220%22 fill=%22%2300C8FF%22/><path d=%22M50 20v60M20 50h60%22 stroke=%22white%22 stroke-width=%2215%22 stroke-linecap=%22round%22/></svg>">
+    <!-- CSS Link -->
+    <link rel="stylesheet" href="./style.css">
+    
+    <script type="importmap">
+    {
+      "imports": {
+        "react": "https://esm.sh/react@^19.2.3",
+        "react-dom/client": "https://esm.sh/react-dom@^19.2.3/client",
+        "lucide-react": "https://esm.sh/lucide-react@^0.562.0",
+        "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
+        "react/": "https://esm.sh/react@^19.2.3/"
+      }
+    }
+    </script>
+
+    <!-- Tailwind CSS for global components -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Inter', 'sans-serif'],
+            },
+            colors: {
+              medical: {
+                50: '#f0f9ff',
+                100: '#e0f2fe',
+                500: '#00C8FF', 
+                600: '#0284c7',
+                700: '#0369a1',
+                800: '#0B1E48', 
+                900: '#051330',
+              },
+              action: {
+                cyan: '#00D1FF', 
+                red: '#F25D27', 
+              }
+            }
+          }
+        }
+      }
+    </script>
+  <style>html { scroll-behavior: smooth; }</style>
+</head>
+<body><!-- Google Tag Manager (noscript) --><noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MN6J49PP"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript><!-- End Google Tag Manager (noscript) --><!--
+      NAVBAR
+    -->
+    <nav class="absolute top-0 left-0 w-full bg-white z-50 flex items-center justify-center py-4 border-b border-gray-100">
+        <a href="/" class="flex flex-col items-center leading-none select-none hover:opacity-80 transition-opacity" style="text-decoration: none;">
+            <span class="text-2xl md:text-3xl font-extrabold tracking-tighter" style="color: #0B1E48;">
+            MEDICAL<span class="font-light" style="font-weight: 300;">SAN</span>
+            </span>
+        </a>
+    </nav>
+
+    <!--
+      HERO SECTION
+      Section baseada no Design System: Medical San
+      Cores: Off-white quente, detalhes em dourado
+      Tipografia: Cormorant Garamond (H1), DM Sans (Body), Josefin Sans (Accents)
+      Layout: 2 colunas (desktop), flex direcional (mobile).
+    -->
+    
+    <section id="hero" class="pt-28 pb-8 md:pt-32 md:pb-12 bg-white relative">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
+            <div class="flex flex-col lg:grid lg:grid-cols-12 gap-y-4 lg:gap-y-6 lg:gap-x-12 items-start">
+                
+                <!-- 1. Code and Title -->
+                <div class="order-1 lg:col-span-7 lg:col-start-6 lg:row-start-1 text-left mt-2">
+                    <span class="text-sm text-medical-500 mb-2 font-semibold tracking-wider uppercase block">Cód: ME21445A</span>
+                    <h1 class="text-3xl md:text-4xl lg:text-[40px] font-extrabold text-medical-900 leading-[1.1] tracking-tight">
+                        Criodermis Smart Medical San – Aparelho de Criolipólise de Placas com 04 Aplicadores (não acompanha o rack)
+                    </h1>
+                </div>
+
+                <!-- 2. Image and Carousel -->
+                <div class="order-2 lg:col-span-5 lg:col-start-1 lg:row-start-1 lg:row-span-5 w-full flex flex-col gap-3 relative z-0">
+                    <div class="border border-gray-100 rounded-[2rem] bg-white p-6 md:p-10 flex items-center justify-center relative aspect-[4/3] md:aspect-square overflow-hidden shadow-sm">
+                        <img src="https://res.cloudinary.com/dy0ialgio/image/upload/v1780961561/equipamento-estetica-cri-dermis-com-tela-e-modulos-laterais_tsxkhk.webp" class="max-h-[300px] md:max-h-[460px] w-auto object-contain" alt="Criodermis Smart Medical San" id="ecommerceMainImg">
+                    </div>
+                    
+                    <!-- Carousel Row -->
+                    <div class="relative flex items-center justify-center mt-1 px-8">
+                        <button onclick="scrollCarousel(-1)" class="absolute left-0 z-10 bg-white shadow-sm rounded-full w-8 h-8 flex items-center justify-center text-gray-600 hover:text-medical-600 border border-gray-200 transition-colors">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+                        </button>
+                        
+                        <div id="thumbCarousel" class="flex gap-2 overflow-x-auto scroll-smooth w-full py-1 snap-x" style="-ms-overflow-style: none; scrollbar-width: none;">
+                            <style>#thumbCarousel::-webkit-scrollbar { display: none; }</style>
+                            <button onclick="changeImage(this, 'https://res.cloudinary.com/dy0ialgio/image/upload/v1780961561/equipamento-estetica-cri-dermis-com-tela-e-modulos-laterais_tsxkhk.webp')" class="thumb-btn border-2 border-medical-500 rounded-lg overflow-hidden shrink-0 w-16 h-16 transition-all snap-start">
+                                <img src="https://res.cloudinary.com/dy0ialgio/image/upload/v1780961561/equipamento-estetica-cri-dermis-com-tela-e-modulos-laterais_tsxkhk.webp" class="w-full h-full object-contain" alt="Criodermis Smart Frontal">
+                            </button>
+                            <button onclick="changeImage(this, 'https://res.cloudinary.com/dy0ialgio/image/upload/v1781571606/aparelho-de-crioterapia-estetica-tela-de-controle-e-botoes_koppyx.webp')" class="thumb-btn border-2 border-transparent opacity-60 hover:opacity-100 hover:border-gray-300 rounded-lg overflow-hidden shrink-0 w-16 h-16 transition-all snap-start">
+                                <img src="https://res.cloudinary.com/dy0ialgio/image/upload/v1781571606/aparelho-de-crioterapia-estetica-tela-de-controle-e-botoes_koppyx.webp" class="w-full h-full object-contain" alt="Tela de Controle">
+                            </button>
+                            <button onclick="changeImage(this, 'https://res.cloudinary.com/dy0ialgio/image/upload/v1781571606/adaptador-conector-arredondado-cinza-com-cabo-inferior_vfuk7h.webp')" class="thumb-btn border-2 border-transparent opacity-60 hover:opacity-100 hover:border-gray-300 rounded-lg overflow-hidden shrink-0 w-16 h-16 transition-all snap-start">
+                                <img src="https://res.cloudinary.com/dy0ialgio/image/upload/v1781571606/adaptador-conector-arredondado-cinza-com-cabo-inferior_vfuk7h.webp" class="w-full h-full object-contain" alt="Conector e Cabo">
+                            </button>
+                        </div>
+
+                        <button onclick="scrollCarousel(1)" class="absolute right-0 z-10 bg-white shadow-sm rounded-full w-8 h-8 flex items-center justify-center text-gray-600 hover:text-medical-600 border border-gray-200 transition-colors">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                        </button>
+                    </div>
+
+                    <script>
+                        function changeImage(el, src) {
+                            document.getElementById('ecommerceMainImg').src = src;
+                            document.querySelectorAll('.thumb-btn').forEach(btn => {
+                                btn.classList.remove('border-medical-500');
+                                btn.classList.add('border-transparent', 'opacity-60');
+                                btn.classList.remove('hover:border-gray-300'); // reset
+                            });
+                            el.classList.remove('border-transparent', 'opacity-60');
+                            el.classList.add('border-medical-500');
+                        }
+
+                        function scrollCarousel(direction) {
+                            const container = document.getElementById('thumbCarousel');
+                            const scrollAmount = 80; // approx width of one thumb + gap
+                            container.scrollBy({ left: direction * scrollAmount, behavior: 'smooth' });
+                        }
+                    </script>
+                </div>
+
+                <!-- 3. Tags -->
+                <div class="order-3 lg:col-span-7 lg:col-start-6 lg:row-start-2 flex flex-wrap gap-2 mt-2">
+                    <span class="inline-flex items-center gap-1 bg-green-50 text-green-700 border border-green-200 px-2 py-1 rounded-full text-[11px] font-semibold shadow-sm">
+                        <svg class="w-3.5 h-3.5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+                        Crédito pré-aprovado no boleto
+                    </span>
+                    <span class="inline-flex items-center gap-1 bg-green-50 text-green-700 border border-green-200 px-2 py-1 rounded-full text-[11px] font-semibold shadow-sm">
+                        <svg class="w-3.5 h-3.5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+                        Aprovação rápida
+                    </span>
+                    <span class="inline-flex items-center gap-1 bg-green-50 text-green-700 border border-green-200 px-2 py-1 rounded-full text-[11px] font-semibold shadow-sm">
+                        <svg class="w-3.5 h-3.5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+                        Treinamento incluso
+                    </span>
+                </div>
+
+                <!-- 4. Brief description -->
+                <div class="order-4 lg:col-span-7 lg:col-start-6 lg:row-start-3 border border-gray-100 rounded-2xl p-4 md:p-5 bg-white shadow-sm mt-3 w-full">
+                    <p class="text-sm md:text-base font-medium text-gray-600 leading-relaxed text-justify">
+                        Transforme a sua clínica com o Criodermis Smart Medical San! Este revolucionário aparelho de criolipólise de placas garante resultados incríveis e indolores na redução de gordura. Com seu sistema inovador de borda infinita e aplicadores tamanho G, você otimiza o tempo e oferece amplo conforto. Livre de água e manutenção complexa, é prático, durável e ecologicamente correto. As manoplas permitem o uso simultâneo, maximizando a área tratada e duplicando os lucros da sua agenda. Invista na tecnologia patenteada que vai atrair novos clientes e elevar seu faturamento de forma segura e imediata!
+                    </p>
+                </div>
+                
+                <!-- 6. CTA -->
+                <div class="order-5 lg:col-span-7 lg:col-start-6 lg:row-start-4 mt-6 text-center md:text-left mb-10 w-full">
+                    <a href="https://wa.me/555180985851" target="_blank" class="w-full sm:w-auto inline-flex justify-center items-center gap-3 bg-[#25D366] text-white font-bold py-3.5 px-8 rounded-xl hover:bg-[#1DA851] transition-all shadow-[0_8px_30px_rgba(37,211,102,0.3)] hover:-translate-y-1 hover:shadow-[0_12px_40px_rgba(37,211,102,0.4)] text-lg border border-[#25D366]">
+                        <svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+                        Comprar pelo WhatsApp
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Descrição do Produto (New Section outside HERO) -->
+    <section id="descricao" class="py-12 bg-gray-50 border-t border-gray-100">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+            <h2 class="text-xl md:text-2xl font-extrabold text-medical-900 mb-6 uppercase tracking-wider text-center">Descrição do Produto</h2>
+            <div class="bg-white p-6 md:p-8 rounded-2xl shadow-sm border border-gray-100">
+                <p class="text-sm md:text-base font-medium text-gray-600 leading-relaxed text-justify max-w-4xl mx-auto">
+Criodermis Smart Medical San: Criolipólise de Placas para Redução de Gordura Localizada<br><br>
+
+O Criodermis Smart é a versão atualizada da criolipólise de placas mais vendida do Brasil. Desenvolvido pela Medical San, o equipamento mantém a qualidade e os resultados já consolidados no mercado estético, incorporando novas funcionalidades que ampliam o desempenho nos tratamentos de redução de gordura localizada.<br><br>
+
+Com design aprimorado e recursos exclusivos, o Criodermis Smart possui 4 aplicadores grandes de borda infinita, que permitem maior área de aplicação, sem espaços entre as placas. Essa configuração contribui para otimizar o tempo de atendimento e promover resultados mais uniformes.<br><br>
+
+O equipamento utiliza um sistema patenteado de congelamento por dissipação de ar, proporcionando um processo eficiente, seguro e sustentável durante os procedimentos. <br><br>
+
+Além de atuar na redução de gordura localizada por meio do resfriamento e flexibilização dos adipócitos, o Criodermis Smart também pode ser utilizado em abordagens relacionadas à gordura visceral, emagrecimento e flacidez da pele, ampliando suas possibilidades de aplicação em clínicas de estética.<br><br>
+
+Conta com manoplas no tamanho G, com área de 200 cm² e equipadas com 2 peltiers, sendo projetadas para atender regiões corporais amplas com maior praticidade.<br><br>
+
+O Criodermis Smart representa a evolução de um equipamento já consolidado, mantendo o padrão de qualidade e confiabilidade, agora com recursos adicionais para potencializar os tratamentos estéticos.
+</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Diferenciais e Benefícios -->
+    <section id="diferenciais" class="py-16 bg-white border-t border-gray-100">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+            <h2 class="text-xl md:text-2xl font-extrabold text-medical-900 mb-10 uppercase tracking-wider text-center">Diferenciais e Benefícios</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
+<div class="flex gap-4 items-start p-5 rounded-2xl bg-gray-50 border border-gray-100 transition-all hover:shadow-md"><div class="bg-medical-100 text-medical-600 p-2.5 rounded-xl shrink-0 mt-0.5"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg></div><div><h4 class="text-sm font-extrabold text-medical-900 mb-1 uppercase tracking-tight">Sustentável</h4><p class="text-xs md:text-sm text-gray-600 font-medium leading-relaxed">O sistema patenteado de resfriamento por dissipação de ar elimina a necessidade de troca de água, aumentando a durabilidade.</p></div></div>
+<div class="flex gap-4 items-start p-5 rounded-2xl bg-gray-50 border border-gray-100 transition-all hover:shadow-md"><div class="bg-medical-100 text-medical-600 p-2.5 rounded-xl shrink-0 mt-0.5"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg></div><div><h4 class="text-sm font-extrabold text-medical-900 mb-1 uppercase tracking-tight">Borda Infinita</h4><p class="text-xs md:text-sm text-gray-600 font-medium leading-relaxed">Os aplicadores grandes com borda infinita cobrem completamente a área tratada, sem intervalos entre as placas, melhorando a eficiência e reduzindo o tempo.</p></div></div>
+<div class="flex gap-4 items-start p-5 rounded-2xl bg-gray-50 border border-gray-100 transition-all hover:shadow-md"><div class="bg-medical-100 text-medical-600 p-2.5 rounded-xl shrink-0 mt-0.5"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg></div><div><h4 class="text-sm font-extrabold text-medical-900 mb-1 uppercase tracking-tight">Acoplamento Otimizado</h4><p class="text-xs md:text-sm text-gray-600 font-medium leading-relaxed">O sistema foi otimizado para facilitar o acoplamento das manoplas e a passagem das faixas, tornando o uso muito mais prático e ágil.</p></div></div>
+<div class="flex gap-4 items-start p-5 rounded-2xl bg-gray-50 border border-gray-100 transition-all hover:shadow-md"><div class="bg-medical-100 text-medical-600 p-2.5 rounded-xl shrink-0 mt-0.5"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg></div><div><h4 class="text-sm font-extrabold text-medical-900 mb-1 uppercase tracking-tight">Ação Versátil</h4><p class="text-xs md:text-sm text-gray-600 font-medium leading-relaxed">A tecnologia permite a atuação na redução de gordura localizada, gordura visceral, emagrecimento e melhora da flacidez.</p></div></div>
+<div class="flex gap-4 items-start p-5 rounded-2xl bg-gray-50 border border-gray-100 transition-all hover:shadow-md"><div class="bg-medical-100 text-medical-600 p-2.5 rounded-xl shrink-0 mt-0.5"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg></div><div><h4 class="text-sm font-extrabold text-medical-900 mb-1 uppercase tracking-tight">Tecnologia Verde</h4><p class="text-xs md:text-sm text-gray-600 font-medium leading-relaxed">O equipamento possui a tecnologia Patente Verde, garantindo eficiência energética e menor impacto ambiental.</p></div></div>
+<div class="flex gap-4 items-start p-5 rounded-2xl bg-gray-50 border border-gray-100 transition-all hover:shadow-md"><div class="bg-medical-100 text-medical-600 p-2.5 rounded-xl shrink-0 mt-0.5"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg></div><div><h4 class="text-sm font-extrabold text-medical-900 mb-1 uppercase tracking-tight">Alto Desempenho</h4><p class="text-xs md:text-sm text-gray-600 font-medium leading-relaxed">Conta com 4 manoplas tamanho G (200 cm2), cada qual equipada com 2 peltiers, proporcionando alta performance em áreas amplas.</p></div></div>
+<div class="flex gap-4 items-start p-5 rounded-2xl bg-gray-50 border border-gray-100 transition-all hover:shadow-md"><div class="bg-medical-100 text-medical-600 p-2.5 rounded-xl shrink-0 mt-0.5"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg></div><div><h4 class="text-sm font-extrabold text-medical-900 mb-1 uppercase tracking-tight">Portabilidade</h4><p class="text-xs md:text-sm text-gray-600 font-medium leading-relaxed">O design leve e compacto facilita o transporte e a utilização em clínicas estéticas, mantendo a funcionalidade e organização.</p></div></div>
+</div></div></section>
+
+
+    
+    <!-- Indicações -->
+    <section id="indicacoes" class="py-16 bg-white border-t border-gray-100">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+            <h2 class="text-xl md:text-2xl font-extrabold text-medical-900 mb-10 uppercase tracking-wider text-center">Indicações</h2>
+            <div class="bg-gray-50 p-6 md:p-8 rounded-2xl shadow-sm border border-gray-100 max-w-4xl mx-auto">
+                <ul class="space-y-4">
+<li class="flex gap-3 items-start"><div class="bg-medical-100 text-medical-600 p-1.5 rounded-full shrink-0 mt-0.5"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg></div><p class="text-sm md:text-base text-gray-600 font-medium leading-relaxed">Redução de gordura localizada corpórea (lipodistrofia);</p></li>
+<li class="flex gap-3 items-start"><div class="bg-medical-100 text-medical-600 p-1.5 rounded-full shrink-0 mt-0.5"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg></div><p class="text-sm md:text-base text-gray-600 font-medium leading-relaxed">Modelagem de contorno corporal em abdômen, flancos, culotes, coxas, braços, etc.;</p></li>
+<li class="flex gap-3 items-start"><div class="bg-medical-100 text-medical-600 p-1.5 rounded-full shrink-0 mt-0.5"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg></div><p class="text-sm md:text-base text-gray-600 font-medium leading-relaxed">Auxílio na melhora de flacidez de pele e melhora da tonicidade cutânea por estímulo ao colágeno;</p></li>
+<li class="flex gap-3 items-start"><div class="bg-medical-100 text-medical-600 p-1.5 rounded-full shrink-0 mt-0.5"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg></div><p class="text-sm md:text-base text-gray-600 font-medium leading-relaxed">Melhora no aspecto geral da celulite.</p></li>
+
+</ul>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Efeitos Fisiológicos -->
+    <section id="efeitos" class="py-16 bg-gray-50 border-t border-gray-100">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+            <h2 class="text-xl md:text-2xl font-extrabold text-medical-900 mb-10 uppercase tracking-wider text-center">Efeitos Fisiológicos</h2>
+            
+            <div class="bg-white p-6 md:p-8 rounded-2xl shadow-sm border border-gray-100">
+                <ul class="space-y-4">
+                    <li class="flex gap-3 items-start">
+                        <div class="bg-medical-100 text-medical-600 p-1.5 rounded-full shrink-0 mt-0.5">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                        </div>
+                        <p class="text-sm md:text-base text-gray-600 font-medium leading-relaxed"><strong>Cristalização de Lipídeos:</strong> O resfriamento controlado (até -5ºC) extrai calor dos tecidos e induz a cristalização seletiva dos lipídeos nos adipócitos, que são especialmente sensíveis a baixas temperaturas.</p>
+                    </li>
+                    <li class="flex gap-3 items-start">
+                        <div class="bg-medical-100 text-medical-600 p-1.5 rounded-full shrink-0 mt-0.5">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                        </div>
+                        <p class="text-sm md:text-base text-gray-600 font-medium leading-relaxed"><strong>Isquemia e Reperfusão Controlada:</strong> A diminuição localizada do fluxo e a suspensão temporária de nutrientes na área tratada, seguidas pela re-oxigenação pós-sessão, causam leve inflamação e dano fisiológico controlado específico nos adipócitos.</p>
+                    </li>
+                    <li class="flex gap-3 items-start">
+                        <div class="bg-medical-100 text-medical-600 p-1.5 rounded-full shrink-0 mt-0.5">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                        </div>
+                        <p class="text-sm md:text-base text-gray-600 font-medium leading-relaxed"><strong>Paniculite Inflamatória Estética:</strong> Processo inflamatório localizado que inicia-se no 3º dia atingindo pico próximo ao 14º dia, com influxo de células fagocitárias como histiócitos, mastócitos e neutrófilos.</p>
+                    </li>
+                    <li class="flex gap-3 items-start">
+                        <div class="bg-medical-100 text-medical-600 p-1.5 rounded-full shrink-0 mt-0.5">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                        </div>
+                        <p class="text-sm md:text-base text-gray-600 font-medium leading-relaxed"><strong>Fagocitose Celular Gradual:</strong> Entre o 14º e o 30º dia, os resíduos dos lipídeos e adipócitos danificados são metabolizados e digeridos por ação celular (fagócitos e macrófagos) de forma fisiológica e indolor.</p>
+                    </li>
+                    <li class="flex gap-3 items-start">
+                        <div class="bg-medical-100 text-medical-600 p-1.5 rounded-full shrink-0 mt-0.5">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                        </div>
+                        <p class="text-sm md:text-base text-gray-600 font-medium leading-relaxed"><strong>Diminuição e Remodelação Dérmica:</strong> Redução significativa do volume do tecido adiposo com consequente espessamento dos septos interlobulares residuais de sustentação e melhora da firmeza tecidual após 2 a 3 meses.</p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+
+    
+    <!-- Informações Adicionais -->
+    <section id="informacoes-adicionais" class="py-16 bg-gray-50 border-t border-gray-100">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+            <h2 class="text-xl md:text-2xl font-extrabold text-medical-900 mb-10 uppercase tracking-wider text-center">Informações Adicionais</h2>
+            <div class="bg-white p-6 md:p-8 rounded-2xl shadow-sm border border-gray-100 max-w-4xl mx-auto">
+                <ul class="space-y-4">
+                    <li class="flex gap-3 items-start"><div class="bg-medical-100 text-medical-600 p-1.5 rounded-full shrink-0 mt-0.5"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg></div><p class="text-sm md:text-base text-gray-600 font-medium leading-relaxed">Para a prática adequada, recomenda-se manter o ambiente com ar condicionado a 20ºC.</p></li>
+<li class="flex gap-3 items-start"><div class="bg-medical-100 text-medical-600 p-1.5 rounded-full shrink-0 mt-0.5"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg></div><p class="text-sm md:text-base text-gray-600 font-medium leading-relaxed">Utilizar manta bem lubrificada e de boa qualidade.</p></li>
+<li class="flex gap-3 items-start"><div class="bg-medical-100 text-medical-600 p-1.5 rounded-full shrink-0 mt-0.5"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg></div><p class="text-sm md:text-base text-gray-600 font-medium leading-relaxed">Não obstruir as saídas de ar das manoplas.</p></li>
+<li class="flex gap-3 items-start"><div class="bg-medical-100 text-medical-600 p-1.5 rounded-full shrink-0 mt-0.5"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg></div><p class="text-sm md:text-base text-gray-600 font-medium leading-relaxed">Seguir rigorosamente o protocolo conforme a espessura de gordura da região, evitando excesso de tempo de aplicação.</p></li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+
+    
+    <section id="conservacao" class="py-16 bg-white border-t border-gray-100">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+            <h2 class="text-xl md:text-2xl font-extrabold text-medical-900 mb-10 uppercase tracking-wider text-center">Conservação</h2>
+            <div class="bg-gray-50 p-6 md:p-8 rounded-2xl shadow-sm border border-gray-100 max-w-4xl mx-auto">
+                <ul class="space-y-4">
+                    <li class="flex gap-3 items-start"><div class="bg-medical-100 text-medical-600 p-1.5 rounded-full shrink-0 mt-0.5"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg></div><p class="text-sm md:text-base text-gray-600 font-medium leading-relaxed">Evitar exposição a vibrações, ambientes úmidos, quentes ou com poeira.</p></li>
+<li class="flex gap-3 items-start"><div class="bg-medical-100 text-medical-600 p-1.5 rounded-full shrink-0 mt-0.5"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg></div><p class="text-sm md:text-base text-gray-600 font-medium leading-relaxed">Não bloquear a ventilação do equipamento.</p></li>
+<li class="flex gap-3 items-start"><div class="bg-medical-100 text-medical-600 p-1.5 rounded-full shrink-0 mt-0.5"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg></div><p class="text-sm md:text-base text-gray-600 font-medium leading-relaxed">Em caso de instalação em armário embutido, garantir livre circulação de ar na parte traseira.</p></li>
+<li class="flex gap-3 items-start"><div class="bg-medical-100 text-medical-600 p-1.5 rounded-full shrink-0 mt-0.5"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg></div><p class="text-sm md:text-base text-gray-600 font-medium leading-relaxed">Não inserir objetos nos orifícios do dispositivo.</p></li>
+<li class="flex gap-3 items-start"><div class="bg-medical-100 text-medical-600 p-1.5 rounded-full shrink-0 mt-0.5"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg></div><p class="text-sm md:text-base text-gray-600 font-medium leading-relaxed">Desligar da fonte de alimentação antes da limpeza.</p></li>
+<li class="flex gap-3 items-start"><div class="bg-medical-100 text-medical-600 p-1.5 rounded-full shrink-0 mt-0.5"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg></div><p class="text-sm md:text-base text-gray-600 font-medium leading-relaxed">Realizar a limpeza com pano umedecido em detergente neutro.</p></li>
+<li class="flex gap-3 items-start"><div class="bg-medical-100 text-medical-600 p-1.5 rounded-full shrink-0 mt-0.5"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg></div><p class="text-sm md:text-base text-gray-600 font-medium leading-relaxed">A limpeza deve ser feita sempre que necessário, sendo sugerida a limpeza semanal do equipamento e a higienização dos aplicadores após cada sessão.</p></li>
+<li class="flex gap-3 items-start"><div class="bg-medical-100 text-medical-600 p-1.5 rounded-full shrink-0 mt-0.5"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg></div><p class="text-sm md:text-base text-gray-600 font-medium leading-relaxed">Não submergir o equipamento ou cabos em líquidos.</p></li>
+<li class="flex gap-3 items-start"><div class="bg-medical-100 text-medical-600 p-1.5 rounded-full shrink-0 mt-0.5"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg></div><p class="text-sm md:text-base text-gray-600 font-medium leading-relaxed">Realizar limpeza do transdutor ao final de cada sessão com pano seco e álcool.</p></li>
+<li class="flex gap-3 items-start"><div class="bg-medical-100 text-medical-600 p-1.5 rounded-full shrink-0 mt-0.5"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg></div><p class="text-sm md:text-base text-gray-600 font-medium leading-relaxed">Não é necessário esterilizar partes ou peças do equipamento.</p></li>
+<li class="flex gap-3 items-start"><div class="bg-medical-100 text-medical-600 p-1.5 rounded-full shrink-0 mt-0.5"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg></div><p class="text-sm md:text-base text-gray-600 font-medium leading-relaxed"><b>Calibração:</b> O equipamento deve passar por manutenção periódica anual para minimizar desgastes ou corrosões que possam reduzir suas propriedades mecânicas dentro do seu período de vida útil.</p></li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Contraindicações -->
+    <section id="contraindicacoes" class="py-16 bg-white border-t border-gray-100">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+            <h2 class="text-xl md:text-2xl font-extrabold text-medical-900 mb-10 uppercase tracking-wider text-center">Contraindicações</h2>
+            
+            <div class="bg-white p-6 md:p-8 rounded-2xl shadow-sm border border-gray-100 max-w-4xl mx-auto">
+                <ul class="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-4">
+<li class="flex gap-3 items-center"><div class="bg-red-50 text-red-500 p-1.5 rounded-full shrink-0"><svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M6 18L18 6M6 6l12 12"></path></svg></div><p class="text-sm md:text-base text-gray-600 font-medium">Não indicado para gestantes ou lactantes.</p></li>
+<li class="flex gap-3 items-center"><div class="bg-red-50 text-red-500 p-1.5 rounded-full shrink-0"><svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M6 18L18 6M6 6l12 12"></path></svg></div><p class="text-sm md:text-base text-gray-600 font-medium">Contraindicado em casos de dermatite ou pele irritada, síndrome de Raynaud, áreas neoplásicas ou com histórico de remoção de tumor.</p></li>
+<li class="flex gap-3 items-center"><div class="bg-red-50 text-red-500 p-1.5 rounded-full shrink-0"><svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M6 18L18 6M6 6l12 12"></path></svg></div><p class="text-sm md:text-base text-gray-600 font-medium">Não utilizar em regiões com cirurgias recentes, cicatrizes ou hérnias.</p></li>
+<li class="flex gap-3 items-center"><div class="bg-red-50 text-red-500 p-1.5 rounded-full shrink-0"><svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M6 18L18 6M6 6l12 12"></path></svg></div><p class="text-sm md:text-base text-gray-600 font-medium">Contraindicado para diabetes descompensada, doenças autoimunes, lesões abertas ou infectadas.</p></li>
+<li class="flex gap-3 items-center"><div class="bg-red-50 text-red-500 p-1.5 rounded-full shrink-0"><svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M6 18L18 6M6 6l12 12"></path></svg></div><p class="text-sm md:text-base text-gray-600 font-medium">Não indicado para pessoas com sensibilidade dérmica ao frio, distúrbios circulatórios ou uso de anticoagulantes.</p></li>
+<li class="flex gap-3 items-center"><div class="bg-red-50 text-red-500 p-1.5 rounded-full shrink-0"><svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M6 18L18 6M6 6l12 12"></path></svg></div><p class="text-sm md:text-base text-gray-600 font-medium">Contraindicado em casos de hemoglobinúria e hepatite C.</p></li>
+</ul>
+            </div>
+        </div>
+    </section>
+
+
+    
+    <!-- Acessórios Opcionais -->
+    <section id="acessorios" class="py-16 bg-gray-50 border-t border-gray-100">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+            <h2 class="text-xl md:text-2xl font-extrabold text-medical-900 mb-10 uppercase tracking-wider text-center">Acessórios Opcionais</h2>
+            <ul class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-4">
+                <li class="flex items-center gap-3 p-4 bg-gray-50 rounded-xl border border-gray-100"><div class="bg-white p-2 rounded-lg shadow-sm text-medical-500"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg></div><span class="text-sm md:text-base font-medium text-gray-700">ME20656A - Aplicador Médio Medical San - para Criodermis</span></li>
+<li class="flex items-center gap-3 p-4 bg-gray-50 rounded-xl border border-gray-100"><div class="bg-white p-2 rounded-lg shadow-sm text-medical-500"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg></div><span class="text-sm md:text-base font-medium text-gray-700">ME19357A - Aplicador Big Medical San - para Criodermis</span></li>
+<li class="flex items-center gap-3 p-4 bg-gray-50 rounded-xl border border-gray-100"><div class="bg-white p-2 rounded-lg shadow-sm text-medical-500"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg></div><span class="text-sm md:text-base font-medium text-gray-700">ME19358A - Aplicador Flex Medical San - para Criodermis</span></li>
+            </ul>
+        </div>
+    </section>
+
+
+    <!-- Especificações Técnicas -->
+    <section id="especificacoes" class="py-16 bg-white border-t border-gray-100"><div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 w-full"><h2 class="text-xl md:text-2xl font-extrabold text-medical-900 mb-10 uppercase tracking-wider text-center">Especificações Técnicas</h2><div class="bg-gray-50 p-6 md:p-8 rounded-2xl shadow-sm border border-gray-100 max-w-4xl mx-auto"><div class="flex flex-col">
+<div class="flex flex-col md:flex-row md:justify-between py-3 border-b border-gray-100 last:border-0 gap-1 md:gap-4"><span class="text-sm font-bold text-gray-700 md:w-1/3 shrink-0">Temperatura de Resfriamento</span><span class="text-sm text-gray-600 font-medium md:text-left">Até -5ºC;</span></div>
+<div class="flex flex-col md:flex-row md:justify-between py-3 border-b border-gray-100 last:border-0 gap-1 md:gap-4"><span class="text-sm font-bold text-gray-700 md:w-1/3 shrink-0">Temperatura de Operação (Ambiente)</span><span class="text-sm text-gray-600 font-medium md:text-left">10°C a 40°C;</span></div>
+<div class="flex flex-col md:flex-row md:justify-between py-3 border-b border-gray-100 last:border-0 gap-1 md:gap-4"><span class="text-sm font-bold text-gray-700 md:w-1/3 shrink-0">Potência de Entrada</span><span class="text-sm text-gray-600 font-medium md:text-left">900VA;</span></div>
+<div class="flex flex-col md:flex-row md:justify-between py-3 border-b border-gray-100 last:border-0 gap-1 md:gap-4"><span class="text-sm font-bold text-gray-700 md:w-1/3 shrink-0">Modo</span><span class="text-sm text-gray-600 font-medium md:text-left">Contínuo;</span></div>
+<div class="flex flex-col md:flex-row md:justify-between py-3 border-b border-gray-100 last:border-0 gap-1 md:gap-4"><span class="text-sm font-bold text-gray-700 md:w-1/3 shrink-0">Não necessita água</span><span class="text-sm text-gray-600 font-medium md:text-left">Sim;</span></div>
+<div class="flex flex-col md:flex-row md:justify-between py-3 border-b border-gray-100 last:border-0 gap-1 md:gap-4"><span class="text-sm font-bold text-gray-700 md:w-1/3 shrink-0">Peso</span><span class="text-sm text-gray-600 font-medium md:text-left">6,5kg;</span></div>
+<div class="flex flex-col md:flex-row md:justify-between py-3 border-b border-gray-100 last:border-0 gap-1 md:gap-4"><span class="text-sm font-bold text-gray-700 md:w-1/3 shrink-0">Voltagem</span><span class="text-sm text-gray-600 font-medium md:text-left">Bivolt automático - 100 - 240V~ / 60 Hz / 900VA.</span></div>
+</div></div></div></section>
+
+    <!-- Ficha Técnica -->
+    <section id="ficha-tecnica" class="py-16 bg-gray-50 border-t border-gray-100"><div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 w-full"><h2 class="text-xl md:text-2xl font-extrabold text-medical-900 mb-10 uppercase tracking-wider text-center">Ficha Técnica</h2><div class="bg-white p-6 md:p-8 rounded-2xl shadow-sm border border-gray-100 max-w-4xl mx-auto"><div class="flex flex-col">
+<div class="flex flex-col md:flex-row md:justify-between py-3 border-b border-gray-100 last:border-0 gap-1 md:gap-4"><span class="text-sm font-bold text-gray-700 md:w-1/3 shrink-0">Dimensões (C x L x A)</span><span class="text-sm text-gray-600 font-medium md:text-left">42.0 x 43.0 x 20.0 cm</span></div>
+<div class="flex flex-col md:flex-row md:justify-between py-3 border-b border-gray-100 last:border-0 gap-1 md:gap-4"><span class="text-sm font-bold text-gray-700 md:w-1/3 shrink-0">Peso Kg</span><span class="text-sm text-gray-600 font-medium md:text-left">6.5</span></div>
+<div class="flex flex-col md:flex-row md:justify-between py-3 border-b border-gray-100 last:border-0 gap-1 md:gap-4"><span class="text-sm font-bold text-gray-700 md:w-1/3 shrink-0">Dimensões Embalado (C x L x A)</span><span class="text-sm text-gray-600 font-medium md:text-left">54.5 x 52.5 x 138.5 cm</span></div>
+<div class="flex flex-col md:flex-row md:justify-between py-3 border-b border-gray-100 last:border-0 gap-1 md:gap-4"><span class="text-sm font-bold text-gray-700 md:w-1/3 shrink-0">Peso Embalado Kg</span><span class="text-sm text-gray-600 font-medium md:text-left">29.8</span></div>
+<div class="flex flex-col md:flex-row md:justify-between py-3 border-b border-gray-100 last:border-0 gap-1 md:gap-4"><span class="text-sm font-bold text-gray-700 md:w-1/3 shrink-0">Marca</span><span class="text-sm text-gray-600 font-medium md:text-left">MEDICAL SAN</span></div>
+<div class="flex flex-col md:flex-row md:justify-between py-3 border-b border-gray-100 last:border-0 gap-1 md:gap-4"><span class="text-sm font-bold text-gray-700 md:w-1/3 shrink-0">Modelo</span><span class="text-sm text-gray-600 font-medium md:text-left">SMART</span></div>
+<div class="flex flex-col md:flex-row md:justify-between py-3 border-b border-gray-100 last:border-0 gap-1 md:gap-4"><span class="text-sm font-bold text-gray-700 md:w-1/3 shrink-0">NCM</span><span class="text-sm text-gray-600 font-medium md:text-left">90189099</span></div>
+<div class="flex flex-col md:flex-row md:justify-between py-3 border-b border-gray-100 last:border-0 gap-1 md:gap-4"><span class="text-sm font-bold text-gray-700 md:w-1/3 shrink-0">Anvisa</span><span class="text-sm text-gray-600 font-medium md:text-left">81243810003</span></div>
+</div></div></div></section>
+
+    <!-- O que vem na caixa? -->
+    <section id="itens-inclusos" class="py-16 bg-white border-t border-gray-100">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+            <h2 class="text-xl md:text-2xl font-extrabold text-medical-900 mb-10 uppercase tracking-wider text-center flex items-center justify-center gap-3">
+                <span class="text-medical-500">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"></path></svg>
+                </span>
+                O que vem na caixa?
+            </h2>
+            
+            <div class="bg-gray-50 p-6 md:p-8 rounded-2xl shadow-sm border border-gray-100 max-w-5xl mx-auto">
+                <ul class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-4">
+<li class="flex items-center gap-3 p-4 bg-gray-50 rounded-xl border border-gray-100"><div class="bg-white p-2 rounded-lg shadow-sm text-medical-500"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg></div><span class="text-sm md:text-base font-medium text-gray-700">01 Criodermis Smart Medical San - aparelho de criolipólise de placas</span></li>
+<li class="flex items-center gap-3 p-4 bg-gray-50 rounded-xl border border-gray-100"><div class="bg-white p-2 rounded-lg shadow-sm text-medical-500"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg></div><span class="text-sm md:text-base font-medium text-gray-700">04 aplicadores de placas tamanho G</span></li>
+<li class="flex items-center gap-3 p-4 bg-gray-50 rounded-xl border border-gray-100"><div class="bg-white p-2 rounded-lg shadow-sm text-medical-500"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg></div><span class="text-sm md:text-base font-medium text-gray-700">01 cabo de força</span></li>
+<li class="flex items-center gap-3 p-4 bg-gray-50 rounded-xl border border-gray-100"><div class="bg-white p-2 rounded-lg shadow-sm text-medical-500"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg></div><span class="text-sm md:text-base font-medium text-gray-700">01 manual de instruções</span></li>
+</ul>
+            </div>
+        </div>
+    </section>
+
+    
+
+    <div id="global-footer"></div>
+    <div id="global-whatsapp"></div>
+    <script type="module" src="/src/global.tsx"></script>
+</body>
+</html>

@@ -44,9 +44,9 @@ const Hero: React.FC = () => {
     subtitle: 'PORTÁTIL E EFICIENTE',
     promoText: 'Tecnologia de Ponta',
     description: 'A nova geração do laser 3D portátil, unindo potência e praticidade para sua clínica.',
-    imageUrl: 'https://res.cloudinary.com/doqw5aqcf/image/upload/v1774108155/novo-omer-laser-3d-portatil_i624q5.png',
-    desktopImageUrl: 'https://res.cloudinary.com/doqw5aqcf/image/upload/v1774108155/novo-omer-laser-3d-portatil_i624q5.png',
-    mobileImageUrl: 'https://res.cloudinary.com/doqw5aqcf/image/upload/v1774108661/novo-omer-laser-3d-mobile_yrmevb.png',
+    imageUrl: 'https://res.cloudinary.com/dy0ialgio/image/upload/v1780958964/banner-novo-omer-laser-3d-portatil-remocao-tatuagem-micropigmentacao_xwcpm3.webp',
+    desktopImageUrl: 'https://res.cloudinary.com/dy0ialgio/image/upload/v1780958964/banner-novo-omer-laser-3d-portatil-remocao-tatuagem-micropigmentacao_xwcpm3.webp',
+    mobileImageUrl: 'https://res.cloudinary.com/dy0ialgio/image/upload/v1780958964/banner-promocional-novo-omer-laser-3d-portatil-remocao-tatuagem-micro-pigmentacao_pmobcj.webp',
     bullets: ['Portátil', 'Alta Potência', 'Resultados Rápidos']
   };
 
@@ -55,9 +55,9 @@ const Hero: React.FC = () => {
     subtitle: 'TECNOLOGIA AVANÇADA',
     promoText: 'Lifting Sem Cirurgia',
     description: 'Ultrassom micro e macrofocado de alta performance.',
-    imageUrl: 'https://res.cloudinary.com/doqw5aqcf/image/upload/v1774108155/ultramed_xpmjhj.png',
-    desktopImageUrl: 'https://res.cloudinary.com/doqw5aqcf/image/upload/v1774108155/ultramed_xpmjhj.png',
-    mobileImageUrl: 'https://res.cloudinary.com/doqw5aqcf/image/upload/v1774108661/ultramed-mobile_ykrall.png',
+    imageUrl: 'https://res.cloudinary.com/dy0ialgio/image/upload/v1780959471/banner-lancamento-medical-san-ultrassom-lifting-firmeza-redefinicao-facial-corporal_ag8nez.webp',
+    desktopImageUrl: 'https://res.cloudinary.com/dy0ialgio/image/upload/v1780959471/banner-lancamento-medical-san-ultrassom-lifting-firmeza-redefinicao-facial-corporal_ag8nez.webp',
+    mobileImageUrl: 'https://res.cloudinary.com/dy0ialgio/image/upload/v1780959471/anuncio-lancamento-ultramed-lifting-firmeza-rejuvenescimento-facial-corporal_wwtbqu.webp',
     bullets: ['Lifting', 'Sem Cortes', 'Resultados Imediatos']
   };
 
@@ -66,9 +66,9 @@ const Hero: React.FC = () => {
     subtitle: 'FRACIONADO PREMIUM',
     promoText: 'Rejuvenescimento Total',
     description: 'Laser de CO2 fracionado para rejuvenescimento e saúde íntima.',
-    imageUrl: 'https://res.cloudinary.com/doqw5aqcf/image/upload/v1774108155/hegon-laser-co2-fracionado_abfluk.png',
-    desktopImageUrl: 'https://res.cloudinary.com/doqw5aqcf/image/upload/v1774108155/hegon-laser-co2-fracionado_abfluk.png',
-    mobileImageUrl: 'https://res.cloudinary.com/doqw5aqcf/image/upload/v1774108661/hegon-laser-co2-mobile_vqjgmt.png',
+    imageUrl: 'https://res.cloudinary.com/dy0ialgio/image/upload/v1780959718/anuncio-rejuvenescimento-laser-co2-fracionado-hegon-beneficios_b4imjr.webp',
+    desktopImageUrl: 'https://res.cloudinary.com/dy0ialgio/image/upload/v1780959718/anuncio-rejuvenescimento-laser-co2-fracionado-hegon-beneficios_b4imjr.webp',
+    mobileImageUrl: 'https://res.cloudinary.com/dy0ialgio/image/upload/v1780959718/anuncio-laser-fracionado-rejuvenescimento-renovacao-celular-reducao-rugas-tratamento-estrias-cicatri_xbdhjl.webp',
     bullets: ['Rejuvenescimento', 'Saúde Íntima', 'Alta Precisão']
   };
 
@@ -77,9 +77,9 @@ const Hero: React.FC = () => {
     subtitle: 'EPILAÇÃO PREMIUM 4D',
     promoText: 'Atenda Todos os Fototipos',
     description: 'A ferramenta definitiva para escalar sua agenda com epilação definitiva.',
-    imageUrl: 'https://res.cloudinary.com/doqw5aqcf/image/upload/v1774108155/hakon-laser-para-epilacao-premium_omz2vq.png',
-    desktopImageUrl: 'https://res.cloudinary.com/doqw5aqcf/image/upload/v1774108155/hakon-laser-para-epilacao-premium_omz2vq.png',
-    mobileImageUrl: 'https://res.cloudinary.com/doqw5aqcf/image/upload/v1774108661/hakon-laser-epilcacao-premium-4d-mobile_ekn4kn.png',
+    imageUrl: 'https://res.cloudinary.com/dy0ialgio/image/upload/v1780959868/banner-haakon-laser-depilacao-premium-4d-equipamento-e-portatil_hbeuq4.webp',
+    desktopImageUrl: 'https://res.cloudinary.com/dy0ialgio/image/upload/v1780959868/banner-haakon-laser-depilacao-premium-4d-equipamento-e-portatil_hbeuq4.webp',
+    mobileImageUrl: 'https://res.cloudinary.com/dy0ialgio/image/upload/v1780959868/anuncio-laser-hakon-epilacao-premium-4d_oa8vkh.webp',
     bullets: ['4 Comprimentos de Onda', 'Sem Dor', 'Sessões Rápidas']
   };
 
@@ -88,9 +88,9 @@ const Hero: React.FC = () => {
     subtitle: 'TECNOLOGIA AVANÇADA',
     promoText: 'Redução de Gordura',
     description: 'Tecnologia avançada para redução de gordura localizada.',
-    imageUrl: 'https://res.cloudinary.com/doqw5aqcf/image/upload/v1774108155/tecnologia-avancada-em-criolpolise_ft9zv9.png',
-    desktopImageUrl: 'https://res.cloudinary.com/doqw5aqcf/image/upload/v1774108155/tecnologia-avancada-em-criolpolise_ft9zv9.png',
-    mobileImageUrl: 'https://res.cloudinary.com/doqw5aqcf/image/upload/v1774108662/tecnologia-avancada-criolpolise-mobile_ayhwmt.png',
+    imageUrl: 'https://res.cloudinary.com/dy0ialgio/image/upload/v1780960038/banner-tecnologia-criolipolise-cryodermis-20-aparelho-silhueta-corpo_q4wbma.webp',
+    desktopImageUrl: 'https://res.cloudinary.com/dy0ialgio/image/upload/v1780960038/banner-tecnologia-criolipolise-cryodermis-20-aparelho-silhueta-corpo_q4wbma.webp',
+    mobileImageUrl: 'https://res.cloudinary.com/dy0ialgio/image/upload/v1780960038/tecnologia-avancada-criolipolise-reducao-de-gordura-localizada_o433tm.webp',
     bullets: ['Redução de Gordura', 'Não Invasivo', 'Resultados Seguros']
   };
 
@@ -113,7 +113,7 @@ const Hero: React.FC = () => {
   };
 
   const desktopSlides = [omerData, ultramedDataCarousel, hegonData, hakonData, criolipoliseData];
-  const mobileSlides = [velaryanData, omerData, ultramedDataCarousel, hegonData, hakonData, criolipoliseData];
+  const mobileSlides = [omerData, ultramedDataCarousel, hegonData, hakonData, criolipoliseData];
   const mainSlides = isDesktop ? desktopSlides : mobileSlides;
 
   // Dados para banners secundários
@@ -121,27 +121,27 @@ const Hero: React.FC = () => {
     title: 'LIFTENDO',
     promoText: 'A Era do Endolaser',
     description: 'Resultados cirúrgicos no consultório.',
-    imageUrl: 'https://res.cloudinary.com/doqw5aqcf/image/upload/v1774109170/liftendo-desktop_up5n4l.png',
-    desktopImageUrl: 'https://res.cloudinary.com/doqw5aqcf/image/upload/v1774109170/liftendo-desktop_up5n4l.png',
-    mobileImageUrl: 'https://res.cloudinary.com/doqw5aqcf/image/upload/v1774118758/liftendo-mobile_s9ir45.png',
+    imageUrl: 'https://res.cloudinary.com/dy0ialgio/image/upload/v1780960514/anuncio-endoideal-dispositivo-teste-endodontico-tela-chamada-confira_mxxozz.webp',
+    desktopImageUrl: 'https://res.cloudinary.com/dy0ialgio/image/upload/v1780960514/anuncio-endoideal-dispositivo-teste-endodontico-tela-chamada-confira_mxxozz.webp',
+    mobileImageUrl: 'https://res.cloudinary.com/dy0ialgio/image/upload/v1780960514/endolaser-lift-promocao-dispositivo-laser-endolift_nxj2ts.webp',
   };
 
   const ptolomeuData: BannerData = {
     title: 'PTOLOMEU',
     promoText: 'RF Microagulhada',
     description: 'Rejuvenescimento e tratamento de flacidez.',
-    imageUrl: 'https://res.cloudinary.com/doqw5aqcf/image/upload/v1774109170/ptolomeu-desktop_x1nw1q.png',
-    desktopImageUrl: 'https://res.cloudinary.com/doqw5aqcf/image/upload/v1774109170/ptolomeu-desktop_x1nw1q.png',
-    mobileImageUrl: 'https://res.cloudinary.com/doqw5aqcf/image/upload/v1774118758/ptolomeu-mobile_rpkbro.png',
+    imageUrl: 'https://res.cloudinary.com/dy0ialgio/image/upload/v1780960641/anuncio-microagulhamento-robotico-pototomu-equipamento-acne-rejuvenescimento_gwgzjm.webp',
+    desktopImageUrl: 'https://res.cloudinary.com/dy0ialgio/image/upload/v1780960641/anuncio-microagulhamento-robotico-pototomu-equipamento-acne-rejuvenescimento_gwgzjm.webp',
+    mobileImageUrl: 'https://res.cloudinary.com/dy0ialgio/image/upload/v1780960642/anuncio-microagulhamento-robotico-ptolomeu-radiofrequencia_ffj7hp.webp',
   };
 
   const ultramedMptData: BannerData = {
     title: 'ULTRAMED MPT',
     promoText: 'Lifting Sem Cirurgia',
     description: 'Ultrassom micro e macrofocado.',
-    imageUrl: 'https://res.cloudinary.com/doqw5aqcf/image/upload/v1774109170/ultramed-mpt-desktop_r6vf1f.png',
-    desktopImageUrl: 'https://res.cloudinary.com/doqw5aqcf/image/upload/v1774109170/ultramed-mpt-desktop_r6vf1f.png',
-    mobileImageUrl: 'https://res.cloudinary.com/doqw5aqcf/image/upload/v1774118758/ultramed-mobile_xhp6kt.png',
+    imageUrl: 'https://res.cloudinary.com/dy0ialgio/image/upload/v1780960842/anuncio-equipamento-lifting-ultramode-ultraformed-mpt-tecnologia-mpt_bmvxbj.webp',
+    desktopImageUrl: 'https://res.cloudinary.com/dy0ialgio/image/upload/v1780960842/anuncio-equipamento-lifting-ultramode-ultraformed-mpt-tecnologia-mpt_bmvxbj.webp',
+    mobileImageUrl: 'https://res.cloudinary.com/dy0ialgio/image/upload/v1780960842/descricao-ultramed-mpt-ultrassom-hifu-microfocalizacao-macro-mip_dsqtvi.webp',
   };
 
   // Carousel Logic

@@ -10,4 +10,8 @@ Whenever the user requests the creation of a **new product page**, you MUST:
 4. Replace only the specific content (texts, image `src`, product names, specific tech specs, and list of included items).
 5. Add the new page to `vite.config.ts` if needed (the vite config currently uses an auto-discover script, so just create the folder with an `index.html` inside it, and `vite.config.ts` will pick it up automatically).
 
+**STRICT RULES FOR ALL PRODUCT PAGES:**
+- **NO PRICES:** You must NEVER copy or include prices from any attachments, images, or reference materials. Do NOT display prices on product pages.
+- **NO MANUALS:** You must NOT include the "Manual", "Baixar manual" or "Manual completo" row in the "Ficha Técnica" section of the pages.
+
 Remember to maintain consistency with the HAKON page design.

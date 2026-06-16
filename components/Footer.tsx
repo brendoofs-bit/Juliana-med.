@@ -63,7 +63,7 @@ const Footer: React.FC = () => {
                className="flex flex-col items-center gap-2 group"
              >
                 <img 
-                  src="https://res.cloudinary.com/doqw5aqcf/image/upload/v1769027153/selo-google-navegacao-segura_kcun8k.png" 
+                  src="https://res.cloudinary.com/dy0ialgio/image/upload/v1780961052/icone-escudo-verde-navegacao-segura-google_paslom.webp" 
                   alt="Google Navegação Segura" 
                   className="w-32 object-contain hover:opacity-80 transition-opacity" 
                 />

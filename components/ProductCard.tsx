@@ -18,12 +18,36 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, onOpenModal }) => {
           window.location.href = '/omer-smart-3d/index.html';
         } else if (product.id === 'est-4') {
           window.location.href = '/velaryan-medical-san/index.html';
+        } else if (product.id === 'est-6') {
+          window.location.href = '/andromeda-termofrequencia-bipolar-medical-san/index.html';
+        } else if (product.id === 'est-7') {
+          window.location.href = '/criodemis-smart-medical-san/index.html';
+        } else if (product.id === 'est-8') {
+          window.location.href = '/magni-endermologia-cromoterapia-medical-san/index.html';
         } else if (product.id === 'hof-2') {
           window.location.href = '/hegon/index.html';
         } else if (product.id === 'hof-12') {
           window.location.href = '/ultramed-pro/index.html';
         } else if (product.id === 'hof-4') {
           window.location.href = '/pisom/index.html';
+        } else if (product.id === 'hof-3') {
+          window.location.href = '/liftendo-endolaser-subdermico-medical-san/index.html';
+        } else if (product.id === 'hof-5') {
+          window.location.href = '/ptolomeu-radiofrequencia-fracionada-medical-san/index.html';
+        } else if (product.id === 'hof-6') {
+          window.location.href = '/novo-ultramed-hifu-medical-san/index.html';
+        } else if (product.id === 'hof-7') {
+          window.location.href = '/ultramed-hof-medical-san/index.html';
+        } else if (product.id === 'hof-8') {
+          window.location.href = '/ultramed-intimy-medical-san/index.html';
+        } else if (product.id === 'hof-9') {
+          window.location.href = '/ultramed-mpt-medical-san/index.html';
+        } else if (product.id === 'hof-10') {
+          window.location.href = '/ultramed-mpt-hof-medical-san/index.html';
+        } else if (product.id === 'hof-1') {
+          window.location.href = '/escalibur-mapeamento-tridimensional-medical-san/index.html';
+        } else if (product.id === 'hof-11') {
+          window.location.href = '/ultramed-9d-medical-san/index.html';
         } else {
           onOpenModal(product);
         }

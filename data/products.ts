@@ -8,7 +8,7 @@ export const products: Product[] = [
     description: 'Sistema a laser microcontrolado de múltiplos comprimentos de onda para depilação de alta eficácia e segurança.',
     subcategory: 'Estética Avançada',
     category: 'estetica',
-    imageUrl: 'https://res.cloudinary.com/doqw5aqcf/image/upload/v1769022371/equipamento-hakon_lvqo5y.png', 
+    imageUrl: 'https://res.cloudinary.com/dy0ialgio/image/upload/v1780962845/aparelho-de-depilacao-a-laser-hakar-com-painel-touchscreen-e-rodizios_zny7ck.webp', 
     tags: ['Depilação 4D', 'Tecnologia de Diodo'],
     benefits: `
       <h4 class="font-bold mb-2 text-medical-800 uppercase">Tecnologia de Laser 4D de Última Geração</h4>
@@ -29,7 +29,7 @@ export const products: Product[] = [
     description: 'Equipamento microcontrolado de laser de diodo para remoção de tatuagem, micropigmentação e rejuvenescimento.',
     subcategory: 'Estética Avançada',
     category: 'estetica',
-    imageUrl: 'https://res.cloudinary.com/doqw5aqcf/image/upload/v1774110620/novo-omer-smart-frontal_svkwkv.png',
+    imageUrl: 'https://res.cloudinary.com/dy0ialgio/image/upload/v1780961262/aparelho-depilacao-laser-medicalsan-painel-digital-intensidade-150-frequencia-4_bqohuz.webp',
     tags: ['Remoção de Tatuagem', 'Laserterapia Segura'],
     benefits: `
       <h4 class="font-bold mb-2 text-medical-800 uppercase">Tecnologia de Laser de Diodo Microcontrolada</h4>
@@ -50,7 +50,7 @@ export const products: Product[] = [
     description: 'Sistema de laser para terapia focado em gordura localizada, processos inflamatórios e reparo tecidual.',
     subcategory: 'Laser para Terapia',
     category: 'estetica',
-    imageUrl: 'https://res.cloudinary.com/doqw5aqcf/image/upload/v1769021295/equipamento-velaryan_cf8nwi.png',
+    imageUrl: 'https://res.cloudinary.com/dy0ialgio/image/upload/v1780961335/aparelho-estetica-medical-san-velaryan-com-painel-de-controle_femhya.webp',
     tags: ['Laserterapia', 'Reparo Tecidual', 'Gordura Localizada'],
     benefits: `
       <h4 class="font-bold mb-2 text-medical-800 uppercase">Tecnologia de Laser Microcontrolada</h4>
@@ -71,7 +71,7 @@ export const products: Product[] = [
     description: 'Sistema de termofrequência microcontrolado para tratamentos de rejuvenescimento e contorno corporal.',
     subcategory: 'Estética Avançada',
     category: 'estetica',
-    imageUrl: 'https://res.cloudinary.com/doqw5aqcf/image/upload/v1769021702/equipamento-andromeda_pkrezv.png',
+    imageUrl: 'https://res.cloudinary.com/dy0ialgio/image/upload/v1780961508/aparelho-odontologico-andromeda-tela-touch-pontas-medical-san_ngv69i.webp',
     tags: ['Tratamento de Flacidez', 'Radiofrequência Estacionária'],
     benefits: `
       <h4 class="font-bold mb-2 text-medical-800 uppercase">Tecnologia de Termofrequência Avançada</h4>
@@ -92,7 +92,7 @@ export const products: Product[] = [
     description: 'Equipamento de criolipólise microcontrolado para redução de gordura localizada, melhora da flacidez e contorno corporal.',
     subcategory: 'Termoterapia',
     category: 'estetica',
-    imageUrl: 'https://res.cloudinary.com/doqw5aqcf/image/upload/v1769021876/equipamento-criodermis-smart_nhp5cy.png',
+    imageUrl: 'https://res.cloudinary.com/dy0ialgio/image/upload/v1780961561/equipamento-estetica-cri-dermis-com-tela-e-modulos-laterais_tsxkhk.webp',
     tags: ['Eliminação de Gordura pelo Frio', 'Apoptose Celular'],
     benefits: `
       <h4 class="font-bold mb-2 text-medical-800 uppercase">Tecnologia de Criolipólise Smart</h4>
@@ -113,7 +113,7 @@ export const products: Product[] = [
     description: 'Massageador terapêutico de esferas com tecnologia de microvibração de compressão para tratamentos estéticos e alívio de dores.',
     subcategory: 'Estética e Terapia',
     category: 'estetica',
-    imageUrl: 'https://res.cloudinary.com/doqw5aqcf/image/upload/v1769022041/equipamento-magni_aii8ln.png',
+    imageUrl: 'https://res.cloudinary.com/dy0ialgio/image/upload/v1780961687/aparelho-medico-estetica-magn-i-painel-controle-ponteiras-laterais_r6frua.webp',
     tags: ['Analgesia', 'Modelagem Corporal', 'Microvibração de Compressão'],
     benefits: `
       <h4 class="font-bold mb-2 text-medical-800 uppercase">Tecnologia Magni de Compressão Pulsada</h4>
@@ -136,7 +136,7 @@ export const products: Product[] = [
     description: 'Câmera e software de captura 3D para análise dermatológica e acompanhamento preciso de resultados.',
     subcategory: 'Estética Avançada',
     category: 'hof',
-    imageUrl: 'https://res.cloudinary.com/doqw5aqcf/image/upload/v1769022569/equipamento-escalibur_lfgwxq.png',
+    imageUrl: 'https://res.cloudinary.com/dy0ialgio/image/upload/v1781101262/dispositivo-de-captura-escaneamento-escalibur-com-tela-frontal-portatil_t7lvej.webp',
     tags: ['Análise 3D', 'Estético e Dermatológico'],
     benefits: `
       <h4 class="font-bold mb-2 text-medical-800 uppercase">Tecnologia Escalibur 3D</h4>
@@ -157,7 +157,7 @@ export const products: Product[] = [
     description: 'Laser de CO2 fracionado para rejuvenescimento cutâneo, remoção de lesões e saúde íntima.',
     subcategory: 'Estética Avançada',
     category: 'hof',
-    imageUrl: 'https://res.cloudinary.com/doqw5aqcf/image/upload/v1769022684/equipamento-hegon_p8blsl.png',
+    imageUrl: 'https://res.cloudinary.com/dy0ialgio/image/upload/v1780961804/equipamento-medico-a-vapor-hegon-com-console-e-suporte_uu0ega.webp',
     tags: ['Resurfacing Cutâneo', 'Rejuvenescimento Íntimo'],
     benefits: `
       <h4 class="font-bold mb-2 text-medical-800 uppercase">Tecnologia CO2 Consagrada</h4>
@@ -178,7 +178,7 @@ export const products: Product[] = [
     description: 'Laser subdérmico de alta precisão para tratamento de gordura localizada e flacidez tecidual.',
     subcategory: 'Estética Avançada',
     category: 'hof',
-    imageUrl: 'https://res.cloudinary.com/doqw5aqcf/image/upload/v1769022885/equipamento-liftendo_iqafgh.png',
+    imageUrl: 'https://res.cloudinary.com/dy0ialgio/image/upload/v1780961857/aparelho-terapia-liftendo-com-tela-controle_siec0p.webp',
     tags: ['Lipoaspiração a Laser', 'Efeito Tensor Imediato'],
     benefits: `
       <h4 class="font-bold mb-2 text-medical-800 uppercase">Tecnologia de Endolaser Avançada</h4>
@@ -199,7 +199,7 @@ export const products: Product[] = [
     description: 'Sistema a laser de fibra para rejuvenescimento cutâneo e tratamento de cicatrizes.',
     subcategory: 'Laser de Fibra Fracionado',
     category: 'hof',
-    imageUrl: 'https://res.cloudinary.com/doqw5aqcf/image/upload/v1769022979/equipamento-pisom_yxhmj0.png',
+    imageUrl: 'https://res.cloudinary.com/dy0ialgio/image/upload/v1780961897/equipamento-medico-aspirador-a-vacuo-pisom-com-painel-de-controle_lwvixk.webp',
     tags: ['Rejuvenescimento Fracionado', 'Renovação Cutânea'],
     benefits: `
       <h4 class="font-bold mb-2 text-medical-800 uppercase">Tecnologia de Laser de Fibra</h4>
@@ -220,7 +220,7 @@ export const products: Product[] = [
     description: 'Radiofrequência microagulhada avançada para tratamento de flacidez, estrias e gordura localizada',
     subcategory: 'Estética Avançada',
     category: 'hof',
-    imageUrl: 'https://res.cloudinary.com/doqw5aqcf/image/upload/v1769023089/equipamento-ptolomeu_hhlphw.png',
+    imageUrl: 'https://res.cloudinary.com/dy0ialgio/image/upload/v1780961933/equipamento-laser-estetico-medical-san-ptolomeu-com-tela-touchscreen_qrnede.webp',
     tags: ['Microagulhamento RF', 'Rejuvenescimento Tecidual'],
     benefits: `
       <h4 class="font-bold mb-2 text-medical-800 uppercase">Tecnologia Ptolomeu RF</h4>
@@ -240,7 +240,7 @@ export const products: Product[] = [
     description: 'Ultrassom microcontrolado de alta tecnologia para tratamento não invasivo de flacidez e gordura',
     subcategory: 'Estética Avançada',
     category: 'hof',
-    imageUrl: 'https://res.cloudinary.com/doqw5aqcf/image/upload/v1769023209/equipamento-ultramed-hifu_ybo2yl.png',
+    imageUrl: 'https://res.cloudinary.com/dy0ialgio/image/upload/v1780961978/equipamento-estetica-ultramed-hifu-painel-conectores-cabos_qkmrqz.webp',
     tags: ['Lifting Não Invasivo', 'Remodelagem Corporal'],
     benefits: `
       <h4 class="font-bold mb-2 text-medical-800 uppercase">Tecnologia HIFU de Alta Precisão</h4>
@@ -261,7 +261,7 @@ export const products: Product[] = [
     description: 'Ultrassom microcontrolado de alta tecnologia para harmonização e tratamento não invasivo de gordura.',
     subcategory: 'Estética Avançada',
     category: 'hof',
-    imageUrl: 'https://res.cloudinary.com/doqw5aqcf/image/upload/v1769023301/equipamento-ultramed-hof_uhwq3e.png',
+    imageUrl: 'https://res.cloudinary.com/dy0ialgio/image/upload/v1780962035/equipamento-estetica-ultramed-hifu-painel-fronta-conectores_oysiaa.webp',
     tags: ['Lifting Sem Cortes', 'Harmonização Orofacial'],
     benefits: `
       <h4 class="font-bold mb-2 text-medical-800 uppercase">Tecnologia HOF Avançada</h4>
@@ -282,7 +282,7 @@ export const products: Product[] = [
     description: 'Ultrassom microcontrolado de alta intensidade para tratamentos estéticos faciais, corporais e íntimos.',
     subcategory: 'Estética Avançada',
     category: 'hof',
-    imageUrl: 'https://res.cloudinary.com/doqw5aqcf/image/upload/v1769023384/equipamento-ultramed-intimy_acspzg.png',
+    imageUrl: 'https://res.cloudinary.com/dy0ialgio/image/upload/v1780962077/aparelho-laser-estetica-ultramed-intimy-infinty_p0naqd.webp',
     tags: ['Rejuvenescimento Íntimo', 'Lifting Não Invasivo'],
     benefits: `
       <h4 class="font-bold mb-2 text-medical-800 uppercase">Tecnologia HIFU Especializada</h4>
@@ -303,7 +303,7 @@ export const products: Product[] = [
     description: 'Ultrassom microcontrolado de alta intensidade para tratamento de gordura localizada e flacidez.',
     subcategory: 'Estética Avançada',
     category: 'hof',
-    imageUrl: 'https://res.cloudinary.com/doqw5aqcf/image/upload/v1774112741/aparelho-ultramed-mpt-medicalsan_z1dobo.png',
+    imageUrl: 'https://res.cloudinary.com/dy0ialgio/image/upload/v1780962126/aparelho-estetica-medica-ultramed-multiprocedimentos-painel-controle_ue2dom.webp',
     tags: ['Lifting Imediato', 'Lipo Sem Cortes'],
     benefits: `
       <h4 class="font-bold mb-2 text-medical-800 uppercase">Tecnologia HIFU MPT de Última Geração</h4>
@@ -324,7 +324,7 @@ export const products: Product[] = [
     description: 'Ultrassom microcontrolado de alta intensidade para harmonização facial e remodelagem corporal avançada.',
     subcategory: 'Estética Avançada',
     category: 'hof',
-    imageUrl: 'https://res.cloudinary.com/doqw5aqcf/image/upload/v1769024678/equipamento-ultramed-hof-hifu_cuolns.png',
+    imageUrl: 'https://res.cloudinary.com/dy0ialgio/image/upload/v1780962169/aparelho-estetica-medica-ultramed-mpt-com-tela-touchscreen_ihdmcg.webp',
     tags: ['Harmonização Orofacial', 'Lifting Sem Cortes'],
     benefits: `
       <h4 class="font-bold mb-2 text-medical-800 uppercase">Tecnologia MPT de Alta Precisão</h4>
@@ -345,7 +345,7 @@ export const products: Product[] = [
     description: 'Ultrassom focalizado microcontrolado de alta intensidade para redução de gordura e flacidez.',
     subcategory: 'Estética Avançada',
     category: 'hof',
-    imageUrl: 'https://res.cloudinary.com/doqw5aqcf/image/upload/v1769001778/ultramed_9d_ozant2.png',
+    imageUrl: 'https://res.cloudinary.com/dy0ialgio/image/upload/v1780962210/aparelho-estetico-ultramed-com-tela-e-base-preta_a0wtjy.webp',
     tags: ['Lipo Sem Cortes', 'Lifting Facial'],
     benefits: `
       <h4 class="font-bold mb-2 text-medical-800 uppercase">Tecnologia HIFU 9D Consagrada</h4>
@@ -366,7 +366,7 @@ export const products: Product[] = [
     description: 'Equipamento de ultrassom micro e macrofocado desenvolvido para o tratamento preciso de gordura localizada e flacidez',
     subcategory: 'Estética Avançada',
     category: 'hof',
-    imageUrl: 'https://res.cloudinary.com/doqw5aqcf/image/upload/v1774112559/aparelho-ultramed-pro-medicalsan_vzrguk.png',
+    imageUrl: 'https://res.cloudinary.com/dy0ialgio/image/upload/v1780962253/equipamento-medical-san-ultramed-pro-com-tela-e-dispositivo-de-cabo_dj3e3q.webp',
     tags: ['Lifting Não Invasivo', 'Redução de Medidas'],
     benefits: `
       <h4 class="font-bold mb-2 text-medical-800 uppercase">Tecnologia Ultramed PRO: Evolução em Ultrassom Micro e Macrofocado</h4>
