@@ -20,17 +20,50 @@ const Hero: React.FC = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
 
   const handleBannerClick = (data: BannerData) => {
-    if (data.title === 'HAKON LASER') {
-      window.location.href = '/hakon/index.html';
-      return;
+    let url = '';
+    
+    switch (data.title) {
+      // Banner carrossel
+      case 'NOVO OMER LASER 3D':
+        url = '/omer-smart-3d/index.html';
+        break;
+      case 'ULTRAMED':
+        url = '/ultramed-pro/index.html';
+        break;
+      case 'HEGON LASER CO2':
+        url = '/hegon/index.html';
+        break;
+      case 'HAKON LASER':
+        url = '/hakon/index.html';
+        break;
+      case 'CRIOLIPÓLISE':
+        url = '/criodemis-smart-medical-san/index.html';
+        break;
+        
+      // Mini banners
+      case 'LIFTENDO':
+        url = '/liftendo-endolaser-subdermico-medical-san/index.html';
+        break;
+      case 'PTOLOMEU':
+        url = '/ptolomeu-radiofrequencia-fracionada-medical-san/index.html';
+        break;
+      case 'ULTRAMED MPT':
+        url = '/ultramed-mpt-medical-san/index.html';
+        break;
+      case 'VELARYAN':
+        url = '/velaryan-medical-san/index.html';
+        break;
+        
+      default:
+        trackLead();
+        setSelectedBanner(data);
+        setIsBannerModalOpen(true);
+        return;
     }
-    if (data.title === 'VELARYAN') {
-      window.location.href = '/velaryan-medical-san/index.html';
-      return;
+    
+    if (url) {
+      window.location.href = url;
     }
-    trackLead();
-    setSelectedBanner(data);
-    setIsBannerModalOpen(true);
   };
 
   const closeBannerModal = () => {
